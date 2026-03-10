@@ -40,9 +40,3 @@ Stay connected for announcements, rehearsals, and highlights.
 
 - **Instagram:** *(add handle)*  
 - **YouTube:** *(add channel)*  
-
----
-
-## 📂 Repository Contents
-
-This repository contains materials related to the fest:
