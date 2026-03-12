@@ -1,4 +1,4 @@
-# 🎶 St. Thomas Choir Fest
+# 🎶 Selah: St. Thomas Choir Fest
 
 Welcome to the **St. Thomas Choir Fest**, a celebration of worship, harmony, and fellowship through music.  
 This fest brings together choirs, musicians, and believers to glorify God through song and community.
