@@ -184,7 +184,8 @@
     }
     .hero-title .line { display: block; opacity:0; transform: translateY(28px); }
     .hero-title .l1 { color: var(--cream);      animation: fadein-up .9s .5s  forwards; }
-    .hero-title .l2 { color: var(--gold);        animation: fadein-up .9s .68s forwards; font-style: italic; }
+    .hero-title .l2 { color: var(--gold);        animation: fadein-up .9s .68s forwards; font-style: italic; 
+      font-size: 0.5em;}
     .hero-title .l3 { color: var(--cream);       animation: fadein-up .9s .86s forwards; }
 
     .hero-date {
@@ -331,7 +332,6 @@
       text-transform: uppercase;
       padding-top: .2rem;
     }
-    .sched-content {}
     .sched-title {
       font-family: 'Playfair Display', serif;
       font-size: 1.15rem; color: var(--cream); font-weight: 700;
@@ -442,12 +442,10 @@
       display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
       align-items: start;
     }
-    .prog-info-text {}
     .prog-info-text .section-label { text-align: left; }
     .prog-info-text .section-title  { text-align: left; font-size: clamp(1.6rem, 3.5vw, 2.4rem); margin-bottom: 1.2rem; }
     .prog-info-body { font-size: .95rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
 
-    .convenors-panel {}
     .convenors-panel .section-label { text-align: left; }
     .convenors-title {
       font-family: 'Playfair Display', serif;
@@ -469,7 +467,6 @@
       font-size: 1rem; font-weight: 700;
       color: var(--cream);
     }
-    .person-info {}
     .person-name {
       font-size: .92rem; font-weight: 700;
       color: var(--cream); display: block; margin-bottom: .1rem;
@@ -582,6 +579,11 @@
       color: var(--gold);
     }
 
+    .committee-details {
+      font-size: .65rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--muted);
+    }
+
     @media (max-width: 768px) {
       .church-top { grid-template-columns: 1fr; gap: 2.5rem; }
     }
@@ -667,8 +669,8 @@
     <a href="#home" class="logo">
       <span class="logo-note">♪</span>
       <div class="logo-text">
-        <span class="logo-name">Voices of Glory</span>
-        <span class="logo-sub">Choir Festival 2026</span>
+        <span class="logo-name">SELAH 2026</span>
+        <span class="logo-sub">Choir Fest 2026</span>
       </div>
     </a>
     <nav>
@@ -699,9 +701,9 @@
     <p class="hero-eyebrow">Interdenominational Church Choir Festival</p>
 
     <h1 class="hero-title">
-      <span class="line l1">Voices</span>
-      <span class="line l2">of Glory</span>
-      <span class="line l3">2026</span>
+      <span class="line l1">SELAH 2026</span>
+      <span class="line l2">A Prayer For Justice And Peace</span>
+      <!-- <span class="line l3">2026</span> -->
     </h1>
 
     <p class="hero-date">18th April 2026 &bull; St Thomas Hyderabad</p>
@@ -728,13 +730,11 @@
       <span class="ticker-item">Worship Through Song <span class="ticker-sep">✦</span></span>
       <span class="ticker-item">18th April 2026 <span class="ticker-sep">✦</span></span>
       <span class="ticker-item">Open to All Churches <span class="ticker-sep">✦</span></span>
-      <span class="ticker-item">Competitive &amp; Non-Competitive <span class="ticker-sep">✦</span></span>
       <span class="ticker-item">Register by 30 June <span class="ticker-sep">✦</span></span>
       <span class="ticker-item">St Thomas Hyderabad <span class="ticker-sep">✦</span></span>
       <span class="ticker-item">Worship Through Song <span class="ticker-sep">✦</span></span>
       <span class="ticker-item">18th April 2026 <span class="ticker-sep">✦</span></span>
-      <span class="ticker-item">Open to All Churches <span class="ticker-sep">✦</span></span>
-      <span class="ticker-item">Competitive &amp; Non-Competitive <span class="ticker-sep">✦</span></span>
+      <span class="ticker-item">Open to All Churches <span class="ticker-sep">✦</span></span>      
       <span class="ticker-item">Register by 30 June <span class="ticker-sep">✦</span></span>
       <span class="ticker-item">St Thomas Hyderabad <span class="ticker-sep">✦</span></span>
     </div>
@@ -765,29 +765,16 @@
       <p class="convenors-title" style="margin-bottom:1.8rem;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--cream)">Convenors &amp; Points of Contact</p>
       <div class="committee-grid">
         <div class="committee-card">
-          <div class="committee-avatar">JM</div>
-          <div class="committee-name">Rev. Jacob Mathew</div>
-          <div class="committee-role">Chief Convenor</div>
+          <div class="committee-avatar">AV</div>
+          <div class="committee-name">Rev. Abraham P Varkey</div>
+          <div class="committee-role">Choir President</div>
+          <div class="committee-details">9876543210</div>
         </div>
         <div class="committee-card">
-          <div class="committee-avatar">SA</div>
-          <div class="committee-name">Susan Abraham</div>
-          <div class="committee-role">Programme Coordinator</div>
-        </div>
-        <div class="committee-card">
-          <div class="committee-avatar">RT</div>
-          <div class="committee-name">Rijo Thomas</div>
-          <div class="committee-role">Music Director &amp; SPOC</div>
-        </div>
-        <div class="committee-card">
-          <div class="committee-avatar">PG</div>
-          <div class="committee-name">Priya George</div>
-          <div class="committee-role">Logistics &amp; Registration SPOC</div>
-        </div>
-        <div class="committee-card">
-          <div class="committee-avatar">AK</div>
-          <div class="committee-name">Anoop Kurian</div>
-          <div class="committee-role">Technical &amp; Stage SPOC</div>
+          <div class="committee-avatar">AT</div>
+          <div class="committee-name">Aaron K Thomas</div>
+          <div class="committee-role">Programme Convenor</div>
+          <div class="committee-details">9876543210</div>
         </div>
       </div>
     </div>
@@ -875,54 +862,6 @@
       <a href="#about"   class="btn-ghost">Learn More</a>
     </div>
   </section>
-
-  <!-- SPONSORS -->
-  <!--
-  <section class="sponsors" id="sponsors">
-    <div class="sponsors-inner">
-
-      <p class="section-label">Our Sponsors</p>
-      <h2 class="section-title" style="margin:0 auto 3rem">Supported By</h2>
-
-     
-      <div class="sponsors-tier">
-        <p class="tier-label">Title Sponsor</p>
-        <div class="sponsors-row">
-          <div class="sponsor-box title">Your Brand Here</div>
-        </div>
-      </div>
-
-    
-      <div class="sponsors-tier">
-        <p class="tier-label">Gold Sponsors</p>
-        <div class="sponsors-row">
-          <div class="sponsor-box gold">Sponsor Name</div>
-          <div class="sponsor-box gold">Sponsor Name</div>
-          <div class="sponsor-box gold">Sponsor Name</div>
-        </div>
-      </div>
-
-     
-      <div class="sponsors-tier">
-        <p class="tier-label">Silver Sponsors</p>
-        <div class="sponsors-row">
-          <div class="sponsor-box silver">Sponsor</div>
-          <div class="sponsor-box silver">Sponsor</div>
-          <div class="sponsor-box silver">Sponsor</div>
-          <div class="sponsor-box silver">Sponsor</div>
-          <div class="sponsor-box silver">Sponsor</div>
-        </div>
-      </div>
-
-      
-      <div class="sponsor-cta">
-        <p>Interested in sponsoring Voices of Glory 2026? We&rsquo;d love to partner with you.</p>
-        <a href="#contact" class="btn-ghost">Become a Sponsor</a>
-      </div>
-
-    </div>
-  </section>
-  -->
 
   <!-- FOOTER -->
   <footer id="contact">
