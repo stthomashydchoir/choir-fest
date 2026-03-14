@@ -718,7 +718,7 @@
     <span class="note" aria-hidden="true">♩</span>
     <span class="note" aria-hidden="true">♫</span>
 
-    <img src="marthoma-logo.png" alt="Mar Thoma Church" style="width:90px;height:90px;object-fit:contain;margin-bottom:1.5rem;opacity:0;animation:fadein .8s .1s forwards;position:relative;">
+    <img src="marthoma-logo.png" alt="Mar Thoma Church" style="width:180px;height:180px;object-fit:contain;margin-bottom:1.5rem;opacity:0;animation:fadein .8s .1s forwards;position:relative;">
 
     <p class="hero-eyebrow">Interdenominational Church Choir Festival</p>
 
@@ -1009,6 +1009,22 @@
         c.style.opacity = '0'; c.style.transform = 'translateX(20px)';
         c.style.transition = 'opacity .5s ease, transform .5s ease';
         personObs.observe(c);
+      });
+
+      /* Milestone cards fade in */
+      const milestones = document.querySelectorAll('.milestone');
+      const milObs = new IntersectionObserver((entries) => {
+        entries.forEach((e, i) => {
+          if (e.isIntersecting) {
+            setTimeout(() => { e.target.style.opacity = '1'; e.target.style.transform = 'translateX(0)'; }, i * 60);
+            milObs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      milestones.forEach(m => {
+        m.style.opacity = '0'; m.style.transform = 'translateX(-12px)';
+        m.style.transition = 'opacity .4s ease, transform .4s ease';
+        milObs.observe(m);
       });
 
       document.querySelectorAll('a[href^="#"]').forEach(a => {
