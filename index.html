@@ -688,7 +688,7 @@
   <!-- HEADER -->
   <header id="site-header">
     <a href="#home" class="logo">
-      <img src="marthoma-logo.png" alt="Selah 2026" style="width:42px;height:42px;border-radius:50%;object-fit:cover;flex-shrink:0">
+      <img src="marthoma-logo.png" alt="Selah 2026" style="width:42px;height:42px;object-fit:contain;flex-shrink:0">
       <div class="logo-text">
         <span class="logo-name">SELAH 2026</span>
         <span class="logo-sub">Choir Fest 2026</span>
@@ -698,6 +698,7 @@
       <a href="#about">About</a>
       <a href="#church">Our Church</a>
       <a href="#venue">Venue</a>
+      <a href="team.html">Our Team</a>
       <!-- <a href="#register" class="nav-cta">Register Now</a> -->
     </nav>
   </header>
@@ -838,6 +839,7 @@
       </div>
 
       <!-- Location card -->
+      <div class="map-strip" id="venue">
       <div class="map-strip" id="venue">
         <div class="map-strip-info">
           <div style="display:flex;align-items:center;gap:1.2rem">
@@ -1023,6 +1025,14 @@
         m.style.transition = 'opacity .4s ease, transform .4s ease';
         milObs.observe(m);
       });
+
+      /* Scroll to hash on page load (e.g. arriving from team.html) */
+      if (window.location.hash) {
+        setTimeout(() => {
+          const t = document.querySelector(window.location.hash);
+          if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
 
       document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', e => {
