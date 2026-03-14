@@ -93,7 +93,6 @@
       position: relative; overflow: hidden;
     }
 
-    /* Deep dark radial base */
     .hero-bg {
       position: absolute; inset: 0;
       background:
@@ -103,7 +102,6 @@
       pointer-events: none;
     }
 
-    /* Rays of light */
     .hero-rays {
       position: absolute; top: 0; left: 50%;
       transform: translateX(-50%);
@@ -128,7 +126,6 @@
     }
     @keyframes rays-slow { to { transform: translateX(-50%) rotate(360deg); } }
 
-    /* Floating music notes */
     .note {
       position: absolute;
       color: var(--gold);
@@ -150,7 +147,6 @@
       100% { opacity:0;    transform: translateY(-70px) rotate(12deg); }
     }
 
-    /* Concentric rings */
     .ring {
       position: absolute; left: 50%; top: 0;
       transform: translate(-50%, -55%);
@@ -500,6 +496,22 @@
     .church-block .section-title  { text-align: left; font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: 1.2rem; }
     .church-body { font-size: .95rem; color: var(--muted); line-height: 1.8; margin-bottom: .9rem; }
 
+    /* History milestones */
+    .history-milestones {
+      margin-top: 1rem;
+      display: flex; flex-direction: column; gap: .5rem;
+    }
+    .milestone {
+      display: flex; gap: .75rem; align-items: baseline;
+      font-size: .82rem; color: var(--muted); line-height: 1.5;
+    }
+    .milestone-year {
+      font-family: 'Playfair Display', serif;
+      font-size: .75rem; font-weight: 700;
+      color: var(--gold); white-space: nowrap; flex-shrink: 0;
+      min-width: 38px;
+    }
+
     .church-map-wrap {
       border-radius: 8px; overflow: hidden;
       border: 1px solid var(--border);
@@ -517,7 +529,6 @@
     }
     .map-link:hover { color: var(--gold-light); }
 
-    /* Map strip — full width below church/choir columns */
     .map-strip {
       margin-top: 3rem;
       border: 1px solid var(--border);
@@ -537,7 +548,6 @@
       font-size: .9rem; color: var(--muted); line-height: 1.6;
     }
 
-    /* Choir committee */
     .committee-title {
       font-family: 'Playfair Display', serif;
       font-size: 1.4rem; font-weight: 700;
@@ -578,7 +588,6 @@
       font-size: .65rem; letter-spacing: .12em; text-transform: uppercase;
       color: var(--gold);
     }
-
     .committee-details {
       font-size: .65rem; letter-spacing: .12em; text-transform: uppercase;
       color: var(--muted);
@@ -633,14 +642,6 @@
     .sponsor-box.title  { width: 260px; height: 90px; font-size: 1.1rem; }
     .sponsor-box.gold   { width: 200px; height: 76px; font-size: .95rem; }
     .sponsor-box.silver { width: 160px; height: 64px; font-size: .85rem; }
-    .sponsor-cta {
-      margin-top: 3rem;
-      padding-top: 2.5rem;
-      border-top: 1px solid var(--border);
-    }
-    .sponsor-cta p {
-      font-size: .9rem; color: var(--muted); margin-bottom: 1.2rem;
-    }
 
     /* ── SOCIAL FOOTER ICONS ── */
     .foot-social { display: flex; gap: 1rem; margin-top: .8rem; }
@@ -690,7 +691,6 @@
     <div class="ring ring-2" aria-hidden="true"></div>
     <div class="ring ring-3" aria-hidden="true"></div>
 
-    <!-- Floating notes -->
     <span class="note" aria-hidden="true">♩</span>
     <span class="note" aria-hidden="true">♫</span>
     <span class="note" aria-hidden="true">♪</span>
@@ -703,7 +703,6 @@
     <h1 class="hero-title">
       <span class="line l1">SELAH 2026</span>
       <span class="line l2">A Prayer For Justice And Peace</span>
-      <!-- <span class="line l3">2026</span> -->
     </h1>
 
     <p class="hero-date">18th April 2026 &bull; St Thomas Hyderabad</p>
@@ -740,7 +739,7 @@
     </div>
   </div>
 
-  <!-- ABOUT + CONVENORS (merged) -->
+  <!-- ABOUT + CONVENORS -->
   <section class="about" id="about">
     <p class="section-label">About the Festival</p>
     <h2 class="section-title">A Celebration of Worship Across the Body of Christ</h2>
@@ -759,7 +758,6 @@
       Christian music gatherings &mdash; uniting over 400 voices each year in praise and worship.
     </p>
 
-    <!-- Convenors grid -->
     <div style="margin-top:3.5rem;width:100%;max-width:900px;">
       <p class="section-label" style="margin-bottom:.4rem">Programme Team</p>
       <p class="convenors-title" style="margin-bottom:1.8rem;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--cream)">Convenors &amp; Points of Contact</p>
@@ -784,23 +782,26 @@
   <section class="church-section" id="church">
     <div class="church-inner">
 
-      <!-- Top row: Church left, Choir right -->
       <div class="church-top">
 
         <div class="church-block">
           <p class="section-label">Our Church</p>
-          <h2 class="section-title">St Thomas Marthoma Church, Hyderabad</h2>
+          <h2 class="section-title">St Thomas Mar Thoma Church, Hyderabad</h2>
           <p class="church-body">
-            St Thomas Marthoma Church, Hyderabad, is a congregation of the Marthoma Syrian Church of Malabar —
-            one of the oldest Christian denominations in the world, tracing its roots to the apostolic mission
-            of St Thomas the Apostle in 52 AD. The Hyderabad parish has served the faithful in the city
-            for over five decades, nurturing a vibrant community of worship, fellowship, and service.
+            Our story began around 1946 when Mar Thoma immigrants formed a Malayalee congregation
+            in Hyderabad, worshipping at St. Andrews Church, Secunderabad. As the community grew,
+            members around BHEL and Ramachandrapuram sought a worship centre closer to home &mdash;
+            and through God&rsquo;s providence, land was allotted at HUDA Colony, Chandanagar.
           </p>
           <p class="church-body">
-            Rooted in the rich liturgical tradition of the Syriac church and renewed by the reforming spirit
-            of the Marthoma movement, our congregation is committed to proclaiming the Gospel through word,
-            sacrament, and song. The church warmly welcomes all who seek to encounter the living God.
+            The foundation stone was laid on <strong style="color:var(--gold-pale)">2nd October 1986</strong>
+            and the church dedicated on <strong style="color:var(--gold-pale)">18th April 1987</strong>.
+            In 2011 the parish was renamed <em>Hyderabad St. Thomas Mar Thoma Church</em>, and in 2013
+            celebrated its Silver Jubilee by taking up home-for-homeless and marriage-aid projects.
+            We are grateful to God for His faithfulness through every season.
           </p>
+
+
         </div>
 
         <div class="church-block">
@@ -808,7 +809,7 @@
           <h2 class="section-title">The St Thomas Choir</h2>
           <p class="church-body">
             The St Thomas Choir has been the heartbeat of worship at our parish for over thirty years.
-            Comprising singers of all ages — from youth to seasoned voices — the choir leads the
+            Comprising singers of all ages &mdash; from youth to seasoned voices &mdash; the choir leads the
             congregation in praise every Sunday and on special occasions throughout the liturgical year.
           </p>
           <p class="church-body">
@@ -835,7 +836,7 @@
             </div>
             <div>
               <p class="section-label" style="text-align:left;margin-bottom:.25rem">Venue</p>
-              <p class="map-address">St Thomas Marthoma Church<br>Hyderabad, Telangana, India</p>
+              <p class="map-address">St Thomas Mar Thoma Church<br>Hyderabad, Telangana, India</p>
             </div>
           </div>
           <a href="https://maps.app.goo.gl/bgcKT4KgaaKWuKAx5" target="_blank" rel="noopener" class="btn-ghost" style="align-self:center;font-size:.72rem;padding:.65rem 1.5rem;white-space:nowrap">
@@ -867,17 +868,14 @@
   <footer id="contact">
     <div class="foot-inner">
 
-      <!-- Brand -->
       <div>
         <span class="foot-brand">Voices of Glory</span>
         <span class="foot-sub">Choir Festival &bull; 2026</span>
         <div class="foot-social" style="margin-top:.9rem">
-          <!-- Instagram -->
           <a href="https://www.instagram.com/stthomashydchorale/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram">
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             Instagram
           </a>
-          <!-- YouTube -->
           <a href="https://youtube.com/@stthomashyd" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube">
             <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
             YouTube
@@ -885,15 +883,13 @@
         </div>
       </div>
 
-      <!-- Verse -->
       <p class="foot-verse">&ldquo;Make a joyful noise unto the Lord, all the earth; make a loud noise, and rejoice, and sing praise.&rdquo; &mdash; Psalm 98:4</p>
 
-      <!-- Address -->
       <div>
         <div style="margin-bottom:1.5rem">
           <p class="section-label" style="text-align:left;margin-bottom:.5rem">Venue</p>
           <p style="font-size:.82rem;color:var(--muted);line-height:1.7">
-            St Thomas Marthoma Church<br>
+            St Thomas Mar Thoma Church<br>
             Hyderabad, Telangana, India
           </p>
           <a href="https://maps.app.goo.gl/bgcKT4KgaaKWuKAx5" target="_blank" rel="noopener" class="map-link" style="margin-top:.5rem">
@@ -906,17 +902,15 @@
     </div>
 
     <hr class="foot-hr">
-    <p class="foot-copy">&copy; 2026 Voices of Glory Choir Festival &bull; St Thomas Marthoma Church, Hyderabad &mdash; Organised with love, for His glory</p>
+    <p class="foot-copy">&copy; 2026 Voices of Glory Choir Festival &bull; St Thomas Mar Thoma Church, Hyderabad &mdash; Organised with love, for His glory</p>
   </footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
 
-      /* Header shrink on scroll */
       const header = document.getElementById('site-header');
       window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 60));
 
-      /* Schedule items slide in */
       const schedItems = document.querySelectorAll('.sched-item');
       const schedObs = new IntersectionObserver((entries) => {
         entries.forEach((e, i) => {
@@ -928,7 +922,6 @@
       }, { threshold: 0.15 });
       schedItems.forEach(el => schedObs.observe(el));
 
-      /* Choir cards fade in */
       const choirCards = document.querySelectorAll('.choir-card');
       const choirObs = new IntersectionObserver((entries) => {
         entries.forEach((e, i) => {
@@ -945,7 +938,6 @@
         choirObs.observe(c);
       });
 
-      /* Committee cards fade in */
       const committeeCards = document.querySelectorAll('.committee-card');
       const commObs = new IntersectionObserver((entries) => {
         entries.forEach((e, i) => {
@@ -961,7 +953,6 @@
         commObs.observe(c);
       });
 
-      /* Person cards fade in */
       const personCards = document.querySelectorAll('.person-card');
       const personObs = new IntersectionObserver((entries) => {
         entries.forEach((e, i) => {
@@ -977,7 +968,6 @@
         personObs.observe(c);
       });
 
-      /* Smooth scroll */
       document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', e => {
           const t = document.querySelector(a.getAttribute('href'));
