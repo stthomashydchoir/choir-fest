@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Team — Selah 2026</title>
+  <link rel="icon" type="image/png" href="selah-icon.png">
+  <link rel="apple-touch-icon" href="selah-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:         #0e0b08;
+      --surface:    #171209;
+      --gold:       #c9922a;
+      --gold-light: #e8b455;
+      --gold-pale:  #f5dfa0;
+      --burgundy:   #7a1a28;
+      --burg-light: #a8243a;
+      --cream:      #f5ede0;
+      --text:       #f0e8d8;
+      --muted:      #9a8870;
+      --border:     #2a2018;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 600;
+      height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 3rem;
+      background: rgba(14,11,8,0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(201,146,42,0.18);
+      transition: height .3s, background .3s;
+    }
+    header.scrolled { height: 56px; background: rgba(14,11,8,0.97); }
+
+    .logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+    .logo-text { line-height: 1.15; }
+    .logo-name {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--gold-pale);
+      letter-spacing: .04em;
+    }
+    .logo-sub {
+      display: block; font-size: .58rem;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    nav { display: flex; align-items: center; gap: .1rem; }
+    nav a {
+      font-size: .8rem; letter-spacing: .05em;
+      color: var(--muted); text-decoration: none;
+      padding: .4rem .85rem; border-radius: 3px;
+      transition: color .2s, background .2s;
+    }
+    nav a:hover { color: var(--gold-pale); background: rgba(201,146,42,0.1); }
+    nav a.active { color: var(--gold-pale); }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      padding: 10rem 2rem 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(122,26,40,0.4) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,146,42,0.08) 0%, transparent 50%),
+        var(--bg);
+      pointer-events: none;
+    }
+    .page-hero-rays {
+      position: absolute; top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 180%; height: 100%;
+      background: conic-gradient(
+        from 180deg at 50% -10%,
+        transparent 0deg,   rgba(201,146,42,0.04) 8deg,
+        transparent 16deg,  rgba(201,146,42,0.03) 24deg,
+        transparent 32deg,  rgba(201,146,42,0.04) 40deg,
+        transparent 48deg,
+        transparent 360deg
+      );
+      pointer-events: none;
+      animation: rays-slow 60s linear infinite;
+    }
+    @keyframes rays-slow { to { transform: translateX(-50%) rotate(360deg); } }
+
+    .page-eyebrow {
+      display: inline-flex; align-items: center; gap: .6rem;
+      font-size: .68rem; letter-spacing: .28em; text-transform: uppercase;
+      color: var(--gold);
+      padding: .35rem 1.4rem;
+      border: 1px solid rgba(201,146,42,0.35);
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+      position: relative;
+      opacity: 0; animation: fadein .8s .2s forwards;
+    }
+    .page-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 900;
+      color: var(--gold-pale);
+      letter-spacing: .02em;
+      line-height: 1.1;
+      position: relative;
+      opacity: 0; animation: fadein-up .9s .4s forwards;
+      text-shadow: 0 0 60px rgba(201,146,42,0.2);
+    }
+    .page-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-top: 1rem;
+      opacity: 0; animation: fadein .9s .6s forwards;
+      position: relative;
+    }
+
+    .gold-divider {
+      display: flex; align-items: center; gap: 1rem;
+      margin: 2.5rem auto; justify-content: center;
+      opacity: 0; animation: fadein .9s .7s forwards;
+    }
+    .gd-line { width: 60px; height: 1px; background: linear-gradient(to right, transparent, var(--gold)); }
+    .gd-line.r { background: linear-gradient(to left, transparent, var(--gold)); }
+    .gd-note { color: var(--gold); font-size: 1.1rem; }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-size: .68rem; letter-spacing: .28em; text-transform: uppercase;
+      color: var(--gold); font-weight: 700; margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700; color: var(--cream);
+      line-height: 1.2; margin-bottom: .5rem;
+    }
+
+    /* ── TEAM SECTIONS ── */
+    .team-section {
+      padding: 5rem 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .team-section:nth-child(even) { background: var(--surface); }
+    .team-section:nth-child(odd)  { background: var(--bg); }
+
+    .team-section-inner {
+      max-width: 1100px; margin: 0 auto;
+    }
+    .team-section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    /* ── LEADERSHIP CARDS (large) ── */
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .leader-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.2rem 1.8rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .5s ease, transform .5s ease, box-shadow .3s;
+    }
+    .leader-card.visible { opacity: 1; transform: translateY(0); }
+    .leader-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(to right, var(--burgundy), var(--gold), var(--burgundy));
+    }
+    .leader-card:hover {
+      box-shadow: 0 16px 48px rgba(201,146,42,0.15);
+      transform: translateY(-4px);
+    }
+    .leader-avatar {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #c9922a 0%, #7a1a28 60%, #4a0f1a 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 700; color: var(--cream);
+      margin: 0 auto 1.2rem;
+      border: 2px solid rgba(201,146,42,0.3);
+      box-shadow: 0 4px 20px rgba(122,26,40,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .leader-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--cream); margin-bottom: .3rem;
+    }
+    .leader-role {
+      font-size: .68rem; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: .6rem;
+    }
+    .leader-contact {
+      font-size: .8rem; color: var(--muted);
+    }
+    .leader-contact a {
+      color: var(--muted); text-decoration: none; transition: color .2s;
+    }
+    .leader-contact a:hover { color: var(--gold-light); }
+
+    /* ── COMMITTEE CARDS (medium) ── */
+    .committee-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .committee-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.4rem 1.2rem;
+      text-align: center;
+      opacity: 0; transform: translateY(16px);
+      transition: opacity .45s ease, transform .45s ease, box-shadow .25s;
+    }
+    .committee-card.visible { opacity: 1; transform: translateY(0); }
+    .committee-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(201,146,42,0.12);
+    }
+    .committee-avatar {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--burgundy) 0%, var(--gold) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 700; color: var(--cream);
+      margin: 0 auto .9rem;
+    }
+    .committee-name {
+      font-size: .88rem; font-weight: 700; color: var(--cream);
+      margin-bottom: .2rem;
+    }
+    .committee-role {
+      font-size: .62rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: .3rem;
+    }
+    .committee-detail {
+      font-size: .75rem; color: var(--muted);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #080604;
+      padding: 3rem 2.5rem 2rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .foot-back {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .75rem; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      border: 1px solid var(--border); border-radius: 3px;
+      padding: .5rem 1.2rem; margin-bottom: 2rem;
+      transition: color .2s, border-color .2s, background .2s;
+    }
+    .foot-back:hover { color: var(--gold-pale); border-color: var(--gold); background: rgba(201,146,42,0.08); }
+    .foot-hr { border: none; border-top: 1px solid var(--border); max-width: 900px; margin: 0 auto 1.25rem; }
+    .foot-copy { font-size: .7rem; color: rgba(255,255,255,0.18); letter-spacing: .06em; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadein    { to { opacity: 1; } }
+    @keyframes fadein-up { to { opacity: 1; transform: translateY(0); } }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      header { padding: 0 1.25rem; }
+      nav a { font-size: .72rem; padding: .4rem .6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="site-header">
+    <a href="selah2026.html" class="logo">
+      <img src="marthoma-logo.png" alt="Selah 2026" style="width:42px;height:42px;object-fit:contain;flex-shrink:0">
+      <div class="logo-text">
+        <span class="logo-name">SELAH 2026</span>
+        <span class="logo-sub">Choir Fest 2026</span>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html#about">About</a>
+      <a href="index.html#church">Our Church</a>
+      <a href="index.html#venue">Venue</a>
+      <a href="team.html" class="active">Our Team</a>
+    </nav>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg" aria-hidden="true"></div>
+    <div class="page-hero-rays" aria-hidden="true"></div>
+    <p class="page-eyebrow">Selah 2026</p>
+    <h1 class="page-title">Our Team</h1>
+    <p class="page-subtitle">The people behind the praise</p>
+    <div class="gold-divider">
+      <div class="gd-line"></div>
+      <span class="gd-note">♪</span>
+      <div class="gd-line r"></div>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP -->
+  <section class="team-section">
+    <div class="team-section-inner">
+      <div class="team-section-header">
+        <p class="section-label">Leadership</p>
+        <h2 class="section-title">Programme Convenors</h2>
+      </div>
+      <div class="leadership-grid">
+        <div class="leader-card">
+          <div class="leader-avatar">AV</div>
+          <p class="leader-name">Rev. Abraham P Varkey</p>
+          <p class="leader-role">Choir President</p>
+          <p class="leader-contact">9876543210</p>
+        </div>
+        <div class="leader-card">
+          <div class="leader-avatar">AT</div>
+          <p class="leader-name">Aaron K Thomas</p>
+          <p class="leader-role">Programme Convenor</p>
+          <p class="leader-contact">9495945756</p>
+        </div>
+        <div class="leader-card">
+            <div class="leader-avatar">JJ</div>
+            <p class="leader-name">Joel Jacob Varghese</p>
+            <p class="leader-role">Programme Convenor</p>
+            <p class="leader-contact">8075964621</p>
+          </div>
+          <div class="leader-card">
+            <div class="leader-avatar">FN</div>
+            <p class="leader-name">Fen Ninan</p>
+            <p class="leader-role">Programme Convenor</p>
+            <p class="leader-contact">9703218453</p>
+          </div>
+      </div>
+      
+  </div>
+    </div>
+  </section>
+
+  <!-- ORGANISING COMMITTEE -->
+  <section class="team-section">
+    <div class="team-section-inner">
+      <div class="team-section-header">
+        <p class="section-label">Behind the Scenes</p>
+        <h2 class="section-title">Organising Committee</h2>
+      </div>
+      <div class="committee-grid">
+        <div class="committee-card">
+          <div class="committee-avatar">MP</div>
+          <p class="committee-name">Mercy Philip</p>
+          <p class="committee-role">Public Relations</p>
+          <p class="committee-detail">7891530033</p>
+        </div>
+        <div class="committee-card">
+          <div class="committee-avatar">AJ</div>
+          <p class="committee-name">Alexis Jacob</p>
+          <p class="committee-role">Logistics</p>
+          <p class="committee-detail">9447581151</p>
+        </div>
+        <div class="committee-card">
+            <div class="committee-avatar">AB</div>
+            <p class="committee-name">Aaron Abraham</p>
+            <p class="committee-role">Logistics</p>
+            <p class="committee-detail">9969135917</p>
+          </div>
+          <div class="committee-card">
+            <div class="committee-avatar">AA</div>
+            <p class="committee-name">Aagin</p>
+            <p class="committee-role">Logistics</p>
+            <p class="committee-detail">8374286036</p>
+          </div>
+        <div class="committee-card">
+          <div class="committee-avatar">SM</div>
+          <p class="committee-name">Shorne Mathew</p>
+          <p class="committee-role">Finance</p>
+          <p class="committee-detail">9427401228</p>
+        </div>
+        <div class="committee-card">
+          <div class="committee-avatar">RV</div>
+          <p class="committee-name">Faeba Alex</p>
+          <p class="committee-role">Finance</p>
+          <p class="committee-detail">7330783041</p>
+        </div>
+        <div class="committee-card">
+          <div class="committee-avatar">AR</div>
+          <p class="committee-name">Adersh Raju</p>
+          <p class="committee-role">Finance</p>
+          <p class="committee-detail">9497123752</p>
+        </div>
+        <div class="committee-card">
+          <div class="committee-avatar">SF</div>
+          <p class="committee-name">Suma Fen</p>
+          <p class="committee-role">Finance</p>
+          <p class="committee-detail">9985195870</p>
+        </div>
+        <div class="committee-card">
+            <div class="committee-avatar">JM</div>
+            <p class="committee-name">Joel Mathew</p>
+            <p class="committee-role">Publicity and Media</p>
+            <p class="committee-detail">9037948162</p>
+          </div>
+          <div class="committee-card">
+            <div class="committee-avatar">JM</div>
+            <p class="committee-name">Thrupthi Ann</p>
+            <p class="committee-role">Publicity and Media</p>
+            <p class="committee-detail">9704245190</p>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="selah2026.html" class="foot-back">
+      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:.3rem"><polyline points="15 18 9 12 15 6"/></svg>
+      Back to Main Site
+    </a>
+    <hr class="foot-hr">
+    <p class="foot-copy">&copy; 2026 Selah Choir Festival &bull; St Thomas Mar Thoma Church, Hyderabad &mdash; Organised with love, for His glory</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      const header = document.getElementById('site-header');
+      window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 60));
+
+      /* Animate cards on scroll */
+      const cards = document.querySelectorAll('.leader-card, .committee-card');
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach((e, i) => {
+          if (e.isIntersecting) {
+            setTimeout(() => e.target.classList.add('visible'), i * 80);
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      cards.forEach(c => obs.observe(c));
+
+    });
+  </script>
+
+</body>
+</html>
