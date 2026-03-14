@@ -4,8 +4,8 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Our Team — Selah 2026</title>
-  <link rel="icon" type="image/png" href="selah-icon.png">
-  <link rel="apple-touch-icon" href="selah-icon.png">
+  <link rel="icon" type="image/png" href="assets/selah-icon.png">
+  <link rel="apple-touch-icon" href="assets/selah-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
@@ -276,21 +276,52 @@
     /* ── FOOTER ── */
     footer {
       background: #080604;
-      padding: 3rem 2.5rem 2rem;
+      padding: 4rem 2.5rem 2rem;
       border-top: 1px solid var(--border);
-      text-align: center;
     }
-    .foot-back {
-      display: inline-flex; align-items: center; gap: .5rem;
+    .foot-inner {
+      max-width: 900px; margin: 0 auto;
+      display: flex; flex-wrap: wrap;
+      justify-content: space-between; align-items: flex-start;
+      gap: 2.5rem;
+    }
+    .foot-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 700;
+      color: var(--gold-pale); display: block; margin-bottom: .3rem;
+    }
+    .foot-sub { font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+    .foot-verse {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: .92rem;
+      color: var(--muted); max-width: 260px; text-align: center;
+    }
+    .foot-hr { border: none; border-top: 1px solid var(--border); max-width: 900px; margin: 2.5rem auto 1.25rem; }
+    .foot-copy { text-align: center; font-size: .7rem; color: rgba(255,255,255,0.18); letter-spacing: .06em; }
+    .map-link {
+      display: inline-flex; align-items: center; gap: .4rem;
       font-size: .75rem; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--gold); text-decoration: none; margin-top: .8rem;
+      transition: color .2s;
+    }
+    .map-link:hover { color: var(--gold-light); }
+
+    /* ── SOCIAL FOOTER ICONS ── */
+    .foot-social { display: flex; gap: 1rem; margin-top: .8rem; flex-wrap: wrap; }
+    .social-btn {
+      display: inline-flex; align-items: center; gap: .45rem;
+      font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
       color: var(--muted); text-decoration: none;
       border: 1px solid var(--border); border-radius: 3px;
-      padding: .5rem 1.2rem; margin-bottom: 2rem;
+      padding: .4rem .9rem;
       transition: color .2s, border-color .2s, background .2s;
     }
-    .foot-back:hover { color: var(--gold-pale); border-color: var(--gold); background: rgba(201,146,42,0.08); }
-    .foot-hr { border: none; border-top: 1px solid var(--border); max-width: 900px; margin: 0 auto 1.25rem; }
-    .foot-copy { font-size: .7rem; color: rgba(255,255,255,0.18); letter-spacing: .06em; }
+    .social-btn:hover { color: var(--gold-pale); border-color: var(--gold); background: rgba(201,146,42,0.08); }
+    .social-btn svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+
+    @keyframes shimmer {
+      0%,100% { opacity:.3 } 50% { opacity:.7 }
+    }
 
     /* ── ANIMATIONS ── */
     @keyframes fadein    { to { opacity: 1; } }
@@ -307,17 +338,18 @@
 
   <!-- HEADER -->
   <header id="site-header">
-    <a href="selah2026.html" class="logo">
-      <img src="marthoma-logo.png" alt="Selah 2026" style="width:42px;height:42px;object-fit:contain;flex-shrink:0">
+    <a href="team.html" class="logo">
+      <img src="assets/marthoma-logo.png" alt="Selah 2026" style="width:42px;height:42px;object-fit:contain;flex-shrink:0">
       <div class="logo-text">
         <span class="logo-name">SELAH 2026</span>
         <span class="logo-sub">Choir Fest 2026</span>
       </div>
     </a>
     <nav>
+      <a href="index.html">Home</a>
       <a href="index.html#about">About</a>
       <a href="index.html#church">Our Church</a>
-      <a href="index.html#venue">Venue</a>
+      
       <a href="team.html" class="active">Our Team</a>
     </nav>
   </header>
@@ -447,11 +479,42 @@
   </section>
 
   <!-- FOOTER -->
-  <footer>
-    <a href="selah2026.html" class="foot-back">
-      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:.3rem"><polyline points="15 18 9 12 15 6"/></svg>
-      Back to Main Site
-    </a>
+  <footer id="contact">
+    <div class="foot-inner">
+
+      <div>
+        <span class="foot-brand">Selah 2026</span>
+        <span class="foot-sub">Choir Festival &bull; 2026</span>
+        <div class="foot-social" style="margin-top:.9rem">
+          <a href="https://www.instagram.com/stthomashydchorale/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            Instagram
+          </a>
+          <a href="https://www.youtube.com/@sthomashydchorale" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+            YouTube
+          </a>
+        </div>
+      </div>
+
+      <p class="foot-verse">&ldquo;But let justice roll on like a river, righteousness like a never-failing stream.&rdquo; &mdash; Amos 5:24</p>
+
+      <div>
+        <div style="margin-bottom:1.5rem">
+          <p class="section-label" style="text-align:left;margin-bottom:.5rem">Venue</p>
+          <p style="font-size:.82rem;color:var(--muted);line-height:1.7">
+            St Thomas Mar Thoma Church<br>
+            Hyderabad, Telangana, India
+          </p>
+          <a href="https://maps.app.goo.gl/bgcKT4KgaaKWuKAx5" target="_blank" rel="noopener" class="map-link" style="margin-top:.5rem">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Get Directions
+          </a>
+        </div>
+      </div>
+
+    </div>
+
     <hr class="foot-hr">
     <p class="foot-copy">&copy; 2026 Selah Choir Festival &bull; St Thomas Mar Thoma Church, Hyderabad &mdash; Organised with love, for His glory</p>
   </footer>

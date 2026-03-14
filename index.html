@@ -695,6 +695,7 @@
       </div>
     </a>
     <nav>
+      <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#church">Our Church</a>
       <a href="team.html">Our Team</a>
@@ -1007,14 +1008,6 @@
         m.style.transition = 'opacity .4s ease, transform .4s ease';
         milObs.observe(m);
       });
-
-      /* Scroll to hash on page load (e.g. arriving from team.html) */
-      if (window.location.hash) {
-        setTimeout(() => {
-          const t = document.querySelector(window.location.hash);
-          if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
-      }
 
       document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', e => {
