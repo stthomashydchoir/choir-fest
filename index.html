@@ -65,6 +65,7 @@
       color: var(--gold);
     }
 
+    /* ── DESKTOP NAV ── */
     nav { display: flex; align-items: center; gap: .1rem; }
     nav a {
       font-size: .8rem; letter-spacing: .05em;
@@ -84,6 +85,155 @@
       transition: background .2s, transform .15s !important;
     }
     .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
+
+    /* ── HAMBURGER BUTTON ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 40px; height: 40px;
+      background: none; border: none;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+      transition: background .2s;
+      z-index: 700;
+      flex-shrink: 0;
+    }
+    .hamburger:hover { background: rgba(201,146,42,0.1); }
+    .hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--gold-pale);
+      border-radius: 2px;
+      transition: transform .3s ease, opacity .3s ease, width .3s ease;
+      transform-origin: center;
+    }
+    /* Animated X state */
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── MOBILE NAV OVERLAY ── */
+    .mobile-nav-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 590;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      opacity: 0;
+      transition: opacity .3s ease;
+      pointer-events: none;
+    }
+    .mobile-nav-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* ── MOBILE NAV DRAWER ── */
+    .mobile-nav {
+      position: fixed;
+      top: 0; right: 0;
+      width: min(300px, 85vw);
+      height: 100dvh;
+      z-index: 650;
+      background: #110e0a;
+      border-left: 1px solid rgba(201,146,42,0.2);
+      display: flex; flex-direction: column;
+      padding: 0;
+      transform: translateX(100%);
+      transition: transform .35s cubic-bezier(.4,0,.2,1);
+      overflow-y: auto;
+    }
+    .mobile-nav.open { transform: translateX(0); }
+
+    .mobile-nav-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 1.5rem;
+      border-bottom: 1px solid rgba(201,146,42,0.12);
+      min-height: 68px;
+    }
+    .mobile-nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 700;
+      color: var(--gold-pale); letter-spacing: .04em;
+    }
+    .mobile-nav-close {
+      width: 36px; height: 36px;
+      background: none; border: none;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted);
+      border-radius: 4px;
+      transition: color .2s, background .2s;
+    }
+    .mobile-nav-close:hover { color: var(--gold-pale); background: rgba(201,146,42,0.1); }
+    .mobile-nav-close svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+
+    .mobile-nav-links {
+      display: flex; flex-direction: column;
+      padding: 1.5rem 0;
+      flex: 1;
+    }
+    .mobile-nav-links a {
+      font-size: .9rem; letter-spacing: .06em;
+      color: var(--muted); text-decoration: none;
+      padding: .9rem 1.8rem;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: color .2s, background .2s, padding-left .2s;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .mobile-nav-links a::before {
+      content: '';
+      display: block; width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0;
+      flex-shrink: 0;
+      transition: opacity .2s;
+    }
+    .mobile-nav-links a:hover {
+      color: var(--gold-pale);
+      background: rgba(201,146,42,0.07);
+      padding-left: 2.2rem;
+    }
+    .mobile-nav-links a:hover::before { opacity: 1; }
+    .mobile-nav-links a.nav-cta {
+      margin: 1.2rem 1.8rem 0;
+      background: var(--gold);
+      color: var(--bg);
+      font-weight: 700;
+      border-radius: 3px;
+      border-bottom: none;
+      justify-content: center;
+      padding: .8rem 1.2rem;
+    }
+    .mobile-nav-links a.nav-cta:hover {
+      background: var(--gold-light);
+      color: var(--bg);
+      padding-left: 1.2rem;
+    }
+    .mobile-nav-links a.nav-cta::before { display: none; }
+
+    .mobile-nav-footer {
+      padding: 1.5rem 1.8rem;
+      border-top: 1px solid rgba(201,146,42,0.1);
+    }
+    .mobile-nav-footer p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: .82rem; color: rgba(154,136,112,0.6);
+      line-height: 1.6;
+    }
+    .mobile-nav-footer cite {
+      font-style: normal;
+      font-family: 'Lato', sans-serif;
+      font-size: .62rem; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--gold);
+      opacity: .7; display: block; margin-top: .3rem;
+    }
 
     /* ── HERO ── */
     .hero {
@@ -512,7 +662,6 @@
     .church-block .section-title  { text-align: left; font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: 1.2rem; }
     .church-body { font-size: .95rem; color: var(--muted); line-height: 1.8; margin-bottom: .9rem; }
 
-    /* History milestones */
     .history-milestones {
       margin-top: 1rem;
       display: flex; flex-direction: column; gap: .5rem;
@@ -679,11 +828,40 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       header { padding: 0 1.25rem; }
-      nav a:not(.nav-cta) { display: none; }
+      /* Hide desktop nav links on mobile */
+      nav { display: none; }
+      /* Show hamburger on mobile */
+      .hamburger { display: flex; }
     }
+
+    /* Prevent body scroll when menu is open */
+    body.nav-open { overflow: hidden; }
   </style>
 </head>
 <body>
+
+  <!-- MOBILE NAV OVERLAY (backdrop) -->
+  <div class="mobile-nav-overlay" id="mobile-overlay" aria-hidden="true"></div>
+
+  <!-- MOBILE NAV DRAWER -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <div class="mobile-nav-header">
+      <span class="mobile-nav-logo">SELAH 2026</span>
+      <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#church">Our Church</a>
+      <a href="team.html">Our Team</a>
+      <!-- <a href="#register" class="nav-cta">Register Now</a> -->
+    </div>
+    <div class="mobile-nav-footer">
+      <p>&ldquo;But let justice roll on like a river&hellip;&rdquo;<cite>Amos 5:24</cite></p>
+    </div>
+  </nav>
 
   <!-- HEADER -->
   <header id="site-header">
@@ -694,6 +872,8 @@
         <span class="logo-sub">Choir Fest 2026</span>
       </div>
     </a>
+
+    <!-- Desktop nav -->
     <nav>
       <a href="#home">Home</a>
       <a href="#about">About</a>
@@ -701,6 +881,13 @@
       <a href="team.html">Our Team</a>
       <!-- <a href="#register" class="nav-cta">Register Now</a> -->
     </nav>
+
+    <!-- Hamburger (mobile only) -->
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </header>
 
   <!-- HERO -->
@@ -779,7 +966,6 @@
       on <strong style="color:var(--gold-pale)">18th April 2026</strong> &mdash; opening its doors
       to choirs from across the region to gather, celebrate, and lift their voices together for His glory.
     </p>
-
   </section>
 
   <!-- CHURCH & CHOIR -->
@@ -804,8 +990,6 @@
             celebrated its Silver Jubilee by taking up home-for-homeless and marriage-aid projects.
             We are grateful to God for His faithfulness through every season.
           </p>
-
-
         </div>
 
         <div class="church-block">
@@ -816,8 +1000,6 @@
             Comprising singers of all ages &mdash; from youth to seasoned voices &mdash; the choir leads the
             congregation in praise every Sunday and on special occasions throughout the liturgical year.
           </p>
-
-
         </div>
 
       </div>
@@ -846,24 +1028,9 @@
 
   <!-- REGISTER -->
   <section class="register" id="register">
-    <!--
-    <p class="section-label">Choir Registration</p>
-    <h2 class="section-title">Is Your Choir Ready to Sing?</h2>
-    <p class="section-body">
-      Registration is open to all church choirs. Each choir may enter one or both competitive
-      categories. Deadline for entries is <strong style="color:var(--gold-pale)">30 June 2026</strong>.
-      Spots are limited &mdash; register early to secure your place on stage.
-    </p>
-    <div class="register-btns">
-      <a href="#contact" class="btn-gold">Register Your Choir</a>
-      <a href="#about"   class="btn-ghost">Learn More</a>
-    </div>
-    -->
-
     <p class="section-label">Choir Registration</p>
     <div style="max-width:560px;margin:1.5rem auto 0;text-align:center">
       <div style="position:relative;padding:3rem 2.5rem;border:1px solid rgba(201,146,42,0.35);border-radius:10px;background:rgba(0,0,0,0.25);overflow:hidden">
-        <!-- decorative corner lines -->
         <span style="position:absolute;top:10px;left:10px;width:18px;height:18px;border-top:1px solid var(--gold);border-left:1px solid var(--gold);opacity:.5"></span>
         <span style="position:absolute;top:10px;right:10px;width:18px;height:18px;border-top:1px solid var(--gold);border-right:1px solid var(--gold);opacity:.5"></span>
         <span style="position:absolute;bottom:10px;left:10px;width:18px;height:18px;border-bottom:1px solid var(--gold);border-left:1px solid var(--gold);opacity:.5"></span>
@@ -933,9 +1100,51 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
 
-      const header = document.getElementById('site-header');
+      const header      = document.getElementById('site-header');
+      const hamburger   = document.getElementById('hamburger');
+      const mobileNav   = document.getElementById('mobile-nav');
+      const overlay     = document.getElementById('mobile-overlay');
+      const closeBtn    = document.getElementById('mobile-nav-close');
+      const mobileLinks = mobileNav.querySelectorAll('a');
+
+      /* ── Scroll header ── */
       window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 60));
 
+      /* ── Open / close helpers ── */
+      function openNav() {
+        hamburger.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        mobileNav.classList.add('open');
+        overlay.style.display = 'block';
+        requestAnimationFrame(() => overlay.classList.add('open'));
+        document.body.classList.add('nav-open');
+      }
+      function closeNav() {
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileNav.classList.remove('open');
+        overlay.classList.remove('open');
+        document.body.classList.remove('nav-open');
+        overlay.addEventListener('transitionend', () => { overlay.style.display = ''; }, { once: true });
+      }
+
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.contains('open') ? closeNav() : openNav();
+      });
+      closeBtn.addEventListener('click', closeNav);
+      overlay.addEventListener('click', closeNav);
+
+      /* Close on nav link tap */
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', closeNav);
+      });
+
+      /* Close on Escape */
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeNav();
+      });
+
+      /* ── Scroll animations ── */
       const schedItems = document.querySelectorAll('.sched-item');
       const schedObs = new IntersectionObserver((entries) => {
         entries.forEach((e, i) => {
@@ -993,7 +1202,6 @@
         personObs.observe(c);
       });
 
-      /* Milestone cards fade in */
       const milestones = document.querySelectorAll('.milestone');
       const milObs = new IntersectionObserver((entries) => {
         entries.forEach((e, i) => {
@@ -1016,7 +1224,7 @@
         });
       });
 
-      /* Async visit counter — fires in background, never blocks page */
+      /* Async visit counter */
       (async () => {
         try {
           const res = await fetch("https://selah2026.stthomashybdchoir.workers.dev/");
