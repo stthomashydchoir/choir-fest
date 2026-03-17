@@ -1,742 +1,755 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Our Team — Selah 2026</title>
-  <link rel="icon" type="image/png" href="assets/selah-icon.png">
-  <link rel="apple-touch-icon" href="assets/selah-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg:         #0e0b08;
-      --surface:    #171209;
-      --gold:       #c9922a;
-      --gold-light: #e8b455;
-      --gold-pale:  #f5dfa0;
-      --burgundy:   #7a1a28;
-      --burg-light: #a8243a;
-      --cream:      #f5ede0;
-      --text:       #f0e8d8;
-      --muted:      #9a8870;
-      --border:     #2a2018;
-    }
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Our Team — Selah 2026</title>
+    <link rel="icon" type="image/png" href="assets/selah-icon.png">
+    <link rel="apple-touch-icon" href="assets/selah-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --bg:         #0e0b08;
+        --surface:    #171209;
+        --gold:       #c9922a;
+        --gold-light: #e8b455;
+        --gold-pale:  #f5dfa0;
+        --burgundy:   #7a1a28;
+        --burg-light: #a8243a;
+        --cream:      #f5ede0;
+        --text:       #f0e8d8;
+        --muted:      #9a8870;
+        --border:     #2a2018;
+      }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Lato', sans-serif;
-      font-weight: 300;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
 
-    /* ── HEADER ── */
-    header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 600;
-      height: 68px;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 3rem;
-      background: rgba(14,11,8,0.88);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(201,146,42,0.18);
-      transition: height .3s, background .3s;
-    }
-    header.scrolled { height: 56px; background: rgba(14,11,8,0.97); }
+      /* ── HEADER ── */
+      header {
+        position: fixed; top: 0; left: 0; right: 0; z-index: 600;
+        height: 68px;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 0 3rem;
+        background: rgba(14,11,8,0.88);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(201,146,42,0.18);
+        transition: height .3s, background .3s;
+      }
+      header.scrolled { height: 56px; background: rgba(14,11,8,0.97); }
 
-    .logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
-    .logo-text { line-height: 1.15; }
-    .logo-name {
-      display: block;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem; font-weight: 700;
-      color: var(--gold-pale);
-      letter-spacing: .04em;
-    }
-    .logo-sub {
-      display: block; font-size: .58rem;
-      letter-spacing: .22em; text-transform: uppercase;
-      color: var(--gold);
-    }
+      .logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+      .logo-text { line-height: 1.15; }
+      .logo-name {
+        display: block;
+        font-family: 'Playfair Display', serif;
+        font-size: 1.2rem; font-weight: 700;
+        color: var(--gold-pale);
+        letter-spacing: .04em;
+      }
+      .logo-sub {
+        display: block; font-size: .58rem;
+        letter-spacing: .22em; text-transform: uppercase;
+        color: var(--gold);
+      }
 
-    /* ── DESKTOP NAV ── */
-    nav.desktop-nav { display: flex; align-items: center; gap: .1rem; }
-    nav.desktop-nav a {
-      font-size: .8rem; letter-spacing: .05em;
-      color: var(--muted); text-decoration: none;
-      padding: .4rem .85rem; border-radius: 3px;
-      transition: color .2s, background .2s;
-    }
-    nav.desktop-nav a:hover { color: var(--gold-pale); background: rgba(201,146,42,0.1); }
-    nav.desktop-nav a.active { color: var(--gold-pale); }
+      /* ── DESKTOP NAV ── */
+      nav.desktop-nav { display: flex; align-items: center; gap: .1rem; }
+      nav.desktop-nav a {
+        font-size: .8rem; letter-spacing: .05em;
+        color: var(--muted); text-decoration: none;
+        padding: .4rem .85rem; border-radius: 3px;
+        transition: color .2s, background .2s;
+      }
+      nav.desktop-nav a:hover { color: var(--gold-pale); background: rgba(201,146,42,0.1); }
+      nav.desktop-nav a.active { color: var(--gold-pale); }
 
-    /* ── HAMBURGER BUTTON ── */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 5px;
-      width: 40px; height: 40px;
-      background: none; border: none;
-      cursor: pointer;
-      padding: 4px;
-      border-radius: 4px;
-      transition: background .2s;
-      z-index: 700;
-      flex-shrink: 0;
-    }
-    .hamburger:hover { background: rgba(201,146,42,0.1); }
-    .hamburger span {
-      display: block;
-      width: 22px; height: 2px;
-      background: var(--gold-pale);
-      border-radius: 2px;
-      transition: transform .3s ease, opacity .3s ease, width .3s ease;
-      transform-origin: center;
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+      /* ── HAMBURGER BUTTON ── */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 40px; height: 40px;
+        background: none; border: none;
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 4px;
+        transition: background .2s;
+        z-index: 700;
+        flex-shrink: 0;
+      }
+      .hamburger:hover { background: rgba(201,146,42,0.1); }
+      .hamburger span {
+        display: block;
+        width: 22px; height: 2px;
+        background: var(--gold-pale);
+        border-radius: 2px;
+        transition: transform .3s ease, opacity .3s ease, width .3s ease;
+        transform-origin: center;
+      }
+      .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+      .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* ── MOBILE NAV OVERLAY ── */
-    .mobile-nav-overlay {
-      display: none;
-      position: fixed; inset: 0; z-index: 590;
-      background: rgba(0,0,0,0.55);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      opacity: 0;
-      transition: opacity .3s ease;
-      pointer-events: none;
-    }
-    .mobile-nav-overlay.open {
-      opacity: 1;
-      pointer-events: auto;
-    }
+      /* ── MOBILE NAV OVERLAY ── */
+      .mobile-nav-overlay {
+        display: none;
+        position: fixed; inset: 0; z-index: 590;
+        background: rgba(0,0,0,0.55);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        opacity: 0;
+        transition: opacity .3s ease;
+        pointer-events: none;
+      }
+      .mobile-nav-overlay.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
 
-    /* ── MOBILE NAV DRAWER ── */
-    .mobile-nav {
-      position: fixed;
-      top: 0; right: 0;
-      width: min(300px, 85vw);
-      height: 100dvh;
-      z-index: 650;
-      background: #110e0a;
-      border-left: 1px solid rgba(201,146,42,0.2);
-      display: flex; flex-direction: column;
-      padding: 0;
-      transform: translateX(100%);
-      transition: transform .35s cubic-bezier(.4,0,.2,1);
-      overflow-y: auto;
-    }
-    .mobile-nav.open { transform: translateX(0); }
+      /* ── MOBILE NAV DRAWER ── */
+      .mobile-nav {
+        position: fixed;
+        top: 0; right: 0;
+        width: min(300px, 85vw);
+        height: 100dvh;
+        z-index: 650;
+        background: #110e0a;
+        border-left: 1px solid rgba(201,146,42,0.2);
+        display: flex; flex-direction: column;
+        padding: 0;
+        transform: translateX(100%);
+        transition: transform .35s cubic-bezier(.4,0,.2,1);
+        overflow-y: auto;
+      }
+      .mobile-nav.open { transform: translateX(0); }
 
-    .mobile-nav-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 1.5rem;
-      border-bottom: 1px solid rgba(201,146,42,0.12);
-      min-height: 68px;
-    }
-    .mobile-nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem; font-weight: 700;
-      color: var(--gold-pale); letter-spacing: .04em;
-    }
-    .mobile-nav-close {
-      width: 36px; height: 36px;
-      background: none; border: none;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--muted);
-      border-radius: 4px;
-      transition: color .2s, background .2s;
-    }
-    .mobile-nav-close:hover { color: var(--gold-pale); background: rgba(201,146,42,0.1); }
-    .mobile-nav-close svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+      .mobile-nav-header {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 1.2rem 1.5rem;
+        border-bottom: 1px solid rgba(201,146,42,0.12);
+        min-height: 68px;
+      }
+      .mobile-nav-logo {
+        font-family: 'Playfair Display', serif;
+        font-size: 1rem; font-weight: 700;
+        color: var(--gold-pale); letter-spacing: .04em;
+      }
+      .mobile-nav-close {
+        width: 36px; height: 36px;
+        background: none; border: none;
+        cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        color: var(--muted);
+        border-radius: 4px;
+        transition: color .2s, background .2s;
+      }
+      .mobile-nav-close:hover { color: var(--gold-pale); background: rgba(201,146,42,0.1); }
+      .mobile-nav-close svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
 
-    .mobile-nav-links {
-      display: flex; flex-direction: column;
-      padding: 1.5rem 0;
-      flex: 1;
-    }
-    .mobile-nav-links a {
-      font-size: .9rem; letter-spacing: .06em;
-      color: var(--muted); text-decoration: none;
-      padding: .9rem 1.8rem;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      transition: color .2s, background .2s, padding-left .2s;
-      display: flex; align-items: center; gap: .6rem;
-    }
-    .mobile-nav-links a::before {
-      content: '';
-      display: block; width: 4px; height: 4px;
-      border-radius: 50%;
-      background: var(--gold);
-      opacity: 0;
-      flex-shrink: 0;
-      transition: opacity .2s;
-    }
-    .mobile-nav-links a:hover {
-      color: var(--gold-pale);
-      background: rgba(201,146,42,0.07);
-      padding-left: 2.2rem;
-    }
-    .mobile-nav-links a:hover::before { opacity: 1; }
-    .mobile-nav-links a.active {
-      color: var(--gold-pale);
-    }
-    .mobile-nav-links a.active::before { opacity: 1; }
+      .mobile-nav-links {
+        display: flex; flex-direction: column;
+        padding: 1.5rem 0;
+        flex: 1;
+      }
+      .mobile-nav-links a {
+        font-size: .9rem; letter-spacing: .06em;
+        color: var(--muted); text-decoration: none;
+        padding: .9rem 1.8rem;
+        border-bottom: 1px solid rgba(255,255,255,0.04);
+        transition: color .2s, background .2s, padding-left .2s;
+        display: flex; align-items: center; gap: .6rem;
+      }
+      .mobile-nav-links a::before {
+        content: '';
+        display: block; width: 4px; height: 4px;
+        border-radius: 50%;
+        background: var(--gold);
+        opacity: 0;
+        flex-shrink: 0;
+        transition: opacity .2s;
+      }
+      .mobile-nav-links a:hover {
+        color: var(--gold-pale);
+        background: rgba(201,146,42,0.07);
+        padding-left: 2.2rem;
+      }
+      .mobile-nav-links a:hover::before { opacity: 1; }
+      .mobile-nav-links a.active {
+        color: var(--gold-pale);
+      }
+      .mobile-nav-links a.active::before { opacity: 1; }
 
-    .mobile-nav-footer {
-      padding: 1.5rem 1.8rem;
-      border-top: 1px solid rgba(201,146,42,0.1);
-    }
-    .mobile-nav-footer p {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: .82rem; color: rgba(154,136,112,0.6);
-      line-height: 1.6;
-    }
-    .mobile-nav-footer cite {
-      font-style: normal;
-      font-family: 'Lato', sans-serif;
-      font-size: .62rem; letter-spacing: .15em;
-      text-transform: uppercase; color: var(--gold);
-      opacity: .7; display: block; margin-top: .3rem;
-    }
+      .mobile-nav-footer {
+        padding: 1.5rem 1.8rem;
+        border-top: 1px solid rgba(201,146,42,0.1);
+      }
+      .mobile-nav-footer p {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-size: .82rem; color: rgba(154,136,112,0.6);
+        line-height: 1.6;
+      }
+      .mobile-nav-footer cite {
+        font-style: normal;
+        font-family: 'Lato', sans-serif;
+        font-size: .62rem; letter-spacing: .15em;
+        text-transform: uppercase; color: var(--gold);
+        opacity: .7; display: block; margin-top: .3rem;
+      }
 
-    /* ── PAGE HERO ── */
-    .page-hero {
-      padding: 10rem 2rem 5rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .page-hero-bg {
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(122,26,40,0.4) 0%, transparent 60%),
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,146,42,0.08) 0%, transparent 50%),
-        var(--bg);
-      pointer-events: none;
-    }
-    .page-hero-rays {
-      position: absolute; top: 0; left: 50%;
-      transform: translateX(-50%);
-      width: 180%; height: 100%;
-      background: conic-gradient(
-        from 180deg at 50% -10%,
-        transparent 0deg,   rgba(201,146,42,0.04) 8deg,
-        transparent 16deg,  rgba(201,146,42,0.03) 24deg,
-        transparent 32deg,  rgba(201,146,42,0.04) 40deg,
-        transparent 48deg,
-        transparent 360deg
-      );
-      pointer-events: none;
-      animation: rays-slow 60s linear infinite;
-    }
-    @keyframes rays-slow { to { transform: translateX(-50%) rotate(360deg); } }
+      /* ── PAGE HERO ── */
+      .page-hero {
+        padding: 10rem 2rem 5rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .page-hero-bg {
+        position: absolute; inset: 0;
+        background:
+          radial-gradient(ellipse 60% 50% at 50% 0%, rgba(122,26,40,0.4) 0%, transparent 60%),
+          radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,146,42,0.08) 0%, transparent 50%),
+          var(--bg);
+        pointer-events: none;
+      }
+      .page-hero-rays {
+        position: absolute; top: 0; left: 50%;
+        transform: translateX(-50%);
+        width: 180%; height: 100%;
+        background: conic-gradient(
+          from 180deg at 50% -10%,
+          transparent 0deg,   rgba(201,146,42,0.04) 8deg,
+          transparent 16deg,  rgba(201,146,42,0.03) 24deg,
+          transparent 32deg,  rgba(201,146,42,0.04) 40deg,
+          transparent 48deg,
+          transparent 360deg
+        );
+        pointer-events: none;
+        animation: rays-slow 60s linear infinite;
+      }
+      @keyframes rays-slow { to { transform: translateX(-50%) rotate(360deg); } }
 
-    .page-eyebrow {
-      display: inline-flex; align-items: center; gap: .6rem;
-      font-size: .68rem; letter-spacing: .28em; text-transform: uppercase;
-      color: var(--gold);
-      padding: .35rem 1.4rem;
-      border: 1px solid rgba(201,146,42,0.35);
-      border-radius: 100px;
-      margin-bottom: 1.5rem;
-      position: relative;
-      opacity: 0; animation: fadein .8s .2s forwards;
-    }
-    .page-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 6vw, 5rem);
-      font-weight: 900;
-      color: var(--gold-pale);
-      letter-spacing: .02em;
-      line-height: 1.1;
-      position: relative;
-      opacity: 0; animation: fadein-up .9s .4s forwards;
-      text-shadow: 0 0 60px rgba(201,146,42,0.2);
-    }
-    .page-subtitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.1rem;
-      color: var(--muted);
-      margin-top: 1rem;
-      opacity: 0; animation: fadein .9s .6s forwards;
-      position: relative;
-    }
+      .page-eyebrow {
+        display: inline-flex; align-items: center; gap: .6rem;
+        font-size: .68rem; letter-spacing: .28em; text-transform: uppercase;
+        color: var(--gold);
+        padding: .35rem 1.4rem;
+        border: 1px solid rgba(201,146,42,0.35);
+        border-radius: 100px;
+        margin-bottom: 1.5rem;
+        position: relative;
+        opacity: 0; animation: fadein .8s .2s forwards;
+      }
+      .page-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        font-weight: 900;
+        color: var(--gold-pale);
+        letter-spacing: .02em;
+        line-height: 1.1;
+        position: relative;
+        opacity: 0; animation: fadein-up .9s .4s forwards;
+        text-shadow: 0 0 60px rgba(201,146,42,0.2);
+      }
+      .page-subtitle {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-size: 1.1rem;
+        color: var(--muted);
+        margin-top: 1rem;
+        opacity: 0; animation: fadein .9s .6s forwards;
+        position: relative;
+      }
 
-    .gold-divider {
-      display: flex; align-items: center; gap: 1rem;
-      margin: 2.5rem auto; justify-content: center;
-      opacity: 0; animation: fadein .9s .7s forwards;
-    }
-    .gd-line { width: 60px; height: 1px; background: linear-gradient(to right, transparent, var(--gold)); }
-    .gd-line.r { background: linear-gradient(to left, transparent, var(--gold)); }
-    .gd-note { color: var(--gold); font-size: 1.1rem; }
+      .gold-divider {
+        display: flex; align-items: center; gap: 1rem;
+        margin: 2.5rem auto; justify-content: center;
+        opacity: 0; animation: fadein .9s .7s forwards;
+      }
+      .gd-line { width: 60px; height: 1px; background: linear-gradient(to right, transparent, var(--gold)); }
+      .gd-line.r { background: linear-gradient(to left, transparent, var(--gold)); }
+      .gd-note { color: var(--gold); font-size: 1.1rem; }
 
-    /* ── SECTION LABEL ── */
-    .section-label {
-      font-size: .68rem; letter-spacing: .28em; text-transform: uppercase;
-      color: var(--gold); font-weight: 700; margin-bottom: 1rem;
-    }
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      font-weight: 700; color: var(--cream);
-      line-height: 1.2; margin-bottom: .5rem;
-    }
+      /* ── SECTION LABEL ── */
+      .section-label {
+        font-size: .68rem; letter-spacing: .28em; text-transform: uppercase;
+        color: var(--gold); font-weight: 700; margin-bottom: 1rem;
+      }
+      .section-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1.6rem, 3vw, 2.4rem);
+        font-weight: 700; color: var(--cream);
+        line-height: 1.2; margin-bottom: .5rem;
+      }
 
-    /* ── TEAM SECTIONS ── */
-    .team-section {
-      padding: 5rem 2rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .team-section:nth-child(even) { background: var(--surface); }
-    .team-section:nth-child(odd)  { background: var(--bg); }
+      /* ── TEAM SECTIONS ── */
+      .team-section {
+        padding: 5rem 2rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .team-section:nth-child(even) { background: var(--surface); }
+      .team-section:nth-child(odd)  { background: var(--bg); }
 
-    .team-section-inner {
-      max-width: 1100px; margin: 0 auto;
-    }
-    .team-section-header {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
+      .team-section-inner {
+        max-width: 1100px; margin: 0 auto;
+      }
+      .team-section-header {
+        text-align: center;
+        margin-bottom: 3.5rem;
+      }
 
-    /* ── LEADERSHIP CARDS ── */
-    .leadership-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .leader-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 2.2rem 1.8rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      opacity: 0; transform: translateY(24px);
-      transition: opacity .5s ease, transform .5s ease, box-shadow .3s;
-    }
-    .leader-card.visible { opacity: 1; transform: translateY(0); }
-    .leader-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(to right, var(--burgundy), var(--gold), var(--burgundy));
-    }
-    .leader-card:hover {
-      box-shadow: 0 16px 48px rgba(201,146,42,0.15);
-      transform: translateY(-4px);
-    }
-    .leader-avatar {
-      width: 72px; height: 72px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #c9922a 0%, #7a1a28 60%, #4a0f1a 100%);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem; font-weight: 700; color: var(--cream);
-      margin: 0 auto 1.2rem;
-      border: 2px solid rgba(201,146,42,0.3);
-      box-shadow: 0 4px 20px rgba(122,26,40,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
-    }
-    .leader-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem; font-weight: 700;
-      color: var(--cream); margin-bottom: .3rem;
-    }
-    .leader-role {
-      font-size: .68rem; letter-spacing: .16em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: .6rem;
-    }
-    .leader-contact {
-      font-size: .8rem; color: var(--muted);
-    }
-    .leader-contact a {
-      color: var(--muted); text-decoration: none; transition: color .2s;
-    }
-    .leader-contact a:hover { color: var(--gold-light); }
+      /* ── LEADERSHIP LAYOUT ── */
 
-    /* ── COMMITTEE CARDS ── */
-    .committee-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-    }
-    .committee-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1.4rem 1.2rem;
-      text-align: center;
-      opacity: 0; transform: translateY(16px);
-      transition: opacity .45s ease, transform .45s ease, box-shadow .25s;
-    }
-    .committee-card.visible { opacity: 1; transform: translateY(0); }
-    .committee-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 28px rgba(201,146,42,0.12);
-    }
-    .committee-avatar {
-      width: 52px; height: 52px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--burgundy) 0%, var(--gold) 100%);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem; font-weight: 700; color: var(--cream);
-      margin: 0 auto .9rem;
-    }
-    .committee-name {
-      font-size: .88rem; font-weight: 700; color: var(--cream);
-      margin-bottom: .2rem;
-    }
-    .committee-role {
-      font-size: .62rem; letter-spacing: .12em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: .3rem;
-    }
-    .committee-detail {
-      font-size: .75rem; color: var(--muted);
-    }
+      /* Row 1: president centered */
+      .leadership-president-row {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+      }
+      .leadership-president-row .leader-card {
+        max-width: 300px;
+        width: 100%;
+      }
 
-    /* ── FOOTER ── */
-    footer {
-      background: #080604;
-      padding: 4rem 2.5rem 2rem;
-      border-top: 1px solid var(--border);
-    }
-    .foot-inner {
-      max-width: 900px; margin: 0 auto;
-      display: flex; flex-wrap: wrap;
-      justify-content: space-between; align-items: flex-start;
-      gap: 2.5rem;
-    }
-    .foot-brand {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem; font-weight: 700;
-      color: var(--gold-pale); display: block; margin-bottom: .3rem;
-    }
-    .foot-sub { font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
-    .foot-verse {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic; font-size: .92rem;
-      color: var(--muted); max-width: 260px; text-align: center;
-    }
-    .foot-hr { border: none; border-top: 1px solid var(--border); max-width: 900px; margin: 2.5rem auto 1.25rem; }
-    .foot-copy { text-align: center; font-size: .7rem; color: rgba(255,255,255,0.18); letter-spacing: .06em; }
-    .map-link {
-      display: inline-flex; align-items: center; gap: .4rem;
-      font-size: .75rem; letter-spacing: .1em; text-transform: uppercase;
-      color: var(--gold); text-decoration: none; margin-top: .8rem;
-      transition: color .2s;
-    }
-    .map-link:hover { color: var(--gold-light); }
+      /* Row 2: the three convenors */
+      .leadership-convenors-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        max-width: 900px;
+        margin: 0 auto;
+      }
 
-    .foot-social { display: flex; gap: 1rem; margin-top: .8rem; flex-wrap: wrap; }
-    .social-btn {
-      display: inline-flex; align-items: center; gap: .45rem;
-      font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
-      color: var(--muted); text-decoration: none;
-      border: 1px solid var(--border); border-radius: 3px;
-      padding: .4rem .9rem;
-      transition: color .2s, border-color .2s, background .2s;
-    }
-    .social-btn:hover { color: var(--gold-pale); border-color: var(--gold); background: rgba(201,146,42,0.08); }
-    .social-btn svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+      /* ── LEADER CARDS ── */
+      .leader-card {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 2.2rem 1.8rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        opacity: 0; transform: translateY(24px);
+        transition: opacity .5s ease, transform .5s ease, box-shadow .3s;
+      }
+      .leader-card.visible { opacity: 1; transform: translateY(0); }
+      .leader-card::before {
+        content: '';
+        position: absolute; top: 0; left: 0; right: 0; height: 3px;
+        background: linear-gradient(to right, var(--burgundy), var(--gold), var(--burgundy));
+      }
+      .leader-card:hover {
+        box-shadow: 0 16px 48px rgba(201,146,42,0.15);
+        transform: translateY(-4px);
+      }
+      .leader-avatar {
+        width: 72px; height: 72px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 35% 35%, #c9922a 0%, #7a1a28 60%, #4a0f1a 100%);
+        display: flex; align-items: center; justify-content: center;
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem; font-weight: 700; color: var(--cream);
+        margin: 0 auto 1.2rem;
+        border: 2px solid rgba(201,146,42,0.3);
+        box-shadow: 0 4px 20px rgba(122,26,40,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+      }
+      .leader-name {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.1rem; font-weight: 700;
+        color: var(--cream); margin-bottom: .3rem;
+      }
+      .leader-role {
+        font-size: .68rem; letter-spacing: .16em; text-transform: uppercase;
+        color: var(--gold); margin-bottom: .6rem;
+      }
+      .leader-contact {
+        font-size: .8rem; color: var(--muted);
+      }
+      .leader-contact a {
+        color: var(--muted); text-decoration: none; transition: color .2s;
+      }
+      .leader-contact a:hover { color: var(--gold-light); }
 
-    @keyframes shimmer { 0%,100% { opacity:.3 } 50% { opacity:.7 } }
+      /* ── COMMITTEE CARDS ── */
+      .committee-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+      }
+      .committee-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 1.4rem 1.2rem;
+        text-align: center;
+        opacity: 0; transform: translateY(16px);
+        transition: opacity .45s ease, transform .45s ease, box-shadow .25s;
+      }
+      .committee-card.visible { opacity: 1; transform: translateY(0); }
+      .committee-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 28px rgba(201,146,42,0.12);
+      }
+      .committee-avatar {
+        width: 52px; height: 52px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--burgundy) 0%, var(--gold) 100%);
+        display: flex; align-items: center; justify-content: center;
+        font-family: 'Playfair Display', serif;
+        font-size: 1.1rem; font-weight: 700; color: var(--cream);
+        margin: 0 auto .9rem;
+      }
+      .committee-name {
+        font-size: .88rem; font-weight: 700; color: var(--cream);
+        margin-bottom: .2rem;
+      }
+      .committee-role {
+        font-size: .62rem; letter-spacing: .12em; text-transform: uppercase;
+        color: var(--gold); margin-bottom: .3rem;
+      }
+      .committee-detail {
+        font-size: .75rem; color: var(--muted);
+      }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadein    { to { opacity: 1; } }
-    @keyframes fadein-up { to { opacity: 1; transform: translateY(0); } }
+      /* ── FOOTER ── */
+      footer {
+        background: #080604;
+        padding: 4rem 2.5rem 2rem;
+        border-top: 1px solid var(--border);
+      }
+      .foot-inner {
+        max-width: 900px; margin: 0 auto;
+        display: flex; flex-wrap: wrap;
+        justify-content: space-between; align-items: flex-start;
+        gap: 2.5rem;
+      }
+      .foot-brand {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem; font-weight: 700;
+        color: var(--gold-pale); display: block; margin-bottom: .3rem;
+      }
+      .foot-sub { font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+      .foot-verse {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic; font-size: .92rem;
+        color: var(--muted); max-width: 260px; text-align: center;
+      }
+      .foot-hr { border: none; border-top: 1px solid var(--border); max-width: 900px; margin: 2.5rem auto 1.25rem; }
+      .foot-copy { text-align: center; font-size: .7rem; color: rgba(255,255,255,0.18); letter-spacing: .06em; }
+      .map-link {
+        display: inline-flex; align-items: center; gap: .4rem;
+        font-size: .75rem; letter-spacing: .1em; text-transform: uppercase;
+        color: var(--gold); text-decoration: none; margin-top: .8rem;
+        transition: color .2s;
+      }
+      .map-link:hover { color: var(--gold-light); }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 640px) {
-      header { padding: 0 1.25rem; }
-      nav.desktop-nav { display: none; }
-      .hamburger { display: flex; }
-    }
+      .foot-social { display: flex; gap: 1rem; margin-top: .8rem; flex-wrap: wrap; }
+      .social-btn {
+        display: inline-flex; align-items: center; gap: .45rem;
+        font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
+        color: var(--muted); text-decoration: none;
+        border: 1px solid var(--border); border-radius: 3px;
+        padding: .4rem .9rem;
+        transition: color .2s, border-color .2s, background .2s;
+      }
+      .social-btn:hover { color: var(--gold-pale); border-color: var(--gold); background: rgba(201,146,42,0.08); }
+      .social-btn svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
 
-    body.nav-open { overflow: hidden; }
-  </style>
-</head>
-<body>
+      /* ── ANIMATIONS ── */
+      @keyframes fadein    { to { opacity: 1; } }
+      @keyframes fadein-up { to { opacity: 1; transform: translateY(0); } }
 
-  <!-- MOBILE NAV OVERLAY -->
-  <div class="mobile-nav-overlay" id="mobile-overlay" aria-hidden="true"></div>
+      /* ── RESPONSIVE ── */
+      @media (max-width: 640px) {
+        header { padding: 0 1.25rem; }
+        nav.desktop-nav { display: none; }
+        .hamburger { display: flex; }
+        .leadership-convenors-row {
+          grid-template-columns: 1fr;
+        }
+      }
 
-  <!-- MOBILE NAV DRAWER -->
-  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
-    <div class="mobile-nav-header">
-      <span class="mobile-nav-logo">SELAH 2026</span>
-      <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">
-        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
-    </div>
-    <div class="mobile-nav-links">
-      <a href="index.html">Home</a>
-      <a href="index.html#about">About</a>
-      <a href="index.html#church">Our Church</a>
-      <a href="team.html" class="active">Our Team</a>
-    </div>
-    <div class="mobile-nav-footer">
-      <p>&ldquo;But let justice roll on like a river&hellip;&rdquo;<cite>Amos 5:24</cite></p>
-    </div>
-  </nav>
+      body.nav-open { overflow: hidden; }
+    </style>
+  </head>
+  <body>
 
-  <!-- HEADER -->
-  <header id="site-header">
-    <a href="team.html" class="logo">
-      <img src="assets/marthoma-logo.png" alt="Selah 2026" style="width:42px;height:42px;object-fit:contain;flex-shrink:0">
-      <div class="logo-text">
-        <span class="logo-name">SELAH 2026</span>
-        <span class="logo-sub">Choir Fest 2026</span>
+    <!-- MOBILE NAV OVERLAY -->
+    <div class="mobile-nav-overlay" id="mobile-overlay" aria-hidden="true"></div>
+
+    <!-- MOBILE NAV DRAWER -->
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+      <div class="mobile-nav-header">
+        <span class="mobile-nav-logo">SELAH 2026</span>
+        <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
       </div>
-    </a>
-
-    <!-- Desktop nav -->
-    <nav class="desktop-nav">
-      <a href="index.html">Home</a>
-      <a href="index.html#about">About</a>
-      <a href="index.html#church">Our Church</a>
-      <a href="team.html" class="active">Our Team</a>
+      <div class="mobile-nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#church">Our Church</a>
+        <a href="team.html" class="active">Our Team</a>
+      </div>
+      <div class="mobile-nav-footer">
+        <p>&ldquo;But let justice roll on like a river&hellip;&rdquo;<cite>Amos 5:24</cite></p>
+      </div>
     </nav>
 
-    <!-- Hamburger (mobile only) -->
-    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </header>
+    <!-- HEADER -->
+    <header id="site-header">
+      <a href="team.html" class="logo">
+        <img src="assets/marthoma-logo.png" alt="Selah 2026" style="width:42px;height:42px;object-fit:contain;flex-shrink:0">
+        <div class="logo-text">
+          <span class="logo-name">SELAH 2026</span>
+          <span class="logo-sub">Choir Fest 2026</span>
+        </div>
+      </a>
 
-  <!-- PAGE HERO -->
-  <section class="page-hero">
-    <div class="page-hero-bg" aria-hidden="true"></div>
-    <div class="page-hero-rays" aria-hidden="true"></div>
-    <p class="page-eyebrow">Selah 2026</p>
-    <h1 class="page-title">Our Team</h1>
-    <p class="page-subtitle">The people behind the praise</p>
-    <div class="gold-divider">
-      <div class="gd-line"></div>
-      <span class="gd-note">♪</span>
-      <div class="gd-line r"></div>
-    </div>
-  </section>
+      <!-- Desktop nav -->
+      <nav class="desktop-nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#church">Our Church</a>
+        <a href="team.html" class="active">Our Team</a>
+      </nav>
 
-  <!-- LEADERSHIP -->
-  <section class="team-section">
-    <div class="team-section-inner">
-      <div class="team-section-header">
-        <p class="section-label">Leadership</p>
-        <h2 class="section-title">Programme Convenors</h2>
+      <!-- Hamburger (mobile only) -->
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="page-hero-bg" aria-hidden="true"></div>
+      <div class="page-hero-rays" aria-hidden="true"></div>
+      <p class="page-eyebrow">Selah 2026</p>
+      <h1 class="page-title">Our Team</h1>
+      <p class="page-subtitle">The people behind the praise</p>
+      <div class="gold-divider">
+        <div class="gd-line"></div>
+        <span class="gd-note">♪</span>
+        <div class="gd-line r"></div>
       </div>
-      <div class="leadership-grid">
-        <div class="leader-card">
-          <div class="leader-avatar">AV</div>
-          <p class="leader-name">Rev. Abraham P Varkey</p>
-          <p class="leader-role">Choir President</p>
-          <p class="leader-contact">9876543210</p>
-        </div>
-        <div class="leader-card">
-          <div class="leader-avatar">AT</div>
-          <p class="leader-name">Aaron K Thomas</p>
-          <p class="leader-role">Programme Convenor</p>
-          <p class="leader-contact">9495945756</p>
-        </div>
-        <div class="leader-card">
-          <div class="leader-avatar">JJ</div>
-          <p class="leader-name">Joel Jacob Varghese</p>
-          <p class="leader-role">Programme Convenor</p>
-          <p class="leader-contact">8075964621</p>
-        </div>
-        <div class="leader-card">
-          <div class="leader-avatar">FN</div>
-          <p class="leader-name">Fen Ninan</p>
-          <p class="leader-role">Programme Convenor</p>
-          <p class="leader-contact">9703218453</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ORGANISING COMMITTEE -->
-  <section class="team-section">
-    <div class="team-section-inner">
-      <div class="team-section-header">
-        <p class="section-label">Behind the Scenes</p>
-        <h2 class="section-title">Organising Committee</h2>
-      </div>
-      <div class="committee-grid">
-        <div class="committee-card">
-          <div class="committee-avatar">MP</div>
-          <p class="committee-name">Mercy Philip</p>
-          <p class="committee-role">Public Relations</p>
-          <p class="committee-detail">7891530033</p>
+    <!-- LEADERSHIP -->
+    <section class="team-section">
+      <div class="team-section-inner">
+        <div class="team-section-header">
+          <p class="section-label">Leadership</p>
+          <h2 class="section-title">Programme Convenors</h2>
         </div>
-        <div class="committee-card">
-          <div class="committee-avatar">AJ</div>
-          <p class="committee-name">Alexis Jacob</p>
-          <p class="committee-role">Logistics</p>
-          <p class="committee-detail">9447581151</p>
-        </div>
-        <div class="committee-card">
-          <div class="committee-avatar">AB</div>
-          <p class="committee-name">Aaron Abraham</p>
-          <p class="committee-role">Logistics</p>
-          <p class="committee-detail">9969135917</p>
-        </div>
-        <div class="committee-card">
-          <div class="committee-avatar">AA</div>
-          <p class="committee-name">Aagin</p>
-          <p class="committee-role">Logistics</p>
-          <p class="committee-detail">8374286036</p>
-        </div>
-        <div class="committee-card">
-          <div class="committee-avatar">SM</div>
-          <p class="committee-name">Shorne Mathew</p>
-          <p class="committee-role">Finance</p>
-          <p class="committee-detail">9427401228</p>
-        </div>
-        <div class="committee-card">
-          <div class="committee-avatar">RV</div>
-          <p class="committee-name">Faeba Alex</p>
-          <p class="committee-role">Finance</p>
-          <p class="committee-detail">7330783041</p>
-        </div>
-        <div class="committee-card">
-          <div class="committee-avatar">AR</div>
-          <p class="committee-name">Adersh Raju</p>
-          <p class="committee-role">Finance</p>
-          <p class="committee-detail">9497123752</p>
-        </div>
-        <div class="committee-card">
-          <div class="committee-avatar">SF</div>
-          <p class="committee-name">Suma Fen</p>
-          <p class="committee-role">Finance</p>
-          <p class="committee-detail">9985195870</p>
-        </div>
-        <div class="committee-card">
-          <div class="committee-avatar">JM</div>
-          <p class="committee-name">Joel Mathew</p>
-          <p class="committee-role">Publicity and Media</p>
-          <p class="committee-detail">9037948162</p>
-        </div>
-        <div class="committee-card">
-          <div class="committee-avatar">TA</div>
-          <p class="committee-name">Thrupthi Ann</p>
-          <p class="committee-role">Publicity and Media</p>
-          <p class="committee-detail">9704245190</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer id="contact">
-    <div class="foot-inner">
+        <!-- Row 1: President centered -->
+        <div class="leadership-president-row">
+          <div class="leader-card">
+            <div class="leader-avatar">AV</div>
+            <p class="leader-name">Rev. Abraham P Varkey</p>
+            <p class="leader-role">Choir President</p>
+            <p class="leader-contact">9876543210</p>
+          </div>
+        </div>
 
-      <div>
-        <span class="foot-brand">Selah 2026</span>
-        <span class="foot-sub">Choir Festival &bull; 2026</span>
-        <div class="foot-social" style="margin-top:.9rem">
-          <a href="https://www.instagram.com/stthomashydchorale/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            Instagram
-          </a>
-          <a href="https://www.youtube.com/@sthomashydchorale" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube">
-            <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
-            YouTube
-          </a>
+        <!-- Row 2: Three convenors -->
+        <div class="leadership-convenors-row">
+          <div class="leader-card">
+            <div class="leader-avatar">AT</div>
+            <p class="leader-name">Aaron K Thomas</p>
+            <p class="leader-role">Programme Convenor</p>
+            <p class="leader-contact">9495945756</p>
+          </div>
+          <div class="leader-card">
+            <div class="leader-avatar">JJ</div>
+            <p class="leader-name">Joel Jacob Varghese</p>
+            <p class="leader-role">Programme Convenor</p>
+            <p class="leader-contact">8075964621</p>
+          </div>
+          <div class="leader-card">
+            <div class="leader-avatar">FN</div>
+            <p class="leader-name">Fen Ninan</p>
+            <p class="leader-role">Programme Convenor</p>
+            <p class="leader-contact">9703218453</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ORGANISING COMMITTEE -->
+    <section class="team-section">
+      <div class="team-section-inner">
+        <div class="team-section-header">
+          <p class="section-label">Behind the Scenes</p>
+          <h2 class="section-title">Organising Committee</h2>
+        </div>
+        <div class="committee-grid">
+          <div class="committee-card">
+            <div class="committee-avatar">MP</div>
+            <p class="committee-name">Mercy Philip</p>
+            <p class="committee-role">Public Relations</p>
+          </div>
+          <div class="committee-card">
+            <div class="committee-avatar">AJ</div>
+            <p class="committee-name">Alexis Jacob</p>
+            <p class="committee-role">Logistics</p>
+          </div>
+          <div class="committee-card">
+            <div class="committee-avatar">AB</div>
+            <p class="committee-name">Aaron Abraham</p>
+            <p class="committee-role">Logistics</p>
+          </div>
+          <div class="committee-card">
+            <div class="committee-avatar">SM</div>
+            <p class="committee-name">Shorne Mathew</p>
+            <p class="committee-role">Finance</p>
+          </div>
+          <div class="committee-card">
+            <div class="committee-avatar">FA</div>
+            <p class="committee-name">Feaba Alex</p>
+            <p class="committee-role">Finance</p>
+          </div>
+          <div class="committee-card">
+            <div class="committee-avatar">AR</div>
+            <p class="committee-name">Adersh George Raju</p>
+            <p class="committee-role">Finance</p>
+          </div>
+          <div class="committee-card">
+            <div class="committee-avatar">SF</div>
+            <p class="committee-name">Suma Fen</p>
+            <p class="committee-role">Finance</p>
+          </div>
+          <div class="committee-card">
+            <div class="committee-avatar">TA</div>
+            <p class="committee-name">Thrupthi Ann John</p>
+            <p class="committee-role">Publicity and Media</p> 
+          </div>
+          <div class="committee-card">
+            <div class="committee-avatar">AS</div>
+            <p class="committee-name">Aaron Shaji</p>
+            <p class="committee-role">Publicity and Media</p>
+          </div>
+          <div class="committee-card">
+            <div class="committee-avatar">JM</div>
+            <p class="committee-name">Joel Mathew</p>
+            <p class="committee-role">Publicity and Media</p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <p class="foot-verse">&ldquo;But let justice roll on like a river, righteousness like a never-failing stream.&rdquo; &mdash; Amos 5:24</p>
+    <!-- FOOTER -->
+    <footer id="contact">
+      <div class="foot-inner">
 
-      <div>
-        <div style="margin-bottom:1.5rem">
-          <p class="section-label" style="text-align:left;margin-bottom:.5rem">Venue</p>
-          <p style="font-size:.82rem;color:var(--muted);line-height:1.7">
-            St Thomas Mar Thoma Church<br>
-            Hyderabad, Telangana, India
-          </p>
-          <a href="https://maps.app.goo.gl/bgcKT4KgaaKWuKAx5" target="_blank" rel="noopener" class="map-link" style="margin-top:.5rem">
-            <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            Get Directions
-          </a>
+        <div>
+          <span class="foot-brand">Selah 2026</span>
+          <span class="foot-sub">Choir Festival &bull; 2026</span>
+          <div class="foot-social" style="margin-top:.9rem">
+            <a href="https://www.instagram.com/stthomashydchorale/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              Instagram
+            </a>
+            <a href="https://www.youtube.com/@sthomashydchorale" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+              YouTube
+            </a>
+          </div>
         </div>
+
+        <p class="foot-verse">&ldquo;But let justice roll on like a river, righteousness like a never-failing stream.&rdquo; &mdash; Amos 5:24</p>
+
+        <div>
+          <div style="margin-bottom:1.5rem">
+            <p class="section-label" style="text-align:left;margin-bottom:.5rem">Venue</p>
+            <p style="font-size:.82rem;color:var(--muted);line-height:1.7">
+              St Thomas Mar Thoma Church<br>
+              Hyderabad, Telangana, India
+            </p>
+            <a href="https://maps.app.goo.gl/bgcKT4KgaaKWuKAx5" target="_blank" rel="noopener" class="map-link" style="margin-top:.5rem">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              Get Directions
+            </a>
+          </div>
+        </div>
+
       </div>
 
-    </div>
+      <hr class="foot-hr">
+      <p class="foot-copy">&copy; 2026 Selah Choir Festival &bull; St Thomas Mar Thoma Church, Hyderabad &mdash; Organised with love, for His glory</p>
+    </footer>
 
-    <hr class="foot-hr">
-    <p class="foot-copy">&copy; 2026 Selah Choir Festival &bull; St Thomas Mar Thoma Church, Hyderabad &mdash; Organised with love, for His glory</p>
-  </footer>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
+        const header    = document.getElementById('site-header');
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobile-nav');
+        const overlay   = document.getElementById('mobile-overlay');
+        const closeBtn  = document.getElementById('mobile-nav-close');
+        const mobileLinks = mobileNav.querySelectorAll('a');
 
-      const header    = document.getElementById('site-header');
-      const hamburger = document.getElementById('hamburger');
-      const mobileNav = document.getElementById('mobile-nav');
-      const overlay   = document.getElementById('mobile-overlay');
-      const closeBtn  = document.getElementById('mobile-nav-close');
-      const mobileLinks = mobileNav.querySelectorAll('a');
+        window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 60));
 
-      window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 60));
+        function openNav() {
+          hamburger.classList.add('open');
+          hamburger.setAttribute('aria-expanded', 'true');
+          mobileNav.classList.add('open');
+          overlay.style.display = 'block';
+          requestAnimationFrame(() => overlay.classList.add('open'));
+          document.body.classList.add('nav-open');
+        }
+        function closeNav() {
+          hamburger.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+          mobileNav.classList.remove('open');
+          overlay.classList.remove('open');
+          document.body.classList.remove('nav-open');
+          overlay.addEventListener('transitionend', () => { overlay.style.display = ''; }, { once: true });
+        }
 
-      function openNav() {
-        hamburger.classList.add('open');
-        hamburger.setAttribute('aria-expanded', 'true');
-        mobileNav.classList.add('open');
-        overlay.style.display = 'block';
-        requestAnimationFrame(() => overlay.classList.add('open'));
-        document.body.classList.add('nav-open');
-      }
-      function closeNav() {
-        hamburger.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        mobileNav.classList.remove('open');
-        overlay.classList.remove('open');
-        document.body.classList.remove('nav-open');
-        overlay.addEventListener('transitionend', () => { overlay.style.display = ''; }, { once: true });
-      }
-
-      hamburger.addEventListener('click', () => {
-        hamburger.classList.contains('open') ? closeNav() : openNav();
-      });
-      closeBtn.addEventListener('click', closeNav);
-      overlay.addEventListener('click', closeNav);
-      mobileLinks.forEach(link => link.addEventListener('click', closeNav));
-      document.addEventListener('keydown', e => {
-        if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeNav();
-      });
-
-      /* Animate cards on scroll */
-      const cards = document.querySelectorAll('.leader-card, .committee-card');
-      const obs = new IntersectionObserver((entries) => {
-        entries.forEach((e, i) => {
-          if (e.isIntersecting) {
-            setTimeout(() => e.target.classList.add('visible'), i * 80);
-            obs.unobserve(e.target);
-          }
+        hamburger.addEventListener('click', () => {
+          hamburger.classList.contains('open') ? closeNav() : openNav();
         });
-      }, { threshold: 0.1 });
-      cards.forEach(c => obs.observe(c));
+        closeBtn.addEventListener('click', closeNav);
+        overlay.addEventListener('click', closeNav);
+        mobileLinks.forEach(link => link.addEventListener('click', closeNav));
+        document.addEventListener('keydown', e => {
+          if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeNav();
+        });
 
-    });
-  </script>
+        /* Animate cards on scroll */
+        const cards = document.querySelectorAll('.leader-card, .committee-card');
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach((e, i) => {
+            if (e.isIntersecting) {
+              setTimeout(() => e.target.classList.add('visible'), i * 80);
+              obs.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        cards.forEach(c => obs.observe(c));
 
-</body>
-</html>
+      });
+    </script>
+
+  </body>
+  </html>
