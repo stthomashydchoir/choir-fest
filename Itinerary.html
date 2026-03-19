@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Programme — Selah 2026</title>
+  <link rel="icon" type="image/png" href="assets/selah-icon.png">
+  <link rel="apple-touch-icon" href="assets/selah-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:         #0e0b08;
+      --surface:    #171209;
+      --gold:       #c9922a;
+      --gold-light: #e8b455;
+      --gold-pale:  #f5dfa0;
+      --burgundy:   #7a1a28;
+      --burg-light: #a8243a;
+      --cream:      #f5ede0;
+      --text:       #f0e8d8;
+      --muted:      #9a8870;
+      --border:     #2a2018;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 600;
+      height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 3rem;
+      background: rgba(14,11,8,0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(201,146,42,0.18);
+      transition: height .3s, background .3s;
+    }
+    header.scrolled { height: 56px; background: rgba(14,11,8,0.97); }
+
+    .logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+    .logo-text { line-height: 1.15; }
+    .logo-name {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--gold-pale); letter-spacing: .04em;
+    }
+    .logo-sub {
+      display: block; font-size: .58rem;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    nav { display: flex; align-items: center; gap: .1rem; }
+    nav a {
+      font-size: .8rem; letter-spacing: .05em;
+      color: var(--muted); text-decoration: none;
+      padding: .4rem .85rem; border-radius: 3px;
+      transition: color .2s, background .2s;
+    }
+    nav a:hover, nav a.active { color: var(--gold-pale); background: rgba(201,146,42,0.1); }
+    nav a.active { color: var(--gold); }
+
+    /* ── HAMBURGER ── */
+    .hamburger {
+      display: none;
+      flex-direction: column; justify-content: center; align-items: center;
+      gap: 5px; width: 40px; height: 40px;
+      background: none; border: none; cursor: pointer;
+      padding: 4px; border-radius: 4px;
+      transition: background .2s; z-index: 700; flex-shrink: 0;
+    }
+    .hamburger:hover { background: rgba(201,146,42,0.1); }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--gold-pale); border-radius: 2px;
+      transition: transform .3s ease, opacity .3s ease, width .3s ease;
+      transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-nav-overlay {
+      display: none; position: fixed; inset: 0; z-index: 590;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+      opacity: 0; transition: opacity .3s ease; pointer-events: none;
+    }
+    .mobile-nav-overlay.open { opacity: 1; pointer-events: auto; }
+
+    .mobile-nav {
+      position: fixed; top: 0; right: 0;
+      width: min(300px, 85vw); height: 100dvh; z-index: 650;
+      background: #110e0a; border-left: 1px solid rgba(201,146,42,0.2);
+      display: flex; flex-direction: column; padding: 0;
+      transform: translateX(100%);
+      transition: transform .35s cubic-bezier(.4,0,.2,1); overflow-y: auto;
+    }
+    .mobile-nav.open { transform: translateX(0); }
+
+    .mobile-nav-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 1.5rem;
+      border-bottom: 1px solid rgba(201,146,42,0.12); min-height: 68px;
+    }
+    .mobile-nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 700;
+      color: var(--gold-pale); letter-spacing: .04em;
+    }
+    .mobile-nav-close {
+      width: 36px; height: 36px; background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); border-radius: 4px; transition: color .2s, background .2s;
+    }
+    .mobile-nav-close:hover { color: var(--gold-pale); background: rgba(201,146,42,0.1); }
+    .mobile-nav-close svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+
+    .mobile-nav-links { display: flex; flex-direction: column; padding: 1.5rem 0; flex: 1; }
+    .mobile-nav-links a {
+      font-size: .9rem; letter-spacing: .06em; color: var(--muted); text-decoration: none;
+      padding: .9rem 1.8rem; border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: color .2s, background .2s, padding-left .2s;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .mobile-nav-links a::before {
+      content: ''; display: block; width: 4px; height: 4px;
+      border-radius: 50%; background: var(--gold); opacity: 0;
+      flex-shrink: 0; transition: opacity .2s;
+    }
+    .mobile-nav-links a:hover,
+    .mobile-nav-links a.active { color: var(--gold-pale); background: rgba(201,146,42,0.07); padding-left: 2.2rem; }
+    .mobile-nav-links a:hover::before,
+    .mobile-nav-links a.active::before { opacity: 1; }
+
+    .mobile-nav-footer { padding: 1.5rem 1.8rem; border-top: 1px solid rgba(201,146,42,0.1); }
+    .mobile-nav-footer p {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: .82rem; color: rgba(154,136,112,0.6); line-height: 1.6;
+    }
+    .mobile-nav-footer cite {
+      font-style: normal; font-family: 'Lato', sans-serif;
+      font-size: .62rem; letter-spacing: .15em; text-transform: uppercase;
+      color: var(--gold); opacity: .7; display: block; margin-top: .3rem;
+    }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      min-height: 38vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 9rem 2rem 5rem;
+      position: relative; overflow: hidden;
+    }
+    .page-hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 0%, rgba(122,26,40,0.4) 0%, transparent 60%),
+        radial-gradient(ellipse 100% 80% at 50% 0%, rgba(201,146,42,0.1) 0%, transparent 55%),
+        var(--bg);
+      pointer-events: none;
+    }
+    .page-hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .6rem;
+      font-size: .68rem; letter-spacing: .28em; text-transform: uppercase;
+      color: var(--gold); padding: .35rem 1.4rem;
+      border: 1px solid rgba(201,146,42,0.35); border-radius: 100px;
+      margin-bottom: 1.4rem; position: relative;
+      opacity: 0; animation: fadein .8s .2s forwards;
+    }
+    .page-hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 6vw, 4.5rem);
+      font-weight: 900; line-height: 1.1; letter-spacing: .02em;
+      color: var(--gold-pale); position: relative;
+      text-shadow: 0 0 60px rgba(201,146,42,0.25), 0 2px 4px rgba(0,0,0,0.5);
+      opacity: 0; animation: fadein-up .9s .4s forwards;
+    }
+    .page-hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 1.1rem;
+      color: var(--muted); margin-top: 1rem; position: relative;
+      opacity: 0; animation: fadein .9s .65s forwards;
+    }
+
+    /* ── PROGRAMME ── */
+    .programme-section {
+      padding: 5rem 2rem 7rem;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .date-badge {
+      display: inline-flex; align-items: center; gap: .6rem;
+      font-size: .7rem; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--gold); font-weight: 700;
+      margin-bottom: 3rem;
+      padding-bottom: .8rem;
+      border-bottom: 1px solid rgba(201,146,42,0.2);
+      width: 100%;
+    }
+    .date-badge::before {
+      content: '';
+      display: inline-block; width: 28px; height: 1px; background: var(--gold); opacity: .5;
+    }
+
+    /* Timeline */
+    .timeline { position: relative; padding-left: 0; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 84px; top: 0; bottom: 0; width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(201,146,42,0.3) 5%, rgba(201,146,42,0.3) 95%, transparent);
+    }
+
+    .tl-item {
+      display: grid;
+      grid-template-columns: 84px 1fr;
+      gap: 0 2rem;
+      margin-bottom: 0;
+      position: relative;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    .tl-item.visible { opacity: 1; transform: translateY(0); }
+
+    .tl-time {
+      text-align: right;
+      padding: 1.6rem 0 1.6rem;
+      padding-right: 2rem;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .tl-time-text {
+      font-size: .72rem; letter-spacing: .1em; font-weight: 700;
+      color: var(--gold); text-transform: uppercase; line-height: 1.3;
+      white-space: nowrap;
+    }
+    .tl-dot {
+      position: absolute; right: -6px; top: 50%;
+      transform: translateY(-50%);
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,146,42,0.12);
+      z-index: 1;
+    }
+    .tl-item.highlight .tl-dot {
+      background: var(--gold);
+      box-shadow: 0 0 0 4px rgba(201,146,42,0.2), 0 0 12px rgba(201,146,42,0.4);
+    }
+
+    .tl-content {
+      padding: 1.4rem 1.6rem 1.4rem;
+      border-left: none;
+      position: relative;
+    }
+
+    /* Card styles */
+    .tl-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 1.2rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .25s, transform .2s;
+    }
+    .tl-card:hover { border-color: rgba(201,146,42,0.35); transform: translateX(3px); }
+    .tl-card::before {
+      content: ''; position: absolute;
+      left: 0; top: 0; bottom: 0; width: 3px;
+      background: var(--border);
+      border-radius: 8px 0 0 8px;
+      transition: background .25s;
+    }
+    .tl-card:hover::before { background: var(--gold); }
+    .tl-item.highlight .tl-card {
+      background: linear-gradient(135deg, rgba(122,26,40,0.25), rgba(201,146,42,0.06));
+      border-color: rgba(201,146,42,0.3);
+    }
+    .tl-item.highlight .tl-card::before { background: var(--gold); }
+
+    .tl-card-tag {
+      font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gold); font-weight: 700; margin-bottom: .4rem;
+      display: flex; align-items: center; gap: .4rem;
+    }
+    .tl-card-tag svg { width: 11px; height: 11px; fill: currentColor; flex-shrink: 0; }
+    .tl-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--cream); margin-bottom: .3rem; line-height: 1.3;
+    }
+    .tl-item.highlight .tl-card-title { color: var(--gold-pale); font-size: 1.15rem; }
+    .tl-card-desc {
+      font-size: .85rem; color: var(--muted); line-height: 1.65;
+    }
+    .tl-card-performers {
+      margin-top: .7rem;
+      display: flex; flex-wrap: wrap; gap: .4rem;
+    }
+    .performer-chip {
+      font-size: .65rem; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--muted); background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border); border-radius: 100px;
+      padding: .22rem .75rem;
+      transition: color .2s, border-color .2s;
+    }
+    .tl-card:hover .performer-chip { color: var(--gold-pale); border-color: rgba(201,146,42,0.25); }
+
+    /* ── SECTION LABEL (reuse) ── */
+    .section-label {
+      font-size: .68rem; letter-spacing: .28em; text-transform: uppercase;
+      color: var(--gold); font-weight: 700; margin-bottom: 1rem;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadein    { to { opacity: 1; } }
+    @keyframes fadein-up { to { opacity: 1; transform: translateY(0); } }
+    @keyframes shimmer   { 0%,100% { opacity:.3 } 50% { opacity:.7 } }
+
+    /* ── FOOTER ── */
+    footer { background: #080604; padding: 3rem 2.5rem 2rem; border-top: 1px solid var(--border); }
+    .foot-inner {
+      max-width: 900px; margin: 0 auto;
+      display: flex; flex-wrap: wrap;
+      justify-content: space-between; align-items: flex-start; gap: 2rem;
+    }
+    .foot-brand {
+      font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700;
+      color: var(--gold-pale); display: block; margin-bottom: .3rem;
+    }
+    .foot-sub { font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+    .foot-hr { border: none; border-top: 1px solid var(--border); max-width: 900px; margin: 2rem auto 1rem; }
+    .foot-copy { text-align: center; font-size: .7rem; color: rgba(255,255,255,0.18); letter-spacing: .06em; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      header { padding: 0 1.25rem; }
+      nav { display: none; }
+      .hamburger { display: flex; }
+      .timeline::before { left: 68px; }
+      .tl-item { grid-template-columns: 68px 1fr; gap: 0 1.2rem; }
+      .tl-time-text { font-size: .65rem; }
+      .info-box { flex-direction: column; gap: .9rem; }
+    }
+
+    body.nav-open { overflow: hidden; }
+  </style>
+</head>
+<body>
+
+  <!-- MOBILE NAV OVERLAY -->
+  <div class="mobile-nav-overlay" id="mobile-overlay" aria-hidden="true"></div>
+
+  <!-- MOBILE NAV DRAWER -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <div class="mobile-nav-header">
+      <span class="mobile-nav-logo">SELAH 2026</span>
+      <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#church">Our Church</a>
+      <a href="team.html">Our Team</a>
+      <a href="itinerary.html" class="active">Programme</a>
+    </div>
+    <div class="mobile-nav-footer">
+      <p>&ldquo;But let justice roll on like a river&hellip;&rdquo;<cite>Amos 5:24</cite></p>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header id="site-header">
+    <a href="index.html" class="logo">
+      <img src="assets/marthoma-logo.png" alt="Selah 2026" style="width:42px;height:42px;object-fit:contain;flex-shrink:0">
+      <div class="logo-text">
+        <span class="logo-name">SELAH 2026</span>
+        <span class="logo-sub">Choir Fest 2026</span>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#church">Our Church</a>
+      <a href="team.html">Our Team</a>
+      <a href="itinerary.html" class="active">Itinerary</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg" aria-hidden="true"></div>
+    <p class="page-hero-eyebrow">18th April 2026</p>
+    <h1 class="page-hero-title">Evening Programme</h1>
+    <p class="page-hero-sub">A curated order of worship &mdash; from 6:30 PM onwards</p>
+  </section>
+
+  <!-- PROGRAMME -->
+  <section class="programme-section">
+
+    <p class="date-badge">Saturday, 18th April 2026 &nbsp;&bull;&nbsp; St Thomas Mar Thoma Church, Hyderabad</p>
+
+    <div class="timeline" id="timeline">
+
+      <!-- 1 -->
+      <div class="tl-item" data-delay="0">
+        <div class="tl-time">
+          <p class="tl-time-text">6:30<br>PM</p>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-card">
+            <p class="tl-card-tag">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Opening
+            </p>
+            <p class="tl-card-title">Gathering &amp; Welcome</p>
+            <p class="tl-card-desc">Doors open. Congregation and guests are seated. Welcome address by the organising committee.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="tl-item" data-delay="80">
+        <div class="tl-time">
+          <p class="tl-time-text">6:45<br>PM</p>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-card">
+            <p class="tl-card-tag">
+              <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13M9 18c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-2c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"/></svg>
+              Worship
+            </p>
+            <p class="tl-card-title">Opening Hymn &amp; Invocation</p>
+            <p class="tl-card-desc">A congregational hymn of praise led by the St Thomas Choir, followed by an opening prayer.</p>
+            <div class="tl-card-performers">
+              <span class="performer-chip">St Thomas Choir</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="tl-item highlight" data-delay="160">
+        <div class="tl-time">
+          <p class="tl-time-text">7:00<br>PM</p>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-card">
+            <p class="tl-card-tag">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              Chief Guest
+            </p>
+            <p class="tl-card-title">Address by the Chief Guest</p>
+            <p class="tl-card-desc">An address by Rev. Rovin Varughese John, Vicar of St Thomas Mar Thoma Church, inaugurating Selah 2026.</p>
+            <div class="tl-card-performers">
+              <span class="performer-chip">Rev. Rovin Varughese John</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="tl-item" data-delay="240">
+        <div class="tl-time">
+          <p class="tl-time-text">7:20<br>PM</p>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-card">
+            <p class="tl-card-tag">
+              <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13M9 18c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-2c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"/></svg>
+              Performance
+            </p>
+            <p class="tl-card-title">Choir Performance I</p>
+            <p class="tl-card-desc">Opening performance by the first participating choir. An offering of praise to set the evening in motion.</p>
+            <div class="tl-card-performers">
+              <span class="performer-chip">Participating Choir</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="tl-item" data-delay="320">
+        <div class="tl-time">
+          <p class="tl-time-text">7:45<br>PM</p>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-card">
+            <p class="tl-card-tag">
+              <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13M9 18c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-2c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"/></svg>
+              Performance
+            </p>
+            <p class="tl-card-title">Choir Performance II</p>
+            <p class="tl-card-desc">A second choir takes the stage, lifting voices in worship from their unique denominational tradition.</p>
+            <div class="tl-card-performers">
+              <span class="performer-chip">Participating Choir</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="tl-item" data-delay="400">
+        <div class="tl-time">
+          <p class="tl-time-text">8:10<br>PM</p>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-card">
+            <p class="tl-card-tag">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Interlude
+            </p>
+            <p class="tl-card-title">Fellowship Interlude</p>
+            <p class="tl-card-desc">A short break for fellowship between denominations &mdash; the body of Christ made visible in community.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="tl-item" data-delay="480">
+        <div class="tl-time">
+          <p class="tl-time-text">8:25<br>PM</p>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-card">
+            <p class="tl-card-tag">
+              <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13M9 18c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-2c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"/></svg>
+              Performance
+            </p>
+            <p class="tl-card-title">Choir Performance III</p>
+            <p class="tl-card-desc">An evening of voices continues as the third choir brings their gift of song before the Lord.</p>
+            <div class="tl-card-performers">
+              <span class="performer-chip">Participating Choir</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="tl-item highlight" data-delay="560">
+        <div class="tl-time">
+          <p class="tl-time-text">8:50<br>PM</p>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-card">
+            <p class="tl-card-tag">
+              <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13M9 18c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-2c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"/></svg>
+              Host Choir
+            </p>
+            <p class="tl-card-title">St Thomas Choir — Feature Performance</p>
+            <p class="tl-card-desc">The host choir presents their feature set for Selah 2026, led by Choir Master Aaron Koshy Thomas and Asst. Choir Master Fen Ninan.</p>
+            <div class="tl-card-performers">
+              <span class="performer-chip">St Thomas Choir</span>
+              <span class="performer-chip">Aaron Koshy Thomas</span>
+              <span class="performer-chip">Fen Ninan</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9 -->
+      <div class="tl-item" data-delay="640">
+        <div class="tl-time">
+          <p class="tl-time-text">9:20<br>PM</p>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-card">
+            <p class="tl-card-tag">
+              <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13M9 18c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-2c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"/></svg>
+              Grand Finale
+            </p>
+            <p class="tl-card-title">Combined Choir — Grand Finale</p>
+            <p class="tl-card-desc">All participating choirs unite on stage for a combined worship set, raising one voice in praise for His glory.</p>
+            <div class="tl-card-performers">
+              <span class="performer-chip">All Choirs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10 -->
+      <div class="tl-item" data-delay="720">
+        <div class="tl-time">
+          <p class="tl-time-text">9:45<br>PM</p>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-card">
+            <p class="tl-card-tag">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Closing
+            </p>
+            <p class="tl-card-title">Vote of Thanks &amp; Benediction</p>
+            <p class="tl-card-desc">A closing word of gratitude from the organisers, followed by a benediction to send the congregation forth in peace.</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /timeline -->
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-inner">
+      <div>
+        <span class="foot-brand">Selah 2026</span>
+        <span class="foot-sub">Choir Festival &bull; 2026</span>
+        <div style="margin-top:.9rem">
+          <span style="display:inline-flex;align-items:center;gap:.45rem;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:.4rem .9rem;cursor:default">
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            <span id="visit-count">
+              <span style="display:inline-block;width:28px;height:8px;background:rgba(255,255,255,0.15);border-radius:3px;vertical-align:middle;animation:shimmer 1.4s infinite"></span>
+            </span>
+          </span>
+        </div>
+      </div>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.92rem;color:var(--muted);max-width:260px;text-align:center;">
+        &ldquo;But let justice roll on like a river, righteousness like a never-failing stream.&rdquo;
+      </p>
+      <div>
+        <p style="font-size:.82rem;color:var(--muted);line-height:1.7">
+          St Thomas Mar Thoma Church<br>Hyderabad, Telangana, India
+        </p>
+      </div>
+    </div>
+    <hr class="foot-hr">
+    <p class="foot-copy">&copy; 2026 Selah Choir Festival &bull; St Thomas Mar Thoma Church, Hyderabad &mdash; Organised with love, for His glory</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      const header    = document.getElementById('site-header');
+      const hamburger = document.getElementById('hamburger');
+      const mobileNav = document.getElementById('mobile-nav');
+      const overlay   = document.getElementById('mobile-overlay');
+      const closeBtn  = document.getElementById('mobile-nav-close');
+      const mobileLinks = mobileNav.querySelectorAll('a');
+
+      window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 60));
+
+      function openNav() {
+        hamburger.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        mobileNav.classList.add('open');
+        overlay.style.display = 'block';
+        requestAnimationFrame(() => overlay.classList.add('open'));
+        document.body.classList.add('nav-open');
+      }
+      function closeNav() {
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileNav.classList.remove('open');
+        overlay.classList.remove('open');
+        document.body.classList.remove('nav-open');
+        overlay.addEventListener('transitionend', () => { overlay.style.display = ''; }, { once: true });
+      }
+
+      hamburger.addEventListener('click', () => hamburger.classList.contains('open') ? closeNav() : openNav());
+      closeBtn.addEventListener('click', closeNav);
+      overlay.addEventListener('click', closeNav);
+      mobileLinks.forEach(link => link.addEventListener('click', closeNav));
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeNav();
+      });
+
+      (async () => {
+        try {
+          const res = await fetch("https://selah2026.stthomashybdchoir.workers.dev/");
+          const data = await res.json();
+          const el = document.getElementById("visit-count");
+          if (el && data.visits !== undefined) {
+            el.textContent = Number(data.visits).toLocaleString() + " unique visitors";
+          }
+        } catch (e) {
+          const el = document.getElementById("visit-count");
+          if (el) el.textContent = "";
+        }
+      })();
+
+      // Scroll-triggered timeline animations
+      const items = document.querySelectorAll('.tl-item');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const delay = parseInt(entry.target.dataset.delay || 0);
+            setTimeout(() => entry.target.classList.add('visible'), delay);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      items.forEach(item => observer.observe(item));
+
+    });
+  </script>
+
+</body>
+</html>
