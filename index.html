@@ -1,752 +1,854 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Selah - 2026</title>
-  <link rel="icon" type="image/png" href="assets/selah-icon.png">
-  <link rel="apple-touch-icon" href="assets/selah-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,300;1,400&family=Apricots&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg:         #0e0b08;
-      --surface:    #171209;
-      --gold:       #c9922a;
-      --gold-light: #e8b455;
-      --gold-pale:  #f5dfa0;
-      --burgundy:   #7a1a28;
-      --burg-light: #a8243a;
-      --cream:      #f5ede0;
-      --text:       #f0e8d8;
-      --muted:      #9a8870;
-      --border:     #2a2018;
-    }
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Selah - 2026</title>
+    <link rel="icon" type="image/png" href="assets/selah-icon.png">
+    <link rel="apple-touch-icon" href="assets/selah-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,300;1,400&family=Apricots&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --bg:         #0e0b08;
+        --surface:    #171209;
+        --gold:       #c9922a;
+        --gold-light: #e8b455;
+        --gold-pale:  #f5dfa0;
+        --burgundy:   #7a1a28;
+        --burg-light: #a8243a;
+        --cream:      #f5ede0;
+        --text:       #f0e8d8;
+        --muted:      #9a8870;
+        --border:     #2a2018;
+      }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Lato', sans-serif;
-      font-weight: 300;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
 
-    /* ── HEADER ── */
-    header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 600;
-      height: 68px;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 3rem;
-      background: rgba(14,11,8,0.88);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(201,146,42,0.18);
-      transition: height .3s, background .3s;
-    }
-    header.scrolled { height: 56px; background: rgba(14,11,8,0.97); }
+      /* ── HEADER ── */
+      header {
+        position: fixed; top: 0; left: 0; right: 0; z-index: 600;
+        height: 68px;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 0 3rem;
+        background: rgba(14,11,8,0.88);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(201,146,42,0.18);
+        transition: height .3s, background .3s;
+      }
+      header.scrolled { height: 56px; background: rgba(14,11,8,0.97); }
 
-    .logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
-    .logo-text { line-height: 1.15; }
-    .logo-name {
-      display: block;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem; font-weight: 700;
-      color: var(--gold-pale); letter-spacing: .04em;
-    }
-    .logo-sub {
-      display: block; font-size: .58rem;
-      letter-spacing: .22em; text-transform: uppercase;
-      color: var(--gold);
-    }
+      .logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+      .logo-text { line-height: 1.15; }
+      .logo-name {
+        display: block;
+        font-family: 'Playfair Display', serif;
+        font-size: 1.2rem; font-weight: 700;
+        color: var(--gold-pale); letter-spacing: .04em;
+      }
+      .logo-sub {
+        display: block; font-size: .58rem;
+        letter-spacing: .22em; text-transform: uppercase;
+        color: var(--gold);
+      }
 
-    /* ── DESKTOP NAV ── */
-    header > nav { display: flex; align-items: center; gap: .1rem; }
-    header > nav a {
-      font-size: .8rem; letter-spacing: .05em;
-      color: var(--muted); text-decoration: none;
-      padding: .4rem .85rem; border-radius: 3px;
-      transition: color .2s, background .2s;
-    }
-    header > nav a:hover { color: var(--gold-pale); background: rgba(201,146,42,0.1); }
+      /* ── DESKTOP NAV ── */
+      header > nav { display: flex; align-items: center; gap: .1rem; }
+      header > nav a {
+        font-size: .8rem; letter-spacing: .05em;
+        color: var(--muted); text-decoration: none;
+        padding: .4rem .85rem; border-radius: 3px;
+        transition: color .2s, background .2s;
+      }
+      header > nav a:hover { color: var(--gold-pale); background: rgba(201,146,42,0.1); }
 
-    /* ── HAMBURGER ── */
-    .hamburger {
-      display: none;
-      flex-direction: column; justify-content: center; align-items: center;
-      gap: 5px; width: 40px; height: 40px;
-      background: none; border: none; cursor: pointer;
-      padding: 4px; border-radius: 4px;
-      transition: background .2s; z-index: 700; flex-shrink: 0;
-    }
-    .hamburger:hover { background: rgba(201,146,42,0.1); }
-    .hamburger span {
-      display: block; width: 22px; height: 2px;
-      background: var(--gold-pale); border-radius: 2px;
-      transition: transform .3s ease, opacity .3s ease, width .3s ease;
-      transform-origin: center;
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+      /* ── HAMBURGER ── */
+      .hamburger {
+        display: none;
+        flex-direction: column; justify-content: center; align-items: center;
+        gap: 5px; width: 40px; height: 40px;
+        background: none; border: none; cursor: pointer;
+        padding: 4px; border-radius: 4px;
+        transition: background .2s; z-index: 700; flex-shrink: 0;
+      }
+      .hamburger:hover { background: rgba(201,146,42,0.1); }
+      .hamburger span {
+        display: block; width: 22px; height: 2px;
+        background: var(--gold-pale); border-radius: 2px;
+        transition: transform .3s ease, opacity .3s ease, width .3s ease;
+        transform-origin: center;
+      }
+      .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+      .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* ── MOBILE NAV OVERLAY ── */
-    .mobile-nav-overlay {
-      display: none; position: fixed; inset: 0; z-index: 590;
-      background: rgba(0,0,0,0.55);
-      backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
-      opacity: 0; transition: opacity .3s ease; pointer-events: none;
-    }
-    .mobile-nav-overlay.open { opacity: 1; pointer-events: auto; }
+      /* ── MOBILE NAV OVERLAY ── */
+      .mobile-nav-overlay {
+        display: none; position: fixed; inset: 0; z-index: 590;
+        background: rgba(0,0,0,0.55);
+        backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+        opacity: 0; transition: opacity .3s ease; pointer-events: none;
+      }
+      .mobile-nav-overlay.open { opacity: 1; pointer-events: auto; }
 
-    /* ── MOBILE NAV DRAWER ── */
-    .mobile-nav {
-      position: fixed; top: 0; right: 0;
-      width: min(300px, 85vw); height: 100dvh; z-index: 650;
-      background: #110e0a; border-left: 1px solid rgba(201,146,42,0.2);
-      display: flex; flex-direction: column; padding: 0;
-      transform: translateX(100%);
-      transition: transform .35s cubic-bezier(.4,0,.2,1); overflow-y: auto;
-    }
-    .mobile-nav.open { transform: translateX(0); }
+      /* ── MOBILE NAV DRAWER ── */
+      .mobile-nav {
+        position: fixed; top: 0; right: 0;
+        width: min(300px, 85vw); height: 100dvh; z-index: 650;
+        background: #110e0a; border-left: 1px solid rgba(201,146,42,0.2);
+        display: flex; flex-direction: column; padding: 0;
+        transform: translateX(100%);
+        transition: transform .35s cubic-bezier(.4,0,.2,1); overflow-y: auto;
+      }
+      .mobile-nav.open { transform: translateX(0); }
 
-    .mobile-nav-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 1.5rem;
-      border-bottom: 1px solid rgba(201,146,42,0.12); min-height: 68px;
-    }
-    .mobile-nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem; font-weight: 700;
-      color: var(--gold-pale); letter-spacing: .04em;
-    }
-    .mobile-nav-close {
-      width: 36px; height: 36px; background: none; border: none; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--muted); border-radius: 4px; transition: color .2s, background .2s;
-    }
-    .mobile-nav-close:hover { color: var(--gold-pale); background: rgba(201,146,42,0.1); }
-    .mobile-nav-close svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+      .mobile-nav-header {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 1.2rem 1.5rem;
+        border-bottom: 1px solid rgba(201,146,42,0.12); min-height: 68px;
+      }
+      .mobile-nav-logo {
+        font-family: 'Playfair Display', serif;
+        font-size: 1rem; font-weight: 700;
+        color: var(--gold-pale); letter-spacing: .04em;
+      }
+      .mobile-nav-close {
+        width: 36px; height: 36px; background: none; border: none; cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        color: var(--muted); border-radius: 4px; transition: color .2s, background .2s;
+      }
+      .mobile-nav-close:hover { color: var(--gold-pale); background: rgba(201,146,42,0.1); }
+      .mobile-nav-close svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
 
-    .mobile-nav-links { display: flex; flex-direction: column; padding: 1.5rem 0; flex: 1; }
-    .mobile-nav-links a {
-      font-size: .9rem; letter-spacing: .06em; color: var(--muted); text-decoration: none;
-      padding: .9rem 1.8rem; border-bottom: 1px solid rgba(255,255,255,0.04);
-      transition: color .2s, background .2s, padding-left .2s;
-      display: flex; align-items: center; gap: .6rem;
-    }
-    .mobile-nav-links a::before {
-      content: ''; display: block; width: 4px; height: 4px;
-      border-radius: 50%; background: var(--gold); opacity: 0;
-      flex-shrink: 0; transition: opacity .2s;
-    }
-    .mobile-nav-links a:hover { color: var(--gold-pale); background: rgba(201,146,42,0.07); padding-left: 2.2rem; }
-    .mobile-nav-links a:hover::before { opacity: 1; }
+      .mobile-nav-links { display: flex; flex-direction: column; padding: 1.5rem 0; flex: 1; }
+      .mobile-nav-links a {
+        font-size: .9rem; letter-spacing: .06em; color: var(--muted); text-decoration: none;
+        padding: .9rem 1.8rem; border-bottom: 1px solid rgba(255,255,255,0.04);
+        transition: color .2s, background .2s, padding-left .2s;
+        display: flex; align-items: center; gap: .6rem;
+      }
+      .mobile-nav-links a::before {
+        content: ''; display: block; width: 4px; height: 4px;
+        border-radius: 50%; background: var(--gold); opacity: 0;
+        flex-shrink: 0; transition: opacity .2s;
+      }
+      .mobile-nav-links a:hover { color: var(--gold-pale); background: rgba(201,146,42,0.07); padding-left: 2.2rem; }
+      .mobile-nav-links a:hover::before { opacity: 1; }
 
-    .mobile-nav-footer { padding: 1.5rem 1.8rem; border-top: 1px solid rgba(201,146,42,0.1); }
-    .mobile-nav-footer p {
-      font-family: 'Cormorant Garamond', serif; font-style: italic;
-      font-size: .82rem; color: rgba(154,136,112,0.6); line-height: 1.6;
-    }
-    .mobile-nav-footer cite {
-      font-style: normal; font-family: 'Lato', sans-serif;
-      font-size: .62rem; letter-spacing: .15em; text-transform: uppercase;
-      color: var(--gold); opacity: .7; display: block; margin-top: .3rem;
-    }
+      .mobile-nav-footer { padding: 1.5rem 1.8rem; border-top: 1px solid rgba(201,146,42,0.1); }
+      .mobile-nav-footer p {
+        font-family: 'Cormorant Garamond', serif; font-style: italic;
+        font-size: .82rem; color: rgba(154,136,112,0.6); line-height: 1.6;
+      }
+      .mobile-nav-footer cite {
+        font-style: normal; font-family: 'Lato', sans-serif;
+        font-size: .62rem; letter-spacing: .15em; text-transform: uppercase;
+        color: var(--gold); opacity: .7; display: block; margin-top: .3rem;
+      }
 
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center; padding: 8rem 2rem 6rem;
-      position: relative; overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 70% 60% at 50% 10%, rgba(122,26,40,0.45) 0%, transparent 60%),
-        radial-gradient(ellipse 100% 80% at 50% 0%,  rgba(201,146,42,0.12) 0%, transparent 55%),
-        var(--bg);
-      pointer-events: none;
-    }
-    .hero-rays {
-      position: absolute; top: 0; left: 50%;
-      transform: translateX(-50%); width: 180%; height: 100%;
-      background: conic-gradient(
-        from 180deg at 50% -10%,
-        transparent 0deg,   rgba(201,146,42,0.06) 6deg,
-        transparent 12deg,  rgba(201,146,42,0.04) 18deg,
-        transparent 24deg,  rgba(201,146,42,0.06) 30deg,
-        transparent 36deg,  rgba(201,146,42,0.04) 42deg,
-        transparent 48deg,  rgba(201,146,42,0.06) 54deg,
-        transparent 60deg,  rgba(201,146,42,0.04) 66deg,
-        transparent 72deg,  rgba(201,146,42,0.06) 78deg,
-        transparent 84deg,  rgba(201,146,42,0.04) 90deg,
-        transparent 96deg,  rgba(201,146,42,0.06) 102deg,
-        transparent 108deg, rgba(201,146,42,0.04) 114deg,
-        transparent 120deg, transparent 360deg
-      );
-      pointer-events: none; animation: rays-slow 40s linear infinite;
-    }
-    @keyframes rays-slow { to { transform: translateX(-50%) rotate(360deg); } }
+      /* ── HERO ── */
+      .hero {
+        min-height: 100vh;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        text-align: center; padding: 8rem 2rem 6rem;
+        position: relative; overflow: hidden;
+      }
+      .hero-bg {
+        position: absolute; inset: 0;
+        background:
+          radial-gradient(ellipse 70% 60% at 50% 10%, rgba(122,26,40,0.45) 0%, transparent 60%),
+          radial-gradient(ellipse 100% 80% at 50% 0%,  rgba(201,146,42,0.12) 0%, transparent 55%),
+          var(--bg);
+        pointer-events: none;
+      }
+      .hero-rays {
+        position: absolute; top: 0; left: 50%;
+        transform: translateX(-50%); width: 180%; height: 100%;
+        background: conic-gradient(
+          from 180deg at 50% -10%,
+          transparent 0deg,   rgba(201,146,42,0.06) 6deg,
+          transparent 12deg,  rgba(201,146,42,0.04) 18deg,
+          transparent 24deg,  rgba(201,146,42,0.06) 30deg,
+          transparent 36deg,  rgba(201,146,42,0.04) 42deg,
+          transparent 48deg,  rgba(201,146,42,0.06) 54deg,
+          transparent 60deg,  rgba(201,146,42,0.04) 66deg,
+          transparent 72deg,  rgba(201,146,42,0.06) 78deg,
+          transparent 84deg,  rgba(201,146,42,0.04) 90deg,
+          transparent 96deg,  rgba(201,146,42,0.06) 102deg,
+          transparent 108deg, rgba(201,146,42,0.04) 114deg,
+          transparent 120deg, transparent 360deg
+        );
+        pointer-events: none; animation: rays-slow 40s linear infinite;
+      }
+      @keyframes rays-slow { to { transform: translateX(-50%) rotate(360deg); } }
 
-    .note {
-      position: absolute; color: var(--gold); opacity: 0;
-      pointer-events: none; animation: float-note 9s ease-in-out infinite; font-style: normal;
-    }
-    .note:nth-child(1) { left:6%;  top:20%; font-size:1.4rem; animation-delay:0s;   }
-    .note:nth-child(2) { left:90%; top:25%; font-size:2rem;   animation-delay:2s;   }
-    .note:nth-child(3) { left:12%; top:68%; font-size:1rem;   animation-delay:4s;   }
-    .note:nth-child(4) { left:84%; top:60%; font-size:1.6rem; animation-delay:1.5s; }
-    .note:nth-child(5) { left:48%; top:12%; font-size:1.1rem; animation-delay:5.5s; }
-    .note:nth-child(6) { left:72%; top:80%; font-size:.9rem;  animation-delay:3s;   }
-    @keyframes float-note {
-      0%   { opacity:0; transform: translateY(0) rotate(-8deg); }
-      15%  { opacity:.4; }
-      85%  { opacity:.15; }
-      100% { opacity:0; transform: translateY(-70px) rotate(12deg); }
-    }
+      .note {
+        position: absolute; color: var(--gold); opacity: 0;
+        pointer-events: none; animation: float-note 9s ease-in-out infinite; font-style: normal;
+      }
+      .note:nth-child(1) { left:6%;  top:20%; font-size:1.4rem; animation-delay:0s;   }
+      .note:nth-child(2) { left:90%; top:25%; font-size:2rem;   animation-delay:2s;   }
+      .note:nth-child(3) { left:12%; top:68%; font-size:1rem;   animation-delay:4s;   }
+      .note:nth-child(4) { left:84%; top:60%; font-size:1.6rem; animation-delay:1.5s; }
+      .note:nth-child(5) { left:48%; top:12%; font-size:1.1rem; animation-delay:5.5s; }
+      .note:nth-child(6) { left:72%; top:80%; font-size:.9rem;  animation-delay:3s;   }
+      @keyframes float-note {
+        0%   { opacity:0; transform: translateY(0) rotate(-8deg); }
+        15%  { opacity:.4; }
+        85%  { opacity:.15; }
+        100% { opacity:0; transform: translateY(-70px) rotate(12deg); }
+      }
 
-    .ring {
-      position: absolute; left: 50%; top: 0;
-      transform: translate(-50%, -55%); border-radius: 50%;
-      border: 1px solid rgba(201,146,42,0.08); pointer-events: none;
-    }
-    .ring-1 { width:900px; height:900px; }
-    .ring-2 { width:650px; height:650px; border-color:rgba(201,146,42,0.06); }
-    .ring-3 { width:420px; height:420px; border-color:rgba(201,146,42,0.05); }
+      .ring {
+        position: absolute; left: 50%; top: 0;
+        transform: translate(-50%, -55%); border-radius: 50%;
+        border: 1px solid rgba(201,146,42,0.08); pointer-events: none;
+      }
+      .ring-1 { width:900px; height:900px; }
+      .ring-2 { width:650px; height:650px; border-color:rgba(201,146,42,0.06); }
+      .ring-3 { width:420px; height:420px; border-color:rgba(201,146,42,0.05); }
 
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: .6rem;
-      font-size: .68rem; letter-spacing: .28em; text-transform: uppercase;
-      color: var(--gold); padding: .35rem 1.4rem;
-      border: 1px solid rgba(201,146,42,0.35); border-radius: 100px;
-      margin-bottom: 2rem; position: relative;
-      opacity: 0; animation: fadein .8s .3s forwards;
-    }
-    .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 9vw, 7.5rem);
-      font-weight: 900; line-height: 1.05; letter-spacing: .02em; position: relative;
-    }
-    .hero-title .line { display: block; opacity:0; transform: translateY(28px); }
-    .hero-title .l1 {
-      color: var(--gold-pale); animation: fadein-up .9s .5s forwards;
-      text-shadow: 0 0 60px rgba(201,146,42,0.3), 0 2px 4px rgba(0,0,0,0.6);
-    }
-    .hero-title .l2 {
-      color: var(--gold); animation: fadein-up .9s .68s forwards;
-      font-size: 0.42em; font-weight: 700;
-      letter-spacing: .1em; text-transform: uppercase; opacity: 0; margin-top: .3em;
-    }
-    .hero-date {
-      font-size: 1.05rem; letter-spacing: .18em; text-transform: uppercase;
-      color: var(--gold-pale); margin: 1.6rem 0 .5rem;
-      opacity: 0; animation: fadein .9s 1.1s forwards;
-      display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;
-    }
-    .hero-date::before, .hero-date::after {
-      content: ''; display: inline-block;
-      width: 40px; height: 1px; background: var(--gold); opacity: .5;
-    }
-    .hero-verse {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic; font-size: 1.15rem;
-      color: var(--muted); max-width: 500px; margin: 0 auto;
-      opacity: 0; animation: fadein .9s 1.25s forwards;
-    }
-    .hero-verse cite {
-      display: block; font-style: normal; font-family: 'Lato', sans-serif;
-      font-size: .68rem; letter-spacing: .2em; text-transform: uppercase;
-      color: var(--gold); margin-top: .4rem;
-    }
-    .btn-ghost {
-      background: transparent; color: var(--gold-pale);
-      font-size: .8rem; font-weight: 700; letter-spacing: .1em;
-      text-transform: uppercase; padding: .9rem 2.2rem;
-      border-radius: 3px; text-decoration: none;
-      border: 2px solid rgba(201,146,42,0.4);
-      transition: border-color .2s, color .2s, transform .15s;
-    }
-    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+      .hero-eyebrow {
+        display: inline-flex; align-items: center; gap: .6rem;
+        font-size: .68rem; letter-spacing: .28em; text-transform: uppercase;
+        color: var(--gold); padding: .35rem 1.4rem;
+        border: 1px solid rgba(201,146,42,0.35); border-radius: 100px;
+        margin-bottom: 2rem; position: relative;
+        opacity: 0; animation: fadein .8s .3s forwards;
+      }
+      .hero-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(3rem, 9vw, 7.5rem);
+        font-weight: 900; line-height: 1.05; letter-spacing: .02em; position: relative;
+      }
+      .hero-title .line { display: block; opacity:0; transform: translateY(28px); }
+      .hero-title .l1 {
+        color: var(--gold-pale); animation: fadein-up .9s .5s forwards;
+        text-shadow: 0 0 60px rgba(201,146,42,0.3), 0 2px 4px rgba(0,0,0,0.6);
+      }
+      .hero-title .l2 {
+        color: var(--gold); animation: fadein-up .9s .68s forwards;
+        font-size: 0.42em; font-weight: 700;
+        letter-spacing: .1em; text-transform: uppercase; opacity: 0; margin-top: .3em;
+      }
+      .hero-date {
+        font-size: 1.05rem; letter-spacing: .18em; text-transform: uppercase;
+        color: var(--gold-pale); margin: 1.6rem 0 .5rem;
+        opacity: 0; animation: fadein .9s 1.1s forwards;
+        display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;
+      }
+      .hero-date::before, .hero-date::after {
+        content: ''; display: inline-block;
+        width: 40px; height: 1px; background: var(--gold); opacity: .5;
+      }
+      .hero-verse {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic; font-size: 1.15rem;
+        color: var(--muted); max-width: 500px; margin: 0 auto;
+        opacity: 0; animation: fadein .9s 1.25s forwards;
+      }
+      .hero-verse cite {
+        display: block; font-style: normal; font-family: 'Lato', sans-serif;
+        font-size: .68rem; letter-spacing: .2em; text-transform: uppercase;
+        color: var(--gold); margin-top: .4rem;
+      }
+      .btn-ghost {
+        background: transparent; color: var(--gold-pale);
+        font-size: .8rem; font-weight: 700; letter-spacing: .1em;
+        text-transform: uppercase; padding: .9rem 2.2rem;
+        border-radius: 3px; text-decoration: none;
+        border: 2px solid rgba(201,146,42,0.4);
+        transition: border-color .2s, color .2s, transform .15s;
+      }
+      .btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
 
-    .scroll-cue {
-      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
-      display: flex; flex-direction: column; align-items: center; gap: .5rem;
-      opacity: 0; animation: fadein 1s 2.2s forwards;
-    }
-    .scroll-cue span { font-size: .6rem; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); }
-    .scroll-line { width: 1px; height: 44px; background: linear-gradient(to bottom, var(--gold), transparent); animation: pulse-line 2s ease-in-out infinite; }
-    @keyframes pulse-line { 0%,100%{opacity:.3;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.2)} }
+      .scroll-cue {
+        position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+        display: flex; flex-direction: column; align-items: center; gap: .5rem;
+        opacity: 0; animation: fadein 1s 2.2s forwards;
+      }
+      .scroll-cue span { font-size: .6rem; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); }
+      .scroll-line { width: 1px; height: 44px; background: linear-gradient(to bottom, var(--gold), transparent); animation: pulse-line 2s ease-in-out infinite; }
+      @keyframes pulse-line { 0%,100%{opacity:.3;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.2)} }
 
-    /* ── TICKER ── */
-    .ticker-wrap {
-      background: var(--gold); padding: .65rem 0; overflow: hidden;
-      border-top: 1px solid var(--burg-light); border-bottom: 1px solid var(--burg-light);
-    }
-    .ticker-track { display: flex; white-space: nowrap; animation: ticker 30s linear infinite; width: max-content; }
-    .ticker-track:hover { animation-play-state: paused; }
-    .ticker-item {
-      font-family: 'Playfair Display', serif; font-size: .78rem; font-weight: 700;
-      letter-spacing: .12em; text-transform: uppercase;
-      color: var(--bg); padding: 0 2.5rem; flex-shrink: 0;
-    }
-    .ticker-sep { color: var(--burgundy); margin: 0 .25rem; }
-    @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+      /* ── TICKER ── */
+      .ticker-wrap {
+        background: var(--gold); padding: .65rem 0; overflow: hidden;
+        border-top: 1px solid var(--burg-light); border-bottom: 1px solid var(--burg-light);
+      }
+      .ticker-track { display: flex; white-space: nowrap; animation: ticker 30s linear infinite; width: max-content; }
+      .ticker-track:hover { animation-play-state: paused; }
+      .ticker-item {
+        font-family: 'Playfair Display', serif; font-size: .78rem; font-weight: 700;
+        letter-spacing: .12em; text-transform: uppercase;
+        color: var(--bg); padding: 0 2.5rem; flex-shrink: 0;
+      }
+      .ticker-sep { color: var(--burgundy); margin: 0 .25rem; }
+      @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-    /* ── ABOUT ── */
-    .about {
-      padding: 7rem 2rem;
-      display: flex; flex-direction: column; align-items: center;
-      text-align: center; background: var(--surface);
-      border-bottom: 1px solid var(--border);
-    }
-    .section-label {
-      font-size: .68rem; letter-spacing: .28em; text-transform: uppercase;
-      color: var(--gold); font-weight: 700; margin-bottom: 1rem;
-    }
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      font-weight: 700; color: var(--cream);
-      line-height: 1.2; margin-bottom: 1.5rem; max-width: 680px;
-    }
-    .section-body { font-size: 1rem; color: var(--muted); max-width: 560px; margin: 0 auto; }
+      /* ── ABOUT ── */
+      .about {
+        padding: 7rem 2rem;
+        display: flex; flex-direction: column; align-items: center;
+        text-align: center; background: var(--surface);
+        border-bottom: 1px solid var(--border);
+      }
+      .section-label {
+        font-size: .68rem; letter-spacing: .28em; text-transform: uppercase;
+        color: var(--gold); font-weight: 700; margin-bottom: 1rem;
+      }
+      .section-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1.8rem, 4vw, 3rem);
+        font-weight: 700; color: var(--cream);
+        line-height: 1.2; margin-bottom: 1.5rem; max-width: 680px;
+      }
+      .section-body { font-size: 1rem; color: var(--muted); max-width: 560px; margin: 0 auto; }
 
-    .gold-divider {
-      display: flex; align-items: center; gap: 1rem;
-      margin: 3rem auto; justify-content: center;
-    }
-    .gd-line { width: 60px; height: 1px; background: linear-gradient(to right, transparent, var(--gold)); }
-    .gd-line.r { background: linear-gradient(to left, transparent, var(--gold)); }
-    .gd-note { color: var(--gold); font-size: 1.1rem; }
+      .gold-divider {
+        display: flex; align-items: center; gap: 1rem;
+        margin: 3rem auto; justify-content: center;
+      }
+      .gd-line { width: 60px; height: 1px; background: linear-gradient(to right, transparent, var(--gold)); }
+      .gd-line.r { background: linear-gradient(to left, transparent, var(--gold)); }
+      .gd-note { color: var(--gold); font-size: 1.1rem; }
 
-    /* ── CHIEF GUEST ── */
-    .chief-guest-section {
-      padding: 5rem 2rem;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-    }
-    .cg-inner { max-width: 620px; margin: 0 auto; text-align: center; }
-    .cg-eyebrow {
-      display: flex; align-items: center; justify-content: center; gap: .8rem;
-      font-size: .62rem; letter-spacing: .28em; text-transform: uppercase;
-      color: var(--gold); font-weight: 700; margin-bottom: 1.5rem;
-    }
-    .cg-eyebrow-line { width: 40px; height: 1px; background: rgba(201,146,42,0.35); }
-    .cg-avatar {
-      width: 200px; height: 200px; border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, var(--gold) 0%, var(--burgundy) 60%, #3a0a14 100%);
-      border: 1px solid rgba(201,146,42,0.3);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem; font-weight: 700; color: var(--cream);
-      margin: 0 auto 1.4rem;
-    }
-    .cg-name {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-      font-weight: 700; color: var(--gold-pale);
-      line-height: 1.15; margin-bottom: .35rem;
-    }
-    .cg-designation {
-      font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 1.6rem;
-    }
-    .cg-rule {
-      width: 50px; height: 1px;
-      background: linear-gradient(to right, transparent, var(--gold), transparent);
-      margin: 0 auto 1.6rem;
-    }
-    .cg-bio {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic; font-size: 1.1rem;
-      color: var(--muted); line-height: 1.85;
-      margin-bottom: 1.8rem;
-    }
-    .cg-footer-text {
-      font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
-      color: rgba(154,136,112,0.5);
-    }
+      /* ── CHIEF GUEST ── */
+      .chief-guest-section {
+        padding: 5rem 2rem;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+      }
+      .cg-inner { max-width: 620px; margin: 0 auto; text-align: center; }
+      .cg-eyebrow {
+        display: flex; align-items: center; justify-content: center; gap: .8rem;
+        font-size: .62rem; letter-spacing: .28em; text-transform: uppercase;
+        color: var(--gold); font-weight: 700; margin-bottom: 1.5rem;
+      }
+      .cg-eyebrow-line { width: 40px; height: 1px; background: rgba(201,146,42,0.35); }
+      .cg-avatar {
+        width: 200px; height: 200px; border-radius: 50%;
+        background: radial-gradient(circle at 35% 35%, var(--gold) 0%, var(--burgundy) 60%, #3a0a14 100%);
+        border: 1px solid rgba(201,146,42,0.3);
+        display: flex; align-items: center; justify-content: center;
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem; font-weight: 700; color: var(--cream);
+        margin: 0 auto 1.4rem;
+      }
+      .cg-name {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+        font-weight: 700; color: var(--gold-pale);
+        line-height: 1.15; margin-bottom: .35rem;
+      }
+      .cg-designation {
+        font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+        color: var(--muted); margin-bottom: 1.6rem;
+      }
+      .cg-rule {
+        width: 50px; height: 1px;
+        background: linear-gradient(to right, transparent, var(--gold), transparent);
+        margin: 0 auto 1.6rem;
+      }
+      .cg-bio {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic; font-size: 1.1rem;
+        color: var(--muted); line-height: 1.85;
+        margin-bottom: 1.8rem;
+      }
+      .cg-footer-text {
+        font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
+        color: rgba(154,136,112,0.5);
+      }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadein    { to { opacity: 1; } }
-    @keyframes fadein-up { to { opacity: 1; transform: translateY(0); } }
-    @keyframes shimmer   { 0%,100% { opacity:.3 } 50% { opacity:.7 } }
+      /* ── ANIMATIONS ── */
+      @keyframes fadein    { to { opacity: 1; } }
+      @keyframes fadein-up { to { opacity: 1; transform: translateY(0); } }
+      @keyframes shimmer   { 0%,100% { opacity:.3 } 50% { opacity:.7 } }
 
-    /* ── CHURCH & CHOIR ── */
-    .church-section {
-      padding: 7rem 2rem; background: var(--surface);
-      border-bottom: 1px solid var(--border);
-    }
-    .church-inner { max-width: 1000px; margin: 0 auto; }
-    .church-top {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
-      margin-bottom: 4rem; align-items: start;
-    }
-    .church-block .section-label { text-align: left; }
-    .church-body { font-size: .95rem; color: var(--muted); line-height: 1.8; margin-bottom: .9rem; }
+      /* ── CHURCH & CHOIR ── */
+      .church-section {
+        padding: 7rem 2rem; background: var(--surface);
+        border-bottom: 1px solid var(--border);
+      }
+      .church-inner { max-width: 1000px; margin: 0 auto; }
+      .church-top {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+        margin-bottom: 4rem; align-items: start;
+      }
+      .church-block .section-label { text-align: left; }
+      .church-body { font-size: .95rem; color: var(--muted); line-height: 1.8; margin-bottom: .9rem; }
 
-    .map-strip {
-      margin-top: 3rem; border: 1px solid var(--border);
-      border-radius: 10px; overflow: hidden; display: flex; flex-direction: column;
-    }
-    .map-strip-info {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.4rem 2rem; background: var(--bg);
-      border-bottom: 1px solid var(--border); gap: 1rem; flex-wrap: wrap;
-    }
-    .map-address { font-size: .9rem; color: var(--muted); line-height: 1.6; }
-    .map-link {
-      display: inline-flex; align-items: center; gap: .4rem;
-      font-size: .75rem; letter-spacing: .1em; text-transform: uppercase;
-      color: var(--gold); text-decoration: none; margin-top: .8rem; transition: color .2s;
-    }
-    .map-link:hover { color: var(--gold-light); }
+      .map-strip {
+        margin-top: 3rem; border: 1px solid var(--border);
+        border-radius: 10px; overflow: hidden; display: flex; flex-direction: column;
+      }
+      .map-strip-info {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 1.4rem 2rem; background: var(--bg);
+        border-bottom: 1px solid var(--border); gap: 1rem; flex-wrap: wrap;
+      }
+      .map-address { font-size: .9rem; color: var(--muted); line-height: 1.6; }
+      .map-link {
+        display: inline-flex; align-items: center; gap: .4rem;
+        font-size: .75rem; letter-spacing: .1em; text-transform: uppercase;
+        color: var(--gold); text-decoration: none; margin-top: .8rem; transition: color .2s;
+      }
+      .map-link:hover { color: var(--gold-light); }
 
-    @media (max-width: 768px) {
-      .church-top { grid-template-columns: 1fr; gap: 2.5rem; }
-    }
+      @media (max-width: 768px) {
+        .church-top { grid-template-columns: 1fr; gap: 2.5rem; }
+      }
 
-    /* ── FOOTER ── */
-    footer { background: #080604; padding: 4rem 2.5rem 2rem; border-top: 1px solid var(--border); }
-    .foot-inner {
-      max-width: 900px; margin: 0 auto;
-      display: flex; flex-wrap: wrap;
-      justify-content: space-between; align-items: flex-start; gap: 2.5rem;
-    }
-    .foot-brand {
-      font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700;
-      color: var(--gold-pale); display: block; margin-bottom: .3rem;
-    }
-    .foot-sub { font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
-    .foot-verse {
-      font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: .92rem;
-      color: var(--muted); max-width: 260px; text-align: center;
-    }
-    .foot-hr { border: none; border-top: 1px solid var(--border); max-width: 900px; margin: 2.5rem auto 1.25rem; }
-    .foot-copy { text-align: center; font-size: .7rem; color: rgba(255,255,255,0.18); letter-spacing: .06em; }
-    .foot-social { display: flex; gap: 1rem; margin-top: .8rem; flex-wrap: wrap; }
-    .social-btn {
-      display: inline-flex; align-items: center; gap: .45rem;
-      font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
-      color: var(--muted); text-decoration: none;
-      border: 1px solid var(--border); border-radius: 3px; padding: .4rem .9rem;
-      transition: color .2s, border-color .2s, background .2s;
-    }
-    .social-btn:hover { color: var(--gold-pale); border-color: var(--gold); background: rgba(201,146,42,0.08); }
-    .social-btn svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+      /* ── REGISTRATION SECTION ── */
+      .registration-section {
+        padding: 6rem 2rem;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        position: relative;
+        overflow: hidden;
+      }
+      .registration-section::before {
+        content: '';
+        position: absolute; inset: 0;
+        background:
+          radial-gradient(ellipse 70% 50% at 50% 0%, rgba(122,26,40,0.18) 0%, transparent 60%),
+          radial-gradient(ellipse 50% 40% at 50% 100%, rgba(201,146,42,0.05) 0%, transparent 60%);
+        pointer-events: none;
+      }
+      .registration-inner {
+        max-width: 860px;
+        margin: 0 auto;
+        position: relative;
+      }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 640px) {
-      header { padding: 0 1.25rem; }
-      header > nav { display: none; }
-      .hamburger { display: flex; }
-    }
-    body.nav-open { overflow: hidden; }
-  </style>
-</head>
-<body>
+      /* Card */
+      .reg-card {
+        border: 1px solid rgba(201,146,42,0.22);
+        border-radius: 14px;
+        overflow: hidden;
+        background: rgba(14,11,8,0.7);
+        box-shadow: 0 2px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(201,146,42,0.08);
+        max-width: 560px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .reg-card-rule {
+        height: 3px;
+        background: linear-gradient(90deg, transparent 0%, var(--burgundy) 20%, var(--gold) 50%, var(--burgundy) 80%, transparent 100%);
+      }
+      .reg-card-body {
+        padding: 3rem 2.5rem 2.8rem;
+        display: flex; flex-direction: column; align-items: center;
+      }
+      .reg-label {
+        font-size: .62rem; letter-spacing: .28em; text-transform: uppercase;
+        color: var(--gold); font-weight: 700; margin-bottom: 1rem;
+      }
+      .reg-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1.7rem, 3vw, 2.4rem);
+        font-weight: 700; color: var(--cream);
+        line-height: 1.15; margin-bottom: 1.2rem;
+      }
+      .reg-desc {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic; font-size: 1.05rem;
+        color: var(--muted); line-height: 1.8;
+        margin-bottom: 2rem; max-width: 420px;
+      }
+      .reg-btn {
+        display: inline-flex; align-items: center; gap: .55rem;
+        font-family: 'Lato', sans-serif;
+        font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+        color: var(--bg); text-decoration: none;
+        background: linear-gradient(135deg, var(--gold-light), var(--gold));
+        padding: .85rem 2rem; border-radius: 4px;
+        transition: transform .2s, box-shadow .2s, filter .2s;
+        box-shadow: 0 4px 20px rgba(201,146,42,0.25);
+      }
+      .reg-btn:hover { transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 8px 28px rgba(201,146,42,0.35); }
+      .reg-btn svg { flex-shrink: 0; transition: transform .2s; }
+      .reg-btn:hover svg { transform: translateX(3px); }
 
-  <!-- MOBILE NAV OVERLAY -->
-  <div class="mobile-nav-overlay" id="mobile-overlay" aria-hidden="true"></div>
+      @media (max-width: 600px) {
+        .reg-card-body { padding: 2rem 1.5rem 2.2rem; }
+        .reg-btn { width: 100%; justify-content: center; }
+      }
 
-  <!-- MOBILE NAV DRAWER -->
-  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
-    <div class="mobile-nav-header">
-      <span class="mobile-nav-logo">SELAH 2026</span>
-      <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">
-        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
-    </div>
-    <div class="mobile-nav-links">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#chief-guest">Chief Guest</a>
-      <a href="#church">Our Church</a>
-      <a href="team.html">Our Team</a>
-      <!-- <a href="Itinerary.html">Itinerary</a> -->
-    </div>
-    <div class="mobile-nav-footer">
-      <p>&ldquo;But let justice roll on like a river&hellip;&rdquo;<cite>Amos 5:24</cite></p>
-    </div>
-  </nav>
 
-  <!-- HEADER -->
-  <header id="site-header">
-    <a href="#home" class="logo">
-      <img src="assets/marthoma-logo.png" alt="Selah 2026" style="width:42px;height:42px;object-fit:contain;flex-shrink:0">
-      <div class="logo-text">
-        <span class="logo-name">SELAH 2026</span>
+      /* ── FOOTER ── */
+      footer { background: #080604; padding: 4rem 2.5rem 2rem; border-top: 1px solid var(--border); }
+      .foot-inner {
+        max-width: 900px; margin: 0 auto;
+        display: flex; flex-wrap: wrap;
+        justify-content: space-between; align-items: flex-start; gap: 2.5rem;
+      }
+      .foot-brand {
+        font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700;
+        color: var(--gold-pale); display: block; margin-bottom: .3rem;
+      }
+      .foot-sub { font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+      .foot-verse {
+        font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: .92rem;
+        color: var(--muted); max-width: 260px; text-align: center;
+      }
+      .foot-hr { border: none; border-top: 1px solid var(--border); max-width: 900px; margin: 2.5rem auto 1.25rem; }
+      .foot-copy { text-align: center; font-size: .7rem; color: rgba(255,255,255,0.18); letter-spacing: .06em; }
+      .foot-social { display: flex; gap: 1rem; margin-top: .8rem; flex-wrap: wrap; }
+      .social-btn {
+        display: inline-flex; align-items: center; gap: .45rem;
+        font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
+        color: var(--muted); text-decoration: none;
+        border: 1px solid var(--border); border-radius: 3px; padding: .4rem .9rem;
+        transition: color .2s, border-color .2s, background .2s;
+      }
+      .social-btn:hover { color: var(--gold-pale); border-color: var(--gold); background: rgba(201,146,42,0.08); }
+      .social-btn svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 640px) {
+        header { padding: 0 1.25rem; }
+        header > nav { display: none; }
+        .hamburger { display: flex; }
+        .form-frame-wrap iframe { height: 1050px; }
+      }
+      body.nav-open { overflow: hidden; }
+    </style>
+  </head>
+  <body>
+
+    <!-- MOBILE NAV OVERLAY -->
+    <div class="mobile-nav-overlay" id="mobile-overlay" aria-hidden="true"></div>
+
+    <!-- MOBILE NAV DRAWER -->
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+      <div class="mobile-nav-header">
+        <span class="mobile-nav-logo">SELAH 2026</span>
+        <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
       </div>
-    </a>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#chief-guest">Chief Guest</a>
-      <a href="#church">Our Church</a>
-      <a href="team.html">Our Team</a>
-      <!-- <a href="Itinerary.html">Itinerary</a> -->
+      <div class="mobile-nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#chief-guest">Chief Guest</a>
+        <a href="#church">Our Church</a>
+        <a href="team.html">Our Team</a>
+        <a href="#register">Register</a>
+      </div>
+      <div class="mobile-nav-footer">
+        <p>&ldquo;But let justice roll on like a river&hellip;&rdquo;<cite>Amos 5:24</cite></p>
+      </div>
     </nav>
-    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
-      <span></span><span></span><span></span>
-    </button>
-  </header>
 
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero-bg" aria-hidden="true"></div>
-    <div class="hero-rays" aria-hidden="true"></div>
-    <div class="ring ring-1" aria-hidden="true"></div>
-    <div class="ring ring-2" aria-hidden="true"></div>
-    <div class="ring ring-3" aria-hidden="true"></div>
-    <span class="note" aria-hidden="true">♩</span>
-    <span class="note" aria-hidden="true">♫</span>
-    <span class="note" aria-hidden="true">♪</span>
-    <span class="note" aria-hidden="true">♬</span>
-    <span class="note" aria-hidden="true">♩</span>
-    <span class="note" aria-hidden="true">♫</span>
+    <!-- HEADER -->
+    <header id="site-header">
+      <a href="#home" class="logo">
+        <img src="assets/marthoma-logo.png" alt="Selah 2026" style="width:42px;height:42px;object-fit:contain;flex-shrink:0">
+        <div class="logo-text">
+          <span class="logo-name">SELAH 2026</span>
+        </div>
+      </a>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#chief-guest">Chief Guest</a>
+        <a href="#church">Our Church</a>
+        <a href="team.html">Our Team</a>
+        <a href="#register">Register</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
 
-    <img src="assets/selah-icon.png" alt="Mar Thoma Church" style="width:280px;height:280px;object-fit:contain;margin-bottom:1.5rem;opacity:0;animation:fadein .8s .1s forwards;position:relative;">
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-rays" aria-hidden="true"></div>
+      <div class="ring ring-1" aria-hidden="true"></div>
+      <div class="ring ring-2" aria-hidden="true"></div>
+      <div class="ring ring-3" aria-hidden="true"></div>
+      <span class="note" aria-hidden="true">♩</span>
+      <span class="note" aria-hidden="true">♫</span>
+      <span class="note" aria-hidden="true">♪</span>
+      <span class="note" aria-hidden="true">♬</span>
+      <span class="note" aria-hidden="true">♩</span>
+      <span class="note" aria-hidden="true">♫</span>
 
-    <p class="hero-eyebrow">Choir Festival</p>
+      <img src="assets/selah-icon.png" alt="Mar Thoma Church" style="width:280px;height:280px;object-fit:contain;margin-bottom:1.5rem;opacity:0;animation:fadein .8s .1s forwards;position:relative;">
 
-    <h1 class="hero-title">
-      <span class="line l1">SELAH 2026</span>
-      <span class="line l2">A Prayer For Justice And Peace</span>
-    </h1>
+      <p class="hero-eyebrow">Choir Festival</p>
 
-    <p class="hero-date">18th April 2026 &bull; 6:30 PM &bull; Hyderabad St Thomas Mar Thoma Church</p>
+      <h1 class="hero-title">
+        <span class="line l1">SELAH 2026</span>
+        <span class="line l2">A Prayer For Justice And Peace</span>
+      </h1>
 
-    <div class="hero-verse" style="position:relative;">
-      <p>&ldquo;But let justice roll on like a river, righteousness like a never-failing stream.&rdquo;</p>
-      <cite>Amos 5:24</cite>
+      <p class="hero-date">18th April 2026 &bull; 6:30 PM &bull; Hyderabad St Thomas Mar Thoma Church</p>
+
+      <div class="hero-verse" style="position:relative;">
+        <p>&ldquo;But let justice roll on like a river, righteousness like a never-failing stream.&rdquo;</p>
+        <cite>Amos 5:24</cite>
+      </div>
+
+      <div class="scroll-cue" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- TICKER -->
+    <div class="ticker-wrap" aria-hidden="true">
+      <div class="ticker-track">
+        <span class="ticker-item">Worship Through Song <span class="ticker-sep">✦</span></span>
+        <span class="ticker-item">18th April 2026 <span class="ticker-sep">✦</span></span>
+        <span class="ticker-item">6:30 PM <span class="ticker-sep">✦</span></span>
+        <span class="ticker-item">Hyderabad St. Thomas Mar Thoma Church<span class="ticker-sep">✦</span></span>
+        <span class="ticker-item">Echoes Of Praise <span class="ticker-sep">✦</span></span>
+        <span class="ticker-item">Worship Through Song <span class="ticker-sep">✦</span></span>
+        <span class="ticker-item">18th April 2026 <span class="ticker-sep">✦</span></span>
+        <span class="ticker-item">6:30 PM <span class="ticker-sep">✦</span></span>
+        <span class="ticker-item">Hyderabad St. Thomas Mar Thoma Church<span class="ticker-sep">✦</span></span>
+        <span class="ticker-item">Echoes Of Praise <span class="ticker-sep">✦</span></span>
+      </div>
     </div>
 
-    <div class="scroll-cue" aria-hidden="true">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- TICKER -->
-  <div class="ticker-wrap" aria-hidden="true">
-    <div class="ticker-track">
-      <span class="ticker-item">Worship Through Song <span class="ticker-sep">✦</span></span>
-      <span class="ticker-item">18th April 2026 <span class="ticker-sep">✦</span></span>
-      <span class="ticker-item">6:30 PM <span class="ticker-sep">✦</span></span>
-      <span class="ticker-item">Hyderabad St. Thomas Mar Thoma Church<span class="ticker-sep">✦</span></span>
-      <span class="ticker-item">Echoes Of Praise <span class="ticker-sep">✦</span></span>
-      <span class="ticker-item">Worship Through Song <span class="ticker-sep">✦</span></span>
-      <span class="ticker-item">18th April 2026 <span class="ticker-sep">✦</span></span>
-      <span class="ticker-item">6:30 PM <span class="ticker-sep">✦</span></span>
-      <span class="ticker-item">Hyderabad St. Thomas Mar Thoma Church<span class="ticker-sep">✦</span></span>
-      <span class="ticker-item">Echoes Of Praise <span class="ticker-sep">✦</span></span>
-    </div>
-  </div>
-
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <p class="section-label">About the Festival</p>
-    <h2 class="section-title">A Celebration of Worship Across the Body of Christ</h2>
-    <p class="section-body">
-      Selah is a simple but powerful coming together of voices, taking a moment to pause, reflect, and pray for peace and justice in our world. Through heartfelt songs and shared worship, it's not just about music—it's about expressing what we carry in our hearts and being reminded that each of us can be a small part of bringing peace where it's needed most.
-    </p>
-    <div class="gold-divider">
-      <div class="gd-line"></div>
-      <span class="gd-note">♪</span>
-      <div class="gd-line r"></div>
-    </div>
-    <p class="section-body" style="margin-top:0">
-      Hyderabad St. Thomas Mar Thoma Church, Hyderabad is proud to host this festival for the very first time
-      on <strong style="color:var(--gold-pale)">18th April 2026</strong> &mdash; opening its doors
-      to choirs from across the region to gather, celebrate, and lift their voices together for His glory.
-    </p>
-  </section>
-
-  <!-- CHIEF GUEST -->
-  <section class="chief-guest-section" id="chief-guest">
-    <div class="cg-inner">
-      <p class="cg-eyebrow">
-        <span class="cg-eyebrow-line"></span>
-        Chief Guest
-        <span class="cg-eyebrow-line"></span>
+    <!-- ABOUT -->
+    <section class="about" id="about">
+      <p class="section-label">About the Festival</p>
+      <h2 class="section-title">A Celebration of Worship Across the Body of Christ</h2>
+      <p class="section-body">
+        Selah is a simple but powerful coming together of voices, taking a moment to pause, reflect, and pray for peace and justice in our world. Through heartfelt songs and shared worship, it's not just about music—it's about expressing what we carry in our hearts and being reminded that each of us can be a small part of bringing peace where it's needed most.
       </p>
-      <div class="cg-avatar" style="overflow:hidden; background:none; border: 2px solid rgba(201,146,42,0.4);">
-        <img src="assets/rovin_achen.png" alt="Rev. Rovin Varughese John" 
-             style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+      <div class="gold-divider">
+        <div class="gd-line"></div>
+        <span class="gd-note">♪</span>
+        <div class="gd-line r"></div>
       </div>
-      <h3 class="cg-name">Rev. Rovin Varughese John</h3>
-      <p class="cg-designation">Vicar, Gulbarga Mar Thoma Congregation, Mar Thoma Church and Youth Center, Karnataka</p>
-      <div class="cg-rule"></div>
-      <p class="cg-bio">
-        Rev. Rovin Varughese John serves as Youth Chaplain at the Gulburga Mar Thoma Congregation, where he leads the youth centre and ministers to the student community.
-        Rooted in faith and music from childhood, he grew up singing in the Ebenezer Mar Thoma Church choir in Dombivili, Maharashtra — eventually leading it at a young age before departing for seminary. He credits the choir as the foundation of everything he knows and feels about music.
-        Achen has a deep love for Western Classical music — orchestras, symphonies, choral arrangements, and a cappella — alongside a great admiration for Indian ensembles like Kottayam Mixed Voices and the Shillong Chamber Choir. Heather Sorensen, Victor Johnson, and Pepper Chopin rank among his favourite composers. 
-        His dream? To one day be part of a Broadway-style musical.
-      </p> 
-    </div>
-  </section>
+      <p class="section-body" style="margin-top:0">
+        Hyderabad St. Thomas Mar Thoma Church, Hyderabad is proud to host this festival for the very first time
+        on <strong style="color:var(--gold-pale)">18th April 2026</strong> &mdash; opening its doors
+        to choirs from across the region to gather, celebrate, and lift their voices together for His glory.
+      </p>
+    </section>
 
-  <!-- CHURCH & CHOIR -->
-  <section class="church-section" id="church">
-    <div class="church-inner">
-      <div class="church-top">
-        <div class="church-block">
-          <p class="section-label">Our Church</p>
-          <p class="church-body">
-            Our story began around 1946 when Mar Thoma immigrants formed a Malayalee congregation
-            in Hyderabad, worshipping at St. Andrews Church, Secunderabad. As the community grew,
-            members around BHEL and Ramachandrapuram sought a worship centre closer to home &mdash;
-            and through God&rsquo;s providence, land was allotted at HUDA Colony, Chandanagar.
-          </p>
-          <p class="church-body">
-            The foundation stone was laid on <strong style="color:var(--gold-pale)">2nd October 1986</strong>
-            and the church dedicated on <strong style="color:var(--gold-pale)">18th April 1987</strong>.
-            In 2011 the parish was renamed <em>Hyderabad St. Thomas Mar Thoma Church</em>, and in 2013
-            celebrated its Silver Jubilee by taking up home-for-homeless and marriage-aid projects.
-            We are grateful to God for His faithfulness through every season.
-          </p>
+    <!-- CHIEF GUEST -->
+    <section class="chief-guest-section" id="chief-guest">
+      <div class="cg-inner">
+        <p class="cg-eyebrow">
+          <span class="cg-eyebrow-line"></span>
+          Chief Guest
+          <span class="cg-eyebrow-line"></span>
+        </p>
+        <div class="cg-avatar" style="overflow:hidden; background:none; border: 2px solid rgba(201,146,42,0.4);">
+          <img src="assets/rovin_achen.png" alt="Rev. Rovin Varughese John" 
+              style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
         </div>
-        <div class="church-block">
-          <p class="section-label">Our Choir</p>
-          <p class="church-body">
-            The Hyderabad St. Thomas Chorale has been the heartbeat of worship at our parish for over thirty years.
-            Comprising singers of all ages &mdash; from youth to seasoned voices &mdash; the choir leads the
-            congregation in praise every Sunday and on special occasions throughout the liturgical year.
-            The choir is led by Choir Master Aaron Koshy Thomas, with Fen Ninan serving as the Assistant Choir Master.
-          </p>
-        </div>
+        <h3 class="cg-name">Rev. Rovin Varughese John</h3>
+        <p class="cg-designation">Vicar, Gulbarga Mar Thoma Congregation, Mar Thoma Church and Youth Center, Karnataka</p>
+        <div class="cg-rule"></div>
+        <p class="cg-bio">
+          Rev. Rovin Varughese John serves as Youth Chaplain at the Gulburga Mar Thoma Congregation, where he leads the youth centre and ministers to the student community.
+          Rooted in faith and music from childhood, he grew up singing in the Ebenezer Mar Thoma Church choir in Dombivili, Maharashtra — eventually leading it at a young age before departing for seminary. He credits the choir as the foundation of everything he knows and feels about music.
+          Achen has a deep love for Western Classical music — orchestras, symphonies, choral arrangements, and a cappella — alongside a great admiration for Indian ensembles like Kottayam Mixed Voices and the Shillong Chamber Choir. Heather Sorensen, Victor Johnson, and Pepper Chopin rank among his favourite composers. 
+          His dream? To one day be part of a Broadway-style musical.
+        </p> 
       </div>
+    </section>
 
-      <!-- Location card -->
-      <div class="map-strip" id="venue">
-        <div class="map-strip-info">
-          <div style="display:flex;align-items:center;gap:1.2rem">
-            <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--burgundy),var(--gold));display:flex;align-items:center;justify-content:center;flex-shrink:0">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="var(--cream)"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            </div>
-            <div>
-              <p class="section-label" style="text-align:left;margin-bottom:.25rem">Venue</p>
-              <p class="map-address">Hyderabad St. Thomas Mar Thoma Church<br>Hyderabad, Telangana, India</p>
-            </div>
+    <!-- CHURCH & CHOIR -->
+    <section class="church-section" id="church">
+      <div class="church-inner">
+        <div class="church-top">
+          <div class="church-block">
+            <p class="section-label">Our Church</p>
+            <p class="church-body">
+              Our story began around 1946 when Mar Thoma immigrants formed a Malayalee congregation
+              in Hyderabad, worshipping at St. Andrews Church, Secunderabad. As the community grew,
+              members around BHEL and Ramachandrapuram sought a worship centre closer to home &mdash;
+              and through God&rsquo;s providence, land was allotted at HUDA Colony, Chandanagar.
+            </p>
+            <p class="church-body">
+              The foundation stone was laid on <strong style="color:var(--gold-pale)">2nd October 1986</strong>
+              and the church dedicated on <strong style="color:var(--gold-pale)">18th April 1987</strong>.
+              In 2011 the parish was renamed <em>Hyderabad St. Thomas Mar Thoma Church</em>, and in 2013
+              celebrated its Silver Jubilee by taking up home-for-homeless and marriage-aid projects.
+              We are grateful to God for His faithfulness through every season.
+            </p>
           </div>
-          <a href="https://maps.app.goo.gl/bgcKT4KgaaKWuKAx5" target="_blank" rel="noopener" class="btn-ghost" style="align-self:center;font-size:.72rem;padding:.65rem 1.5rem;white-space:nowrap">
-            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="margin-right:.4rem;vertical-align:middle"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            Get Directions
-          </a>
+          <div class="church-block">
+            <p class="section-label">Our Choir</p>
+            <p class="church-body">
+              The Hyderabad St. Thomas Chorale has been the heartbeat of worship at our parish for over thirty years.
+              Comprising singers of all ages &mdash; from youth to seasoned voices &mdash; the choir leads the
+              congregation in praise every Sunday and on special occasions throughout the liturgical year.
+              The choir is led by Choir Master Aaron Koshy Thomas, with Fen Ninan serving as the Assistant Choir Master.
+            </p>
+          </div>
+        </div>
+
+        <!-- Location card -->
+        <div class="map-strip" id="venue">
+          <div class="map-strip-info">
+            <div style="display:flex;align-items:center;gap:1.2rem">
+              <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--burgundy),var(--gold));display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="var(--cream)"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              </div>
+              <div>
+                <p class="section-label" style="text-align:left;margin-bottom:.25rem">Venue</p>
+                <p class="map-address">Hyderabad St. Thomas Mar Thoma Church<br>Hyderabad, Telangana, India</p>
+              </div>
+            </div>
+            <a href="https://maps.app.goo.gl/bgcKT4KgaaKWuKAx5" target="_blank" rel="noopener" class="btn-ghost" style="align-self:center;font-size:.72rem;padding:.65rem 1.5rem;white-space:nowrap">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="margin-right:.4rem;vertical-align:middle"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              Get Directions
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
-  <footer id="contact">
-    <div class="foot-inner">
-      <div>
-        <span class="foot-brand">Selah 2026</span>
-        <span class="foot-sub">Choir Festival &bull; 2026</span>
-        <div class="foot-social" style="margin-top:.9rem">
-          <span class="social-btn" style="cursor:default" aria-label="Unique visitors">
-            <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-            <span id="visit-count">
-              <span style="display:inline-block;width:28px;height:8px;background:rgba(255,255,255,0.15);border-radius:3px;vertical-align:middle;animation:shimmer 1.4s infinite"></span>
+    <!-- REGISTRATION SECTION -->
+    <section class="registration-section" id="register">
+      <div class="registration-inner">
+
+        <div class="reg-card">
+          <div class="reg-card-rule"></div>
+          <div class="reg-card-body">
+            <p class="reg-label">18th April 2026</p>
+            <h2 class="reg-title">Come, Be Part of Something Sacred</h2>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLScPoJYRDKX5coaAWUi0PHo-wj5qcvYqvHxTmQP1KIq_WdcJCQ/viewform"
+              target="_blank"
+              rel="noopener"
+              class="reg-btn"
+            >
+              Register to Attend
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+      <div class="foot-inner">
+        <div>
+          <span class="foot-brand">Selah 2026</span>
+          <span class="foot-sub">Choir Festival &bull; 2026</span>
+          <div class="foot-social" style="margin-top:.9rem">
+            <span class="social-btn" style="cursor:default" aria-label="Unique visitors">
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              <span id="visit-count">
+                <span style="display:inline-block;width:28px;height:8px;background:rgba(255,255,255,0.15);border-radius:3px;vertical-align:middle;animation:shimmer 1.4s infinite"></span>
+              </span>
             </span>
-          </span>
-          <a href="https://www.instagram.com/stthomashydchorale/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            Instagram
-          </a>
-          <a href="https://www.youtube.com/@sthomashydchorale" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube">
-            <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
-            YouTube
-          </a>
+            <a href="https://www.instagram.com/stthomashydchorale/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              Instagram
+            </a>
+            <a href="https://www.youtube.com/@sthomashydchorale" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+              YouTube
+            </a>
+          </div>
+        </div>
+
+        <p class="foot-verse">&ldquo;But let justice roll on like a river, righteousness like a never-failing stream.&rdquo; &mdash; Amos 5:24</p>
+
+        <div>
+          <div style="margin-bottom:1.5rem">
+            <p class="section-label" style="text-align:left;margin-bottom:.5rem">Venue</p>
+            <p style="font-size:.82rem;color:var(--muted);line-height:1.7">
+              Hyderabad St. Thomas Mar Thoma Church<br>Hyderabad, Telangana, India
+            </p>
+            <a href="https://maps.app.goo.gl/bgcKT4KgaaKWuKAx5" target="_blank" rel="noopener" class="map-link" style="margin-top:.5rem">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              Get Directions
+            </a>
+          </div>
         </div>
       </div>
+      <hr class="foot-hr">
+      <p class="foot-copy">&copy; 2026 Selah Choir Festival &bull; Hyderabad St. Thomas Mar Thoma Church &mdash; Organised with love, for His glory</p>
+    </footer>
 
-      <p class="foot-verse">&ldquo;But let justice roll on like a river, righteousness like a never-failing stream.&rdquo; &mdash; Amos 5:24</p>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
 
-      <div>
-        <div style="margin-bottom:1.5rem">
-          <p class="section-label" style="text-align:left;margin-bottom:.5rem">Venue</p>
-          <p style="font-size:.82rem;color:var(--muted);line-height:1.7">
-            Hyderabad St. Thomas Mar Thoma Church<br>Hyderabad, Telangana, India
-          </p>
-          <a href="https://maps.app.goo.gl/bgcKT4KgaaKWuKAx5" target="_blank" rel="noopener" class="map-link" style="margin-top:.5rem">
-            <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            Get Directions
-          </a>
-        </div>
-      </div>
-    </div>
-    <hr class="foot-hr">
-    <p class="foot-copy">&copy; 2026 Selah Choir Festival &bull; Hyderabad St. Thomas Mar Thoma Church &mdash; Organised with love, for His glory</p>
-  </footer>
+        const header      = document.getElementById('site-header');
+        const hamburger   = document.getElementById('hamburger');
+        const mobileNav   = document.getElementById('mobile-nav');
+        const overlay     = document.getElementById('mobile-overlay');
+        const closeBtn    = document.getElementById('mobile-nav-close');
+        const mobileLinks = mobileNav.querySelectorAll('a');
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
+        window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 60));
 
-      const header      = document.getElementById('site-header');
-      const hamburger   = document.getElementById('hamburger');
-      const mobileNav   = document.getElementById('mobile-nav');
-      const overlay     = document.getElementById('mobile-overlay');
-      const closeBtn    = document.getElementById('mobile-nav-close');
-      const mobileLinks = mobileNav.querySelectorAll('a');
-
-      window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 60));
-
-      function openNav() {
-        hamburger.classList.add('open');
-        hamburger.setAttribute('aria-expanded', 'true');
-        mobileNav.classList.add('open');
-        overlay.style.display = 'block';
-        requestAnimationFrame(() => overlay.classList.add('open'));
-        document.body.classList.add('nav-open');
-      }
-      function closeNav() {
-        hamburger.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        mobileNav.classList.remove('open');
-        overlay.classList.remove('open');
-        document.body.classList.remove('nav-open');
-        overlay.addEventListener('transitionend', () => { overlay.style.display = ''; }, { once: true });
-      }
-
-      hamburger.addEventListener('click', () => hamburger.classList.contains('open') ? closeNav() : openNav());
-      closeBtn.addEventListener('click', closeNav);
-      overlay.addEventListener('click', closeNav);
-      mobileLinks.forEach(link => link.addEventListener('click', closeNav));
-      document.addEventListener('keydown', e => {
-        if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeNav();
-      });
-
-      document.querySelectorAll('a[href^="#"]').forEach(a => {
-        a.addEventListener('click', e => {
-          const t = document.querySelector(a.getAttribute('href'));
-          if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-        });
-      });
-
-      (async () => {
-        try {
-          const res = await fetch("https://selah2026.stthomashybdchoir.workers.dev/");
-          const data = await res.json();
-          const el = document.getElementById("visit-count");
-          if (el && data.visits !== undefined) {
-            el.textContent = Number(data.visits).toLocaleString() + " unique visitors";
-          }
-        } catch (e) {
-          const el = document.getElementById("visit-count");
-          if (el) el.textContent = "";
+        function openNav() {
+          hamburger.classList.add('open');
+          hamburger.setAttribute('aria-expanded', 'true');
+          mobileNav.classList.add('open');
+          overlay.style.display = 'block';
+          requestAnimationFrame(() => overlay.classList.add('open'));
+          document.body.classList.add('nav-open');
         }
-      })();
+        function closeNav() {
+          hamburger.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+          mobileNav.classList.remove('open');
+          overlay.classList.remove('open');
+          document.body.classList.remove('nav-open');
+          overlay.addEventListener('transitionend', () => { overlay.style.display = ''; }, { once: true });
+        }
 
-    });
-  </script>
+        hamburger.addEventListener('click', () => hamburger.classList.contains('open') ? closeNav() : openNav());
+        closeBtn.addEventListener('click', closeNav);
+        overlay.addEventListener('click', closeNav);
+        mobileLinks.forEach(link => link.addEventListener('click', closeNav));
+        document.addEventListener('keydown', e => {
+          if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeNav();
+        });
 
-</body>
-</html>
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+          a.addEventListener('click', e => {
+            const t = document.querySelector(a.getAttribute('href'));
+            if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+          });
+        });
+
+        (async () => {
+          try {
+            const res = await fetch("https://selah2026.stthomashybdchoir.workers.dev/");
+            const data = await res.json();
+            const el = document.getElementById("visit-count");
+            if (el && data.visits !== undefined) {
+              el.textContent = Number(data.visits).toLocaleString() + " unique visitors";
+            }
+          } catch (e) {
+            const el = document.getElementById("visit-count");
+            if (el) el.textContent = "";
+          }
+        })();
+
+      });
+    </script>
+
+  </body>
+  </html>
