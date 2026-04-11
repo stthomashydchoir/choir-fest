@@ -1,48 +1,34 @@
-# 🎶 Selah: St. Thomas Choir Fest
+# SELAH 2026 — A Prayer For Justice And Peace
 
-Welcome to the **St. Thomas Choir Fest**, a celebration of worship, harmony, and fellowship through music.  
-This fest brings together choirs, musicians, and believers to glorify God through song and community.
+> *"But let justice roll on like a river, righteousness like a never-failing stream."* — Amos 5:24
 
----
+A choir festival hosted by **Hyderabad St. Thomas Mar Thoma Church**.
+📅 **18th April 2026, 6:30 PM** | Hyderabad, Telangana, India
 
-## ✨ About the Fest
-
-The **St. Thomas Choir Fest** is organized by **St. Thomas Mar Thoma Church, Chandanagar, Hyderabad**.
-
-The event showcases the beauty of choral worship through:
-
-- 🎤 Choir performances  
-- 🎶 Gospel music  
-- 🤝 Fellowship among church communities  
-- 🎸 Youth musical participation  
-- 🙏 Collaborative worship sessions  
-
-Our goal is to **unite voices in praise and strengthen fellowship through music.**
-
-> *"Let everything that has breath praise the Lord." – Psalm 150:6*
-
-
-## 📅 Event Details
-
-| Detail | Information |
-|------|-------------|
-| **Event Name** | St. Thomas Choir Fest |
-| **Host** | St. Thomas Mar Thoma Church |
-| **Location** | Chandanagar, Hyderabad |
-| **Date** | *(Add event date)* |
-| **Time** | *(Add event time)* |
+🔗 [Website](https://stthomashydchoir.github.io/choir-fest/) • [Register](https://docs.google.com/forms/d/e/1FAIpQLScPoJYRDKX5coaAWUi0PHo-wj5qcvYqvHxTmQP1KIq_WdcJCQ/viewform) • [Get Directions](https://maps.app.goo.gl/bgcKT4KgaaKWuKAx5) • [Instagram](https://www.instagram.com/stthomashydchorale/) • [YouTube](https://www.youtube.com/@sthomashydchorale)
 
 ---
 
-## 📱 Follow Us
+## Team
 
-Stay connected for announcements, rehearsals, and highlights.
+**Programme Convenors**
 
-- **Instagram:** *(add handle)*  
-- **YouTube:** *(add channel)*  
+| Name | Role | Contact |
+|------|------|---------|
+| Rev. Abraham P Varkey | Choir President | 9876543210 |
+| Aaron K Thomas | Programme Convenor | 9495945756 |
+| Joel Varghese Jacob | Programme Convenor | 8075964621 |
+| Fen Ninan | Programme Convenor | 9703218453 |
+
+**Organising Committee**
+
+| Name | Role |
+|------|------|
+| Mercy Philip | Public Relations |
+| Alexis Jacob, Aaron Abraham | Logistics |
+| Shorne Mathew, Feaba Alex, Adersh George Raju, Suma Fen | Finance |
+| Thrupthi Ann John, Aaron Shaji, Joel Mathew | Publicity & Media |
 
 ---
 
-## 📂 Repository Contents
-
-This repository contains materials related to the fest:
+*© 2026 Selah Choir Festival • Organised with love, for His glory*
