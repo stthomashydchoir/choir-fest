@@ -1,765 +1,756 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Programme — Selah 2026</title>
-  <link rel="icon" type="image/png" href="assets/selah-icon.png">
-  <link rel="apple-touch-icon" href="assets/selah-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg:         #0e0b08;
-      --surface:    #171209;
-      --gold:       #c9922a;
-      --gold-light: #e8b455;
-      --gold-pale:  #f5dfa0;
-      --burgundy:   #7a1a28;
-      --burg-light: #a8243a;
-      --cream:      #f5ede0;
-      --text:       #f0e8d8;
-      --muted:      #9a8870;
-      --border:     #2a2018;
-    }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Selah 2026 — Programme Booklet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0e0b08;
+  --surface: #171209;
+  --surface2: #1e1710;
+  --gold: #c9922a;
+  --gold-light: #e8b455;
+  --gold-pale: #f5dfa0;
+  --burgundy: #7a1a28;
+  --cream: #f5ede0;
+  --text: #f0e8d8;
+  --muted: #9a8870;
+  --border: #2a2018;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+.progress-bar {
+  position: fixed; top: 0; left: 0; height: 2px;
+  background: linear-gradient(to right, var(--burgundy), var(--gold));
+  z-index: 999; width: 0%; transition: width .1s;
+}
+.layout { display: flex; min-height: 100vh; }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Lato', sans-serif;
-      font-weight: 300;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
+/* SIDEBAR */
+.sidebar {
+  width: 258px; flex-shrink: 0;
+  position: sticky; top: 0; height: 100vh; overflow-y: auto;
+  background: var(--surface); border-right: 1px solid var(--border);
+  padding: 0 0 2rem; display: flex; flex-direction: column;
+}
+.sidebar-header {
+  padding: 1.4rem 1.5rem; border-bottom: 1px solid var(--border); margin-bottom: .5rem;
+}
+.sidebar-title {
+  font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700;
+  color: var(--gold-pale); letter-spacing: .06em; display: block;
+}
+.sidebar-sub {
+  font-size: .58rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--gold); margin-top: .2rem; display: block;
+}
+.nav-head {
+  font-size: .58rem; letter-spacing: .24em; text-transform: uppercase;
+  color: var(--gold); padding: 1rem 1.5rem .3rem; font-weight: 700;
+}
+.nav-item {
+  display: flex; align-items: flex-start; gap: .7rem;
+  padding: .5rem 1.5rem; cursor: pointer; border: none; background: none;
+  width: 100%; text-align: left; color: var(--muted);
+  font-family: 'Lato', sans-serif; font-size: .78rem; letter-spacing: .02em;
+  border-left: 2px solid transparent; line-height: 1.4;
+  transition: color .2s, background .2s, border-color .2s;
+}
+.nav-item:hover { color: var(--gold-pale); background: rgba(201,146,42,0.06); }
+.nav-item.active { color: var(--gold-pale); border-left-color: var(--gold); background: rgba(201,146,42,0.08); }
+.nav-num { font-size: .58rem; letter-spacing: .1em; font-weight: 700; color: var(--gold); opacity: .7; flex-shrink: 0; min-width: 16px; margin-top: .15rem; }
 
-    /* ── HEADER ── */
-    header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 600;
-      height: 68px;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 3rem;
-      background: rgba(14,11,8,0.88);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(201,146,42,0.18);
-      transition: height .3s, background .3s;
-    }
-    header.scrolled { height: 56px; background: rgba(14,11,8,0.97); }
+/* MAIN */
+.main { flex: 1; min-width: 0; }
 
-    .logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
-    .logo-text { line-height: 1.15; }
-    .logo-name {
-      display: block;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem; font-weight: 700;
-      color: var(--gold-pale); letter-spacing: .04em;
-    }
-    .logo-sub {
-      display: block; font-size: .58rem;
-      letter-spacing: .22em; text-transform: uppercase;
-      color: var(--gold);
-    }
+/* SECTIONS */
+.prog-section { padding: 4.5rem 3.5rem; border-bottom: 1px solid var(--border); }
+.prog-section:last-of-type { border-bottom: none; }
+.prog-section.hl {
+  background: linear-gradient(135deg, rgba(122,26,40,0.15) 0%, rgba(201,146,42,0.04) 100%);
+  border-left: 3px solid var(--gold);
+}
 
-    header > nav { display: flex; align-items: center; gap: .1rem; }
-    header > nav a {
-      font-size: .8rem; letter-spacing: .05em;
-      color: var(--muted); text-decoration: none;
-      padding: .4rem .85rem; border-radius: 3px;
-      transition: color .2s, background .2s;
-    }
-    header > nav a:hover, header > nav a.active { color: var(--gold-pale); background: rgba(201,146,42,0.1); }
-    header > nav a.active { color: var(--gold); }
+.event-tag {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-size: .6rem; letter-spacing: .24em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .8rem; font-weight: 700;
+}
+.event-tag::before { content:''; display:inline-block; width:18px; height:1px; background:var(--gold); opacity:.6; }
 
-    /* ── HAMBURGER ── */
-    .hamburger {
-      display: none;
-      flex-direction: column; justify-content: center; align-items: center;
-      gap: 5px; width: 40px; height: 40px;
-      background: none; border: none; cursor: pointer;
-      padding: 4px; border-radius: 4px;
-      transition: background .2s; z-index: 700; flex-shrink: 0;
-    }
-    .hamburger:hover { background: rgba(201,146,42,0.1); }
-    .hamburger span {
-      display: block; width: 22px; height: 2px;
-      background: var(--gold-pale); border-radius: 2px;
-      transition: transform .3s ease, opacity .3s ease, width .3s ease;
-      transform-origin: center;
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  font-weight: 900; color: var(--gold-pale); line-height: 1.1; margin-bottom: .5rem;
+}
 
-    .mobile-nav-overlay {
-      display: none; position: fixed; inset: 0; z-index: 590;
-      background: rgba(0,0,0,0.55);
-      backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
-      opacity: 0; transition: opacity .3s ease; pointer-events: none;
-    }
-    .mobile-nav-overlay.open { opacity: 1; pointer-events: auto; }
+.choir-info {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: .5rem 2rem; margin: 1rem 0 1.8rem;
+  padding: 1rem 1.4rem;
+  background: var(--surface2); border: 1px solid var(--border); border-radius: 8px;
+}
+.ci-label { font-size: .56rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: .1rem; }
+.ci-val { font-size: .85rem; color: var(--cream); }
 
-    .mobile-nav {
-      position: fixed; top: 0; right: 0;
-      width: min(300px, 85vw); height: 100dvh; z-index: 650;
-      background: #110e0a; border-left: 1px solid rgba(201,146,42,0.2);
-      display: flex; flex-direction: column; padding: 0;
-      transform: translateX(100%);
-      transition: transform .35s cubic-bezier(.4,0,.2,1); overflow-y: auto;
-    }
-    .mobile-nav.open { transform: translateX(0); }
+.chips { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: 1.5rem; }
+.chip { font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 100px; padding: .22rem .75rem; }
+.chip.g { color: var(--gold); border-color: rgba(201,146,42,0.3); background: rgba(201,146,42,0.06); }
 
-    .mobile-nav-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 1.5rem;
-      border-bottom: 1px solid rgba(201,146,42,0.12); min-height: 68px;
-    }
-    .mobile-nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem; font-weight: 700;
-      color: var(--gold-pale); letter-spacing: .04em;
-    }
-    .mobile-nav-close {
-      width: 36px; height: 36px; background: none; border: none; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--muted); border-radius: 4px; transition: color .2s, background .2s;
-    }
-    .mobile-nav-close:hover { color: var(--gold-pale); background: rgba(201,146,42,0.1); }
-    .mobile-nav-close svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+/* SONGS GRID */
+.songs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.2rem; }
 
-    .mobile-nav-links { display: flex; flex-direction: column; padding: 1.5rem 0; flex: 1; }
-    .mobile-nav-links a {
-      font-size: .9rem; letter-spacing: .06em; color: var(--muted); text-decoration: none;
-      padding: .9rem 1.8rem; border-bottom: 1px solid rgba(255,255,255,0.04);
-      transition: color .2s, background .2s, padding-left .2s;
-      display: flex; align-items: center; gap: .6rem;
-    }
-    .mobile-nav-links a::before {
-      content: ''; display: block; width: 4px; height: 4px;
-      border-radius: 50%; background: var(--gold); opacity: 0;
-      flex-shrink: 0; transition: opacity .2s;
-    }
-    .mobile-nav-links a:hover,
-    .mobile-nav-links a.active { color: var(--gold-pale); background: rgba(201,146,42,0.07); padding-left: 2.2rem; }
-    .mobile-nav-links a:hover::before,
-    .mobile-nav-links a.active::before { opacity: 1; }
+/* SONG CARD */
+.song-card {
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 10px; overflow: hidden; display: flex; flex-direction: column;
+  transition: border-color .25s;
+}
+.song-card:hover { border-color: rgba(201,146,42,0.4); }
+.sc-header { padding: 1rem 1.2rem .75rem; display: flex; align-items: flex-start; justify-content: space-between; gap: .6rem; }
+.sc-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--cream); line-height: 1.3; }
+.lang-badge {
+  font-size: .55rem; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); font-weight: 700;
+  background: rgba(201,146,42,0.1); border: 1px solid rgba(201,146,42,0.25); border-radius: 100px;
+  padding: .18rem .65rem; flex-shrink: 0; margin-top: .1rem; white-space: nowrap;
+}
+.sc-meta { padding: 0 1.2rem .75rem; font-size: .7rem; color: var(--muted); line-height: 1.5; border-bottom: 1px solid var(--border); }
+.sc-meta em { color: var(--gold-pale); font-style: normal; }
 
-    .mobile-nav-footer { padding: 1.5rem 1.8rem; border-top: 1px solid rgba(201,146,42,0.1); }
-    .mobile-nav-footer p {
-      font-family: 'Cormorant Garamond', serif; font-style: italic;
-      font-size: .82rem; color: rgba(154,136,112,0.6); line-height: 1.6;
-    }
-    .mobile-nav-footer cite {
-      font-style: normal; font-family: 'Lato', sans-serif;
-      font-size: .62rem; letter-spacing: .15em; text-transform: uppercase;
-      color: var(--gold); opacity: .7; display: block; margin-top: .3rem;
-    }
+/* LYRICS TOGGLE */
+.lyrics-toggle {
+  display: flex; align-items: center; gap: .55rem; width: 100%; padding: .7rem 1.2rem;
+  background: none; border: none; cursor: pointer; color: var(--gold);
+  font-family: 'Lato', sans-serif; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700;
+  transition: background .2s; text-align: left;
+}
+.lyrics-toggle:hover { background: rgba(201,146,42,0.07); }
+.lt-arrow { width: 14px; height: 14px; flex-shrink: 0; transition: transform .3s; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.lyrics-toggle.open .lt-arrow { transform: rotate(180deg); }
+.lt-label { pointer-events: none; }
 
-    /* ── PAGE HERO ── */
-    .page-hero {
-      min-height: 38vh;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center; padding: 9rem 2rem 5rem;
-      position: relative; overflow: hidden;
-    }
-    .page-hero-bg {
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 70% 60% at 50% 0%, rgba(122,26,40,0.4) 0%, transparent 60%),
-        radial-gradient(ellipse 100% 80% at 50% 0%, rgba(201,146,42,0.1) 0%, transparent 55%),
-        var(--bg);
-      pointer-events: none;
-    }
-    .page-hero-eyebrow {
-      display: inline-flex; align-items: center; gap: .6rem;
-      font-size: .68rem; letter-spacing: .28em; text-transform: uppercase;
-      color: var(--gold); padding: .35rem 1.4rem;
-      border: 1px solid rgba(201,146,42,0.35); border-radius: 100px;
-      margin-bottom: 1.4rem; position: relative;
-      opacity: 0; animation: fadein .8s .2s forwards;
-    }
-    .page-hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 6vw, 4.5rem);
-      font-weight: 900; line-height: 1.1; letter-spacing: .02em;
-      color: var(--gold-pale); position: relative;
-      text-shadow: 0 0 60px rgba(201,146,42,0.25), 0 2px 4px rgba(0,0,0,0.5);
-      opacity: 0; animation: fadein-up .9s .4s forwards;
-    }
-    .page-hero-sub {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic; font-size: 1.1rem;
-      color: var(--muted); margin-top: 1rem; position: relative;
-      opacity: 0; animation: fadein .9s .65s forwards;
-    }
+/* LYRICS PANEL */
+.lyrics-panel { display: none; padding: 1.2rem; border-top: 1px solid var(--border); background: rgba(0,0,0,0.25); flex: 1; }
+.lyrics-panel.open { display: block; }
+.stanza { margin-bottom: 1.2rem; }
+.stanza:last-child { margin-bottom: 0; }
+.sl { font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: .35rem; display: block; }
 
-    /* ── PROGRAMME ── */
-    .programme-section {
-      padding: 5rem 2rem 7rem;
-      max-width: 780px;
-      margin: 0 auto;
-    }
+.st {
+  font-family: 'Lato', sans-serif; font-size: 0.92rem; font-weight: 400;
+  color: var(--text); line-height: 1.8; white-space: pre-wrap; font-style: normal;
+}
+.st.ml { font-size: 0.95rem; line-height: 1.9; }
+.st.tr { font-size: .8rem; color: var(--muted); line-height: 1.6; margin-top: .4rem; font-style: italic; }
 
-    .date-badge {
-      display: inline-flex; align-items: center; gap: .6rem;
-      font-size: .7rem; letter-spacing: .22em; text-transform: uppercase;
-      color: var(--gold); font-weight: 700;
-      margin-bottom: 3rem;
-      padding-bottom: .8rem;
-      border-bottom: 1px solid rgba(201,146,42,0.2);
-      width: 100%;
-    }
-    .date-badge::before {
-      content: '';
-      display: inline-block; width: 28px; height: 1px; background: var(--gold); opacity: .5;
-    }
+.refrain-box {
+  background: rgba(201,146,42,0.05); padding: .8rem 1rem;
+  border-radius: 6px; border: 1px solid rgba(201,146,42,0.15); margin-top: 1.2rem;
+}
 
-    /* Timeline */
-    .timeline { position: relative; padding-left: 0; }
-    .timeline::before {
-      content: '';
-      position: absolute; left: 84px; top: 0; bottom: 0; width: 1px;
-      background: linear-gradient(to bottom, transparent, rgba(201,146,42,0.3) 5%, rgba(201,146,42,0.3) 95%, transparent);
-    }
+/* FOOTER */
+.booklet-footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border); }
+.booklet-footer p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: var(--muted); line-height: 1.8; }
+.booklet-footer cite { font-style: normal; font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); display: block; margin-top: .5rem; }
+.booklet-footer small { display: block; margin-top: 1.5rem; font-size: .65rem; letter-spacing: .08em; color: rgba(154,136,112,0.35); font-family: 'Lato', sans-serif; font-style: normal; }
 
-    .tl-item {
-      display: grid;
-      grid-template-columns: 84px 1fr;
-      gap: 0 2rem;
-      margin-bottom: 0;
-      position: relative;
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity .5s ease, transform .5s ease;
-    }
-    .tl-item.visible { opacity: 1; transform: translateY(0); }
-
-    .tl-time {
-      text-align: right;
-      padding: 1.6rem 0 1.6rem;
-      padding-right: 2rem;
-      position: relative;
-      flex-shrink: 0;
-    }
-    .tl-time-text {
-      font-size: .72rem; letter-spacing: .1em; font-weight: 700;
-      color: var(--gold); text-transform: uppercase; line-height: 1.3;
-      white-space: nowrap;
-    }
-    .tl-dot {
-      position: absolute; right: -6px; top: 50%;
-      transform: translateY(-50%);
-      width: 12px; height: 12px; border-radius: 50%;
-      background: var(--bg);
-      border: 2px solid var(--gold);
-      box-shadow: 0 0 0 3px rgba(201,146,42,0.12);
-      z-index: 1;
-    }
-    .tl-item.highlight .tl-dot {
-      background: var(--gold);
-      box-shadow: 0 0 0 4px rgba(201,146,42,0.2), 0 0 12px rgba(201,146,42,0.4);
-    }
-
-    .tl-content {
-      padding: 1.4rem 1.6rem 1.4rem;
-      border-left: none;
-      position: relative;
-    }
-
-    /* Card styles */
-    .tl-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.4rem 1.6rem;
-      margin-bottom: 1.2rem;
-      position: relative;
-      overflow: hidden;
-      transition: border-color .25s, transform .2s;
-    }
-    .tl-card:hover { border-color: rgba(201,146,42,0.35); transform: translateX(3px); }
-    .tl-card::before {
-      content: ''; position: absolute;
-      left: 0; top: 0; bottom: 0; width: 3px;
-      background: var(--border);
-      border-radius: 8px 0 0 8px;
-      transition: background .25s;
-    }
-    .tl-card:hover::before { background: var(--gold); }
-    .tl-item.highlight .tl-card {
-      background: linear-gradient(135deg, rgba(122,26,40,0.25), rgba(201,146,42,0.06));
-      border-color: rgba(201,146,42,0.3);
-    }
-    .tl-item.highlight .tl-card::before { background: var(--gold); }
-
-    .tl-card-tag {
-      font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
-      color: var(--gold); font-weight: 700; margin-bottom: .4rem;
-      display: flex; align-items: center; gap: .4rem;
-    }
-    .tl-card-tag svg { width: 11px; height: 11px; fill: currentColor; flex-shrink: 0; }
-    .tl-card-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.05rem; font-weight: 700;
-      color: var(--cream); margin-bottom: .3rem; line-height: 1.3;
-    }
-    .tl-item.highlight .tl-card-title { color: var(--gold-pale); font-size: 1.15rem; }
-    .tl-card-desc {
-      font-size: .85rem; color: var(--muted); line-height: 1.65;
-    }
-    .tl-card-performers {
-      margin-top: .7rem;
-      display: flex; flex-wrap: wrap; gap: .4rem;
-    }
-    .performer-chip {
-      font-size: .65rem; letter-spacing: .1em; text-transform: uppercase;
-      color: var(--muted); background: rgba(255,255,255,0.04);
-      border: 1px solid var(--border); border-radius: 100px;
-      padding: .22rem .75rem;
-      transition: color .2s, border-color .2s;
-    }
-    .tl-card:hover .performer-chip { color: var(--gold-pale); border-color: rgba(201,146,42,0.25); }
-
-    /* ── SECTION LABEL (reuse) ── */
-    .section-label {
-      font-size: .68rem; letter-spacing: .28em; text-transform: uppercase;
-      color: var(--gold); font-weight: 700; margin-bottom: 1rem;
-    }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadein    { to { opacity: 1; } }
-    @keyframes fadein-up { to { opacity: 1; transform: translateY(0); } }
-    @keyframes shimmer   { 0%,100% { opacity:.3 } 50% { opacity:.7 } }
-
-    /* ── FOOTER ── */
-    footer { background: #080604; padding: 4rem 2.5rem 2rem; border-top: 1px solid var(--border); }
-    .foot-inner {
-      max-width: 900px; margin: 0 auto;
-      display: flex; flex-wrap: wrap;
-      justify-content: space-between; align-items: flex-start; gap: 2rem;
-    }
-    .foot-brand {
-      font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700;
-      color: var(--gold-pale); display: block; margin-bottom: .3rem;
-    }
-    .foot-sub { font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
-    .foot-hr { border: none; border-top: 1px solid var(--border); max-width: 900px; margin: 2rem auto 1rem; }
-    .foot-copy { text-align: center; font-size: .7rem; color: rgba(255,255,255,0.18); letter-spacing: .06em; }
-    .foot-verse {
-      font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: .92rem;
-      color: var(--muted); max-width: 260px; text-align: center;
-    }
-    .foot-social { display: flex; gap: 1rem; margin-top: .8rem; flex-wrap: wrap; }
-    .social-btn {
-      display: inline-flex; align-items: center; gap: .45rem;
-      font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
-      color: var(--muted); text-decoration: none;
-      border: 1px solid var(--border); border-radius: 3px; padding: .4rem .9rem;
-      transition: color .2s, border-color .2s, background .2s;
-    }
-    .social-btn:hover { color: var(--gold-pale); border-color: var(--gold); background: rgba(201,146,42,0.08); }
-    .social-btn svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
-    .map-link {
-      display: inline-flex; align-items: center; gap: .4rem;
-      font-size: .75rem; letter-spacing: .1em; text-transform: uppercase;
-      color: var(--gold); text-decoration: none; margin-top: .8rem; transition: color .2s;
-    }
-    .map-link:hover { color: var(--gold-light); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 640px) {
-      header { padding: 0 1.25rem; }
-      header > nav { display: none; }
-      .hamburger { display: flex; }
-      .timeline::before { left: 68px; }
-      .tl-item { grid-template-columns: 68px 1fr; gap: 0 1.2rem; }
-      .tl-time-text { font-size: .65rem; }
-      .info-box { flex-direction: column; gap: .9rem; }
-    }
-
-    body.nav-open { overflow: hidden; }
-  </style>
+@media (max-width: 820px) {
+  /* Ensuring sidebar stays visible on mobile now that hamburger is removed */
+  .layout { flex-direction: column; }
+  .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid var(--border); }
+  .prog-section { padding: 3rem 1.4rem; }
+  .songs-grid { grid-template-columns: 1fr; }
+  .choir-info { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 <body>
 
-  <!-- MOBILE NAV OVERLAY -->
-  <div class="mobile-nav-overlay" id="mobile-overlay" aria-hidden="true"></div>
+<div class="progress-bar" id="progress"></div>
 
-  <!-- MOBILE NAV DRAWER -->
-  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
-    <div class="mobile-nav-header">
-      <span class="mobile-nav-logo">SELAH 2026</span>
-      <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">
-        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-title">SELAH 2026</span>
+      <span class="sidebar-sub">Programme Booklet · 18 April</span>
     </div>
-    <div class="mobile-nav-links">
-      <a href="index.html">Home</a>
-      <a href="index.html#about">About</a>
-      <a href="index.html#chief-guest">Chief Guest</a>
-      <a href="index.html#church">Our Church</a>
-      <a href="team.html">Our Team</a>
-      <!-- <a href="Itinerary.html" class="active">Itinerary</a> -->
-    </div>
-    <div class="mobile-nav-footer">
-      <p>&ldquo;But let justice roll on like a river&hellip;&rdquo;<cite>Amos 5:24</cite></p>
-    </div>
-  </nav>
+    <p class="nav-head">Opening</p>
+    <button class="nav-item" data-target="s-open"><span class="nav-num">01</span>All Hail the Power</button>
+    <p class="nav-head">Choirs</p>
+    <button class="nav-item" data-target="c1"><span class="nav-num">02</span>1st Choir · Secunderabad-Hyd MTC</button>
+    <button class="nav-item" data-target="c2"><span class="nav-num">03</span>2nd Choir · St. Mary's Orthodox</button>
+    <button class="nav-item" data-target="c3"><span class="nav-num">04</span>3rd Choir · St. Thomas MTC (Host)</button>
+    <button class="nav-item" data-target="c4"><span class="nav-num">05</span>4th Choir · Centenary Baptist</button>
+    <button class="nav-item" data-target="c5"><span class="nav-num">06</span>5th Choir · CSI Immanuel</button>
+    <p class="nav-head">Closing</p>
+    <button class="nav-item" data-target="s-close"><span class="nav-num">07</span>Abide with Me</button>
+  </aside>
 
-  <!-- HEADER -->
-  <header id="site-header">
-    <a href="index.html" class="logo">
-      <img src="assets/marthoma-logo.png" alt="Selah 2026" style="width:42px;height:42px;object-fit:contain;flex-shrink:0">
-      <div class="logo-text">
-        <span class="logo-name">SELAH 2026</span>
+  <main class="main">
+
+    <section class="prog-section hl" id="s-open">
+      <p class="event-tag">Opening · Combined</p>
+      <h2 class="section-title">All Hail the Power of Jesus' Name</h2>
+      <div class="chips">
+        <span class="chip g">Mass Choir</span>
+        <span class="chip g">All Participants</span>
+        <span class="chip">Diadem Tune · English</span>
       </div>
-    </a>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="index.html#about">About</a>
-      <a href="index.html#chief-guest">Chief Guest</a>
-      <a href="index.html#church">Our Church</a>
-      <a href="team.html">Our Team</a>
-      <!-- <a href="Itinerary.html" class="active">Itinerary</a> -->
-    </nav>
-    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
-      <span></span><span></span><span></span>
-    </button>
-  </header>
-
-  <!-- PAGE HERO -->
-  <section class="page-hero">
-    <div class="page-hero-bg" aria-hidden="true"></div>
-    <p class="page-hero-eyebrow">18th April 2026</p>
-    <h1 class="page-hero-title">Itinerary</h1>
-  </section>
-
-  <!-- PROGRAMME -->
-  <section class="programme-section">
-
-    <p class="date-badge">Saturday, 18th April 2026 &nbsp;&bull;&nbsp; Hyderabad St. Thomas Mar Thoma Church</p>
-
-    <div class="timeline" id="timeline">
-
-      <!-- 1 -->
-      <div class="tl-item" data-delay="0">
-        <div class="tl-time">
-          <p class="tl-time-text">6:30<br>PM</p>
-          <div class="tl-dot"></div>
-        </div>
-        <div class="tl-content">
-          <div class="tl-card">
-            <p class="tl-card-tag">
-              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              Opening
-            </p>
-            <p class="tl-card-title">Gathering &amp; Welcome</p>
-            <p class="tl-card-desc">Doors open. Congregation and guests are seated. Welcome address by the organising committee.</p>
+      <div class="songs-grid" style="grid-template-columns:1fr">
+        <div class="song-card">
+          <div class="sc-header">
+            <p class="sc-name">All Hail the Power of Jesus' Name</p>
+            <span class="lang-badge">English</span>
+          </div>
+          <div class="sc-meta">Combined opening hymn · <em>Diadem tune</em></div>
+          <button class="lyrics-toggle open" onclick="toggleLyrics(this)">
+            <svg class="lt-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            <span class="lt-label">Hide Lyrics</span>
+          </button>
+          <div class="lyrics-panel open">
+            <div class="stanza"><span class="sl">Verse 1</span>
+<p class="st">All hail the power of Jesus' name!
+Let angels prostrate fall;
+Bring forth the royal diadem,
+And crown Him Lord of all!
+Bring forth the royal diadem,
+And crown Him Lord of all!</p></div>
+            <div class="stanza"><span class="sl">Verse 2</span>
+<p class="st">Ye chosen seed of Israel's race,
+Ye ransomed from the fall,
+Hail Him who saves you by His grace,
+And crown Him Lord of all!
+And crown Him Lord of all!</p></div>
+            <div class="stanza"><span class="sl">Verse 3</span>
+<p class="st">Let every kindred, every tribe
+On this terrestrial ball,
+To Him all majesty ascribe,
+And crown Him Lord of all!
+And crown Him Lord of all!</p></div>
+            <div class="stanza"><span class="sl">Verse 4</span>
+<p class="st">O that with yonder sacred throng
+We at His feet may fall!
+We'll join the everlasting song,
+And crown Him Lord of all!
+And crown Him Lord of all!</p></div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- 2 -->
-      <div class="tl-item" data-delay="80">
-        <div class="tl-time">
-          <p class="tl-time-text">6:45<br>PM</p>
-          <div class="tl-dot"></div>
+    <section class="prog-section" id="c1">
+      <p class="event-tag">1st Choir</p>
+      <h2 class="section-title">Secunderabad-Hyderabad MTC Choir</h2>
+      <div class="choir-info">
+        <div><p class="ci-label">Parish</p><p class="ci-val">Secunderabad-Hyderabad Mar Thoma Church</p></div>
+        <div><p class="ci-label">Vicar</p><p class="ci-val">Rev. Samson Samuel</p></div>
+        <div><p class="ci-label">Words & Music</p><p class="ci-val">Mathew Koshy & Sam Benjamin</p></div>
+        <div><p class="ci-label">Arranged by</p><p class="ci-val">Nibin Jose</p></div>
+      </div>
+      <div class="songs-grid">
+        <div class="song-card">
+          <div class="sc-header"><p class="sc-name">Omane Ninakkaai</p><span class="lang-badge">Malayalam</span></div>
+          <div class="sc-meta">Song 1 of 2</div>
+          <button class="lyrics-toggle open" onclick="toggleLyrics(this)">
+            <svg class="lt-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            <span class="lt-label">Hide Lyrics</span>
+          </button>
+          <div class="lyrics-panel open">
+            <div class="stanza"><span class="sl">Chorus</span>
+<p class="st ml">ഓമനേ, നിനക്കായ്
+കാൽവറി മലയിൽ പ്രാണമനെ നൽകി
+പ്രാണനാഥൻ ചൊല്ലിടുന്നു ഓമനേ നിനക്കായ്
+ഓമനേ നിനക്കായ് എൻ ചോരയും എൻ പ്രാണനും എൻ
+ഓമനേ നിനക്കായ്</p></div>
+
+            <div class="stanza"><span class="sl">Verse 1</span>
+<p class="st ml">മോക്ഷമേകിടാൻ ദോഷിയാമെന്നെ 
+തേടി വന്നു പാടുപെട്ടു ക്രൂശിൽ തൂങ്ങി
+സ്വർഗ്ഗശ്രേഷ്ഠൻ താൻ യാഗമായ് മാറി
+എന്റെ പേർക്കായ് നീ നിന്ദാപാത്രമായ് മാറി</p></div>
+
+            <div class="stanza"><span class="sl">Bridge</span>
+<p class="st ml">പാപത്തെ സ്നേഹിപ്പാൻ ഞാനിനി പോകുമോ?
+ദൈവത്തിൻ പൈതലായ് ജീവിക്കും ഞാനിനി
+ദൈവത്തിൻ പൈതലായ് ജീവിക്കും ഞാനിനി</p></div>
+
+            <div class="stanza"><span class="sl">Verse 2</span>
+<p class="st ml">താഴ്ച്ചയിൽ ഇരുളിൽ കാഴ്ച നൽകി നീ
+വീണ്ടെടുത്തു ജീവനേകി നിത്യസ്നേഹത്താൽ
+സ്വർഗ്ഗരാജ്യം നീ പ്രാപിച്ചിടുമ്പോൾ
+ഏഴയാകും എന്നെയും നീ ഓർത്തീടണമേ</p></div>
+
+            <div class="stanza"><span class="sl">Verse 3</span>
+<p class="st ml">ഇത്ര സ്നേഹം നൽകിടാൻ എത്ര ഞാൻ ചെയ്തു?
+ആശ്രയിപ്പാൻ നീ മാത്രം ഈ പ്രപഞ്ചത്തിൽ
+ഇത്രയായ തന്മകൾ ഏൽക്കാൻ ഞാൻ
+എന്തു ഞാനള്ളു? എന്തു ഞാൻ പകരം നൽകും?</p></div>
+
+            <div class="stanza"><span class="sl">Final</span>
+<p class="st ml">നാഥനേ നിനക്കായ്
+നാഥനേ നിനക്കായ്
+നാഥനേ നിനക്കായ്</p></div>
+          </div>
         </div>
-        <div class="tl-content">
-          <div class="tl-card">
-            <p class="tl-card-tag">
-              <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13M9 18c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-2c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"/></svg>
-              Worship
-            </p>
-            <p class="tl-card-title">Opening Hymn &amp; Invocation</p>
-            <p class="tl-card-desc">A congregational hymn of praise led by the St Thomas Choir, followed by an opening prayer.</p>
-            <div class="tl-card-performers">
-              <span class="performer-chip">St Thomas Choir</span>
+        <div class="song-card">
+          <div class="sc-header"><p class="sc-name">Ukuthula</p><span class="lang-badge">Zulu / African</span></div>
+          <div class="sc-meta">Song 2 of 2 · <em>Traditional South African · Arr: Cape Town Youth Choir</em></div>
+          <button class="lyrics-toggle open" onclick="toggleLyrics(this)">
+            <svg class="lt-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            <span class="lt-label">Hide Lyrics</span>
+          </button>
+          <div class="lyrics-panel open">
+            <div class="stanza">
+              <span class="sl">Ukuthula (Peace)</span>
+              <p class="st">Kulumhlaba we zono,
+Igazi liga Jesu lin yenyez,
+Ukuthula.</p>
+              <p class="st tr">In this broken world of trouble,
+The blood of Jesus flowed, so that you could have
+Peace.</p>
+            </div>
+            <div class="stanza">
+              <span class="sl">Usindiso (Redemption)</span>
+              <p class="st">Kulumhlaba we zono,
+Igazi liga Jesu lin yenyez,
+Usindiso.</p>
+              <p class="st tr">In this broken world of trouble,
+The blood of Jesus flowed, so that you could have
+Redemption.</p>
+            </div>
+            <div class="stanza">
+              <span class="sl">Ukubonga (Praise)</span>
+              <p class="st">Kulumhlaba we zono,
+Igazi liga Jesu lin yenyez,
+Ukubonga.</p>
+              <p class="st tr">In this broken world of trouble,
+The blood of Jesus flowed, so that you could have
+Praise.</p>
+            </div>
+            <div class="stanza">
+              <span class="sl">Ukutholwa (Faith)</span>
+              <p class="st">Kulumhlaba we zono,
+Igazi liga Jesu lin yenyez,
+Ukutholwa.</p>
+              <p class="st tr">In this broken world of trouble,
+The blood of Jesus flowed, so that you could have
+Faith.</p>
+            </div>
+            <div class="stanza">
+              <span class="sl">Ukunqoba (Victory)</span>
+              <p class="st">Kulumhlaba we zono,
+Igazi liga Jesu lin yenyez,
+Ukunqoba.</p>
+              <p class="st tr">In this broken world of trouble,
+The blood of Jesus flowed, so that you could have
+Victory.</p>
+            </div>
+            <div class="stanza">
+              <span class="sl">Induduzo (Comfort)</span>
+              <p class="st">Kulumhlaba we zono,
+Igazi liga Jesu lin yenyez,
+Induduzo.</p>
+              <p class="st tr">In this broken world of trouble,
+The blood of Jesus flowed, so that you could have
+Comfort.</p>
             </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- 3 -->
-      <div class="tl-item highlight" data-delay="160">
-        <div class="tl-time">
-          <p class="tl-time-text">7:00<br>PM</p>
-          <div class="tl-dot"></div>
+    <section class="prog-section" id="c2">
+      <p class="event-tag">2nd Choir</p>
+      <h2 class="section-title">St. Mary's Orthodox Church Choir</h2>
+      <div class="choir-info">
+        <div><p class="ci-label">Parish</p><p class="ci-val">St. Mary's Orthodox Syrian Church, Chandanagar</p></div>
+        <div><p class="ci-label">Vicar</p><p class="ci-val">Rev. Fr. Cyril Varghese</p></div>
+      </div>
+      <div class="songs-grid">
+        <div class="song-card">
+          <div class="sc-header"><p class="sc-name">Oh Mariyaame Njan</p><span class="lang-badge">Transliterated</span></div>
+          <div class="sc-meta">Song 1 of 2</div>
+          <button class="lyrics-toggle open" onclick="toggleLyrics(this)">
+            <svg class="lt-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            <span class="lt-label">Hide Lyrics</span>
+          </button>
+          <div class="lyrics-panel open">
+            <div class="stanza">
+<p class="st">Oh Mariyaame Njan
+Thottakkaaran Thanne
+Njan Parudeesaaye
+Sthaapichon Sreshttan</p></div>
+            <div class="stanza">
+<p class="st">Oh Mariyaame Njan
+Jeevikal Than Jeevan Thaan
+Punarudhjeevanamodezhunnelppum Njan Thaan</p></div>
+            <div class="stanza">
+<p class="st">Njan Kollappeddon
+Njan Kallarayaarnnon
+Thotteedaruthe Njan
+Thaathaanthikamereettilla</p></div>
+            <div class="stanza">
+<p class="st">Mahimayodaa Kabareenn-
+Ezhunnettenennevam
+Shishyanmaarodaai
+Nee Suvisheshikka</p></div>
+          </div>
         </div>
-        <div class="tl-content">
-          <div class="tl-card">
-            <p class="tl-card-tag">
-              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              Chief Guest
-            </p>
-            <p class="tl-card-title">Address by the Chief Guest</p>
-            <p class="tl-card-desc">An address by Rev. Rovin Varughese John, Vicar of Hyderabad St. Thomas Mar Thoma Church, inaugurating Selah 2026.</p>
-            <div class="tl-card-performers">
-              <span class="performer-chip">Rev. Rovin Varughese John</span>
+        <div class="song-card">
+          <div class="sc-header"><p class="sc-name">Kalvari Kunnil</p><span class="lang-badge">Transliterated</span></div>
+          <div class="sc-meta">Song 2 of 2</div>
+          <button class="lyrics-toggle open" onclick="toggleLyrics(this)">
+            <svg class="lt-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            <span class="lt-label">Hide Lyrics</span>
+          </button>
+          <div class="lyrics-panel open">
+            <div class="stanza">
+<p class="st">Kalvari kunnil naadhan yaagamay maari
+Annu kalnadayayi naadhan malamukal eri
+Annu jeevanekuvanay
+enthu paadu pettu nee..
+Annu jeevanekuvanay
+enthu paadu pettu nee..
+Ente jeevanaayavane nee en aashayennume
+Kaalvari kunnil..</p></div>
+            <div class="stanza">
+<p class="st">Marakurishumaay naadhan malamukal eri
+Manasorakalil ennum vaazhuvaanayi..
+Marakurishumaay naadhan malamukal eri
+Manasorakalil ennum vaazhuvaanayi
+Marakurishumaay naadhan malamukal eri
+Manasorakalil ennum vaazhuvaanayi..
+Kaalvarikunnil…</p></div>
+            <div class="stanza">
+<p class="st">Kalvari kunnil naadhan yaagamay maari
+Annu kalnadayayi naadhan malamukal eri
+Annu jeevanekuvanay
+enthu paadu pettu nee
+Ente jeevanaayavane nee en aashayennume
+Kaalvari kunnil…</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="prog-section hl" id="c3">
+      <p class="event-tag">3rd Choir · Host</p>
+      <h2 class="section-title">St. Thomas Mar Thoma Church Choir</h2>
+      <div class="choir-info">
+        <div><p class="ci-label">Parish</p><p class="ci-val">Hyderabad St. Thomas Mar Thoma Church</p></div>
+        <div><p class="ci-label">Vicar</p><p class="ci-val">Rev. Abraham P Varkey</p></div>
+        <div><p class="ci-label">Choir Master</p><p class="ci-val">Aaron Koshy Thomas</p></div>
+        <div><p class="ci-label">Asst. Choir Master</p><p class="ci-val">Fen Ninan</p></div>
+      </div>
+      <div class="songs-grid">
+        <div class="song-card">
+          <div class="sc-header"><p class="sc-name">Maridatha Yeshu Nadhan</p><span class="lang-badge">Malayalam</span></div>
+          <div class="sc-meta">Song 1 of 2</div>
+          <button class="lyrics-toggle open" onclick="toggleLyrics(this)">
+            <svg class="lt-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            <span class="lt-label">Hide Lyrics</span>
+          </button>
+          <div class="lyrics-panel open">
+            <div class="stanza"><span class="sl">Chorus</span>
+              <p class="st ml">മാറിടാത്ത യേശുനാഥന്‍
+മാറ്റും നിന്‍റെ വേദന
+പാപത്താലും രോഗത്താലും
+കലങ്ങിടേണ്‍ കടന്നുവാ-
+കടന്നു വാ കടന്നു വാ
+യേശു നിന്നെ വിളിക്കുന്നു</p>
+            </div>
+        
+            <div class="stanza"><span class="sl">Verse 1</span>
+              <p class="st ml">ലോകത്തിന്‍ ഭാരം ചുമക്കും
+യേശുവിങ്കല്‍ നീ കടന്നുവാ
+തളര്‍ന്ന നിന്‍റെ അന്തരാത്മ
+ക്ലേശം നീക്കും കടന്നു വാ… കടന്നു വാ</p>
+            </div>
+        
+            <div class="stanza"><span class="sl">Verse 2</span>
+              <p class="st ml">ലോകബന്ധം കൈവെടിയും
+ദ്രോഹിച്ചു നിന്നെ പുറംതള്ളും
+പാവനന്‍ താന്‍ സ്നേഹത്തോടെ
+അരികിലുണ്‍ട് കടന്നു വാ… കടന്നു വാ</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="song-card">
+          <div class="sc-header"><p class="sc-name">Risen For Me</p><span class="lang-badge">English</span></div>
+          <div class="sc-meta">Song 2 of 2 · <em>By Angie Killian and Monica Scott · Arr: Adv. Noel Ninan Ninan</em></div>
+          <button class="lyrics-toggle open" onclick="toggleLyrics(this)">
+            <svg class="lt-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            <span class="lt-label">Hide Lyrics</span>
+          </button>
+          <div class="lyrics-panel open">
+            <div class="stanza">
+              <span class="sl">Verse 1</span>
+              <p class="st">In the sunrise at the waking of the day
+When the songbirds celebrate new beginnings
+And in the springtime when the flowers fill the trees
+And the grass is growing green, I can see Him</p>
+            </div>
+            <div class="stanza">
+              <span class="sl">Verse 2</span>
+              <p class="st">In the colors of each sunset in the sky
+As it melts into the night, hope is given
+And in the promise of the fading of the moon
+That the dawn is coming soon, I can see Him</p>
+            </div>
+            <div class="stanza refrain-box">
+              <span class="sl">Chorus</span>
+              <p class="st">Hallelujah! Hallelujah!
+He is risen from the grave
+Hallelujah! Hallelujah!
+He is good-ness; He is grace
+Every day, every hour, I'm reminded of His pow'r and His peace
+Hallelujah! He is risen for me!</p>
+            </div>
+            <div class="stanza">
+              <span class="sl">Final</span>
+              <p class="st">Jesus is risen!
+He lives again!
+He lives!</p>
             </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- 4 -->
-      <div class="tl-item" data-delay="240">
-        <div class="tl-time">
-          <p class="tl-time-text">7:20<br>PM</p>
-          <div class="tl-dot"></div>
+    <section class="prog-section" id="c4">
+      <p class="event-tag">4th Choir</p>
+      <h2 class="section-title">Centenary Baptist Church Choir</h2>
+      <div class="choir-info">
+        <div><p class="ci-label">Parish</p><p class="ci-val">Centenary Baptist Church, Secunderabad</p></div>
+        <div><p class="ci-label">Vicar</p><p class="ci-val">Rev. M. Purushotham</p></div>
+      </div>
+      <div class="songs-grid">
+        <div class="song-card">
+          <div class="sc-header"><p class="sc-name">Fairest Lord Jesus</p><span class="lang-badge">English</span></div>
+          <div class="sc-meta">Song 1 of 3</div>
+          <button class="lyrics-toggle open" onclick="toggleLyrics(this)">
+            <svg class="lt-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            <span class="lt-label">Hide Lyrics</span>
+          </button>
+          <div class="lyrics-panel open">
+            <div class="stanza"><span class="sl">Verse 1</span>
+<p class="st">Fairest Lord Jesus, ruler of all nature,
+O thou of God and man the Son,
+Thee will I cherish, Thee will I honor,
+thou, my soul's glory, joy, and crown.</p></div>
+            <div class="stanza"><span class="sl">Verse 2</span>
+<p class="st">Fair are the meadows, fairer still the woodlands,
+robed in the blooming garb of spring:
+Jesus is fairer, Jesus is purer
+who makes the woeful heart to sing.</p></div>
+          </div>
         </div>
-        <div class="tl-content">
-          <div class="tl-card">
-            <p class="tl-card-tag">
-              <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13M9 18c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-2c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"/></svg>
-              Performance
-            </p>
-            <p class="tl-card-title">Choir Performance I</p>
-            <p class="tl-card-desc">Opening performance by the first participating choir. An offering of praise to set the evening in motion.</p>
-            <div class="tl-card-performers">
-              <span class="performer-chip">Participating Choir</span>
+        <div class="song-card">
+          <div class="sc-header"><p class="sc-name">Just a Closer Walk With Thee</p><span class="lang-badge">English</span></div>
+          <div class="sc-meta">Song 2 of 3</div>
+          <button class="lyrics-toggle open" onclick="toggleLyrics(this)">
+            <svg class="lt-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            <span class="lt-label">Hide Lyrics</span>
+          </button>
+          <div class="lyrics-panel open">
+            <div class="stanza"><span class="sl">Verse 1</span>
+<p class="st">I am weak but Thou art strong;
+Jesus, keep me from all wrong;
+I'll be satisfied as long
+As I walk, let me walk close to Thee.</p></div>
+            <div class="stanza refrain-box"><span class="sl">Refrain</span>
+<p class="st">Just a closer walk with Thee,
+Grant it, Jesus, is my plea,
+Daily walking close to Thee,
+Let it be, dear Lord, let it be.</p></div>
+            <div class="stanza"><span class="sl">Verse 2</span>
+<p class="st">Thro' this world of toil and snares,
+If I falter, Lord, who cares?
+Who with me my burden shares?
+None but Thee, dear Lord, none but Thee.</p></div>
+            <div class="stanza"><span class="sl">Verse 3</span>
+<p class="st">When my feeble life is o'er,
+Time for me will be no more;
+Guide me gently, safely o'er
+To Thy kingdom shore, to Thy shore.</p></div>
+          </div>
+        </div>
+        <div class="song-card">
+          <div class="sc-header"><p class="sc-name">Because He Lives</p><span class="lang-badge">English</span></div>
+          <div class="sc-meta">Song 3 of 3</div>
+          <button class="lyrics-toggle open" onclick="toggleLyrics(this)">
+            <svg class="lt-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            <span class="lt-label">Hide Lyrics</span>
+          </button>
+          <div class="lyrics-panel open">
+            <div class="stanza"><span class="sl">Verse 1</span>
+<p class="st">God sent His son, They called Him, Jesus;
+He came to love, Heal and forgive;
+He lived and died To buy my pardon,
+An empty grave is there To prove my Savior lives!</p></div>
+            <div class="stanza refrain-box"><span class="sl">Chorus</span>
+<p class="st">Because He lives, I can face tomorrow!
+Because He lives, All fear is gone.
+Because I know He holds the future,
+And life is worth the living,
+Just because He lives!</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="prog-section" id="c5">
+      <p class="event-tag">5th Choir</p>
+      <h2 class="section-title">CSI Immanuel Church Choir</h2>
+      <div class="choir-info">
+        <div style="grid-column:1/-1"><p class="ci-label">Parish</p><p class="ci-val">CSI Immanuel Church Hyderabad — BHEL / Hitech City / Miyapur Satellite Worship Centre</p></div>
+        <div><p class="ci-label">Vicar</p><p class="ci-val">Rev. Dr. Joseph Samuel</p></div>
+      </div>
+      <div class="songs-grid">
+        <div class="song-card">
+          <div class="sc-header"><p class="sc-name">Kaanuka Neyi Kaarunyavaane</p><span class="lang-badge">Malayalam</span></div>
+          <div class="sc-meta">Song 1 of 2 · <em>Words & Music: P.D. John</em></div>
+          <button class="lyrics-toggle open" onclick="toggleLyrics(this)">
+            <svg class="lt-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            <span class="lt-label">Hide Lyrics</span>
+          </button>
+          <div class="lyrics-panel open">
+            <div class="stanza">
+              <span class="sl">Verse 1 — Malayalam</span>
+              <p class="st ml">കാണുക നീ യി കാരുണ്യ വാനേ
+കുരിശതിൽ കാൽവറി യിൽ
+കേണു കണ്ണീർ തൂകുന്നു നോക്കൂ
+കാൽവറി മേടുകളിൽ</p>
+            </div>
+            <div class="stanza">
+              <span class="sl">Chorus — Malayalam</span>
+              <p class="st ml">എന്തൊരു സ്നേഹം എന്തൊരു സ്നേഹം
+പാപികളാം നരരിൽ
+നൊന്തു നൊന്തു ചങ്കുടഞ്ഞു
+പ്രാണൻ വെടി യുകയായ്</p>
+            </div>
+          </div>
+        </div>
+        <div class="song-card">
+          <div class="sc-header"><p class="sc-name">Behold the Holy Lamb of God</p><span class="lang-badge">English</span></div>
+          <div class="sc-meta">Song 2 of 2 · <em>Music: Joel Raney</em></div>
+          <button class="lyrics-toggle open" onclick="toggleLyrics(this)">
+            <svg class="lt-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            <span class="lt-label">Hide Lyrics</span>
+          </button>
+          <div class="lyrics-panel open">
+            <div class="stanza"><span class="sl">Verse 1</span>
+<p class="st">Behold the holy Lamb of God.
+Jesus, the one who lifts for us a heavy load.</p></div>
+            <div class="stanza refrain-box">
+              <span class="sl">Refrain</span>
+              <p class="st">Holy, Lamb of God, raised high on the cross
+to bear for us the pain and loss.</p>
             </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- 5 -->
-      <div class="tl-item" data-delay="320">
-        <div class="tl-time">
-          <p class="tl-time-text">7:45<br>PM</p>
-          <div class="tl-dot"></div>
-        </div>
-        <div class="tl-content">
-          <div class="tl-card">
-            <p class="tl-card-tag">
-              <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13M9 18c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-2c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"/></svg>
-              Performance
-            </p>
-            <p class="tl-card-title">Choir Performance II</p>
-            <p class="tl-card-desc">A second choir takes the stage, lifting voices in worship from their unique denominational tradition.</p>
-            <div class="tl-card-performers">
-              <span class="performer-chip">Participating Choir</span>
-            </div>
+    <section class="prog-section hl" id="s-close">
+      <p class="event-tag">Closing · Congregational</p>
+      <h2 class="section-title">Abide with Me</h2>
+      <div class="chips">
+        <span class="chip g">All Participants</span>
+        <span class="chip">H.F. Lyte · 1847 · English</span>
+      </div>
+      <div class="songs-grid" style="grid-template-columns:1fr">
+        <div class="song-card">
+          <div class="sc-header"><p class="sc-name">Abide with Me</p><span class="lang-badge">English</span></div>
+          <div class="sc-meta">Closing congregational hymn · <em>Henry Francis Lyte</em></div>
+          <button class="lyrics-toggle open" onclick="toggleLyrics(this)">
+            <svg class="lt-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            <span class="lt-label">Hide Lyrics</span>
+          </button>
+          <div class="lyrics-panel open">
+            <div class="stanza"><span class="sl">Verse 1</span>
+<p class="st">Abide with me; fast falls the eventide;
+The darkness deepens; Lord with me abide!
+When other helpers fail and comforts flee,
+Help of the helpless, O abide with me.</p></div>
+            <div class="stanza"><span class="sl">Verse 2</span>
+<p class="st">Swift to its close ebbs out life's little day;
+Earth's joys grow dim; its glories pass away;
+Change and decay in all around I see;
+O Thou who changest not, abide with me.</p></div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- 6 -->
-      <div class="tl-item" data-delay="400">
-        <div class="tl-time">
-          <p class="tl-time-text">8:10<br>PM</p>
-          <div class="tl-dot"></div>
-        </div>
-        <div class="tl-content">
-          <div class="tl-card">
-            <p class="tl-card-tag">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              Interlude
-            </p>
-            <p class="tl-card-title">Fellowship Interlude</p>
-            <p class="tl-card-desc">A short break for fellowship between denominations &mdash; the body of Christ made visible in community.</p>
-          </div>
-        </div>
-      </div>
+    <footer class="booklet-footer">
+      <p>&ldquo;But let justice roll on like a river, righteousness like a never-failing stream.&rdquo;
+        <cite>— Amos 5:24</cite>
+      </p>
+      <small>&copy; 2026 Selah Choir Festival · Hyderabad St. Thomas Mar Thoma Church</small>
+    </footer>
 
-      <!-- 7 -->
-      <div class="tl-item" data-delay="480">
-        <div class="tl-time">
-          <p class="tl-time-text">8:25<br>PM</p>
-          <div class="tl-dot"></div>
-        </div>
-        <div class="tl-content">
-          <div class="tl-card">
-            <p class="tl-card-tag">
-              <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13M9 18c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-2c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"/></svg>
-              Performance
-            </p>
-            <p class="tl-card-title">Choir Performance III</p>
-            <p class="tl-card-desc">An evening of voices continues as the third choir brings their gift of song before the Lord.</p>
-            <div class="tl-card-performers">
-              <span class="performer-chip">Participating Choir</span>
-            </div>
-          </div>
-        </div>
-      </div>
+  </main>
+</div>
 
-      <!-- 8 -->
-      <div class="tl-item highlight" data-delay="560">
-        <div class="tl-time">
-          <p class="tl-time-text">8:50<br>PM</p>
-          <div class="tl-dot"></div>
-        </div>
-        <div class="tl-content">
-          <div class="tl-card">
-            <p class="tl-card-tag">
-              <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13M9 18c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-2c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"/></svg>
-              Host Choir
-            </p>
-            <p class="tl-card-title">St Thomas Choir — Feature Performance</p>
-            <p class="tl-card-desc">The host choir presents their feature set for Selah 2026, led by Choir Master Aaron Koshy Thomas and Asst. Choir Master Fen Ninan.</p>
-            <div class="tl-card-performers">
-              <span class="performer-chip">St Thomas Choir</span>
-              <span class="performer-chip">Aaron Koshy Thomas</span>
-              <span class="performer-chip">Fen Ninan</span>
-            </div>
-          </div>
-        </div>
-      </div>
+<script>
+const allNavItems = document.querySelectorAll('.nav-item[data-target]');
+const allSections = document.querySelectorAll('.prog-section');
+const progressBar = document.getElementById('progress');
 
-      <!-- 9 -->
-      <div class="tl-item" data-delay="640">
-        <div class="tl-time">
-          <p class="tl-time-text">9:20<br>PM</p>
-          <div class="tl-dot"></div>
-        </div>
-        <div class="tl-content">
-          <div class="tl-card">
-            <p class="tl-card-tag">
-              <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13M9 18c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-2c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"/></svg>
-              Grand Finale
-            </p>
-            <p class="tl-card-title">Combined Choir — Grand Finale</p>
-            <p class="tl-card-desc">All participating choirs unite on stage for a combined worship set, raising one voice in praise for His glory.</p>
-            <div class="tl-card-performers">
-              <span class="performer-chip">All Choirs</span>
-            </div>
-          </div>
-        </div>
-      </div>
+// Toggle Lyrics logic
+function toggleLyrics(btn) {
+  const panel = btn.nextElementSibling;
+  const isOpen = panel.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
+  btn.querySelector('.lt-label').textContent = isOpen ? 'Hide Lyrics' : 'View Lyrics';
+}
 
-      <!-- 10 -->
-      <div class="tl-item" data-delay="720">
-        <div class="tl-time">
-          <p class="tl-time-text">9:45<br>PM</p>
-          <div class="tl-dot"></div>
-        </div>
-        <div class="tl-content">
-          <div class="tl-card">
-            <p class="tl-card-tag">
-              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              Closing
-            </p>
-            <p class="tl-card-title">Vote of Thanks &amp; Benediction</p>
-            <p class="tl-card-desc">A closing word of gratitude from the organisers, followed by a benediction to send the congregation forth in peace.</p>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /timeline -->
-
-  </section>
-
-  <!-- FOOTER -->
-  <footer id="contact">
-    <div class="foot-inner">
-      <div>
-        <span class="foot-brand">Selah 2026</span>
-        <span class="foot-sub">Choir Festival &bull; 2026</span>
-        <div class="foot-social" style="margin-top:.9rem">
-          <span class="social-btn" style="cursor:default" aria-label="Unique visitors">
-            <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-            <span id="visit-count">
-              <span style="display:inline-block;width:28px;height:8px;background:rgba(255,255,255,0.15);border-radius:3px;vertical-align:middle;animation:shimmer 1.4s infinite"></span>
-            </span>
-          </span>
-          <a href="https://www.instagram.com/stthomashydchorale/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            Instagram
-          </a>
-          <a href="https://www.youtube.com/@sthomashydchorale" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube">
-            <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
-            YouTube
-          </a>
-        </div>
-      </div>
-
-      <p class="foot-verse">&ldquo;But let justice roll on like a river, righteousness like a never-failing stream.&rdquo; &mdash; Amos 5:24</p>
-
-      <div>
-        <div style="margin-bottom:1.5rem">
-          <p class="section-label" style="text-align:left;margin-bottom:.5rem">Venue</p>
-          <p style="font-size:.82rem;color:var(--muted);line-height:1.7">
-            Hyderabad St. Thomas Mar Thoma Church<br>Hyderabad, Telangana, India
-          </p>
-          <a href="https://maps.app.goo.gl/bgcKT4KgaaKWuKAx5" target="_blank" rel="noopener" class="map-link" style="margin-top:.5rem">
-            <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            Get Directions
-          </a>
-        </div>
-      </div>
-    </div>
-    <hr class="foot-hr">
-    <p class="foot-copy">&copy; 2026 Selah Choir Festival &bull; Hyderabad St. Thomas Mar Thoma Church, Hyderabad &mdash; Organised with love, for His glory</p>
-  </footer>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-
-      const header    = document.getElementById('site-header');
-      const hamburger = document.getElementById('hamburger');
-      const mobileNav = document.getElementById('mobile-nav');
-      const overlay   = document.getElementById('mobile-overlay');
-      const closeBtn  = document.getElementById('mobile-nav-close');
-      const mobileLinks = mobileNav.querySelectorAll('a');
-
-      window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 60));
-
-      function openNav() {
-        hamburger.classList.add('open');
-        hamburger.setAttribute('aria-expanded', 'true');
-        mobileNav.classList.add('open');
-        overlay.style.display = 'block';
-        requestAnimationFrame(() => overlay.classList.add('open'));
-        document.body.classList.add('nav-open');
-      }
-      function closeNav() {
-        hamburger.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        mobileNav.classList.remove('open');
-        overlay.classList.remove('open');
-        document.body.classList.remove('nav-open');
-        overlay.addEventListener('transitionend', () => { overlay.style.display = ''; }, { once: true });
-      }
-
-      hamburger.addEventListener('click', () => hamburger.classList.contains('open') ? closeNav() : openNav());
-      closeBtn.addEventListener('click', closeNav);
-      overlay.addEventListener('click', closeNav);
-      mobileLinks.forEach(link => link.addEventListener('click', closeNav));
-      document.addEventListener('keydown', e => {
-        if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeNav();
+// NAVIGATION CLICK HANDLER (Hyperlinks function)
+allNavItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const targetId = item.getAttribute('data-target');
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
       });
+    }
+  });
+});
 
-      (async () => {
-        try {
-          const res = await fetch("https://selah2026.stthomashybdchoir.workers.dev/");
-          const data = await res.json();
-          const el = document.getElementById("visit-count");
-          if (el && data.visits !== undefined) {
-            el.textContent = Number(data.visits).toLocaleString() + " unique visitors";
-          }
-        } catch (e) {
-          const el = document.getElementById("visit-count");
-          if (el) el.textContent = "";
-        }
-      })();
+// SCROLL OBSERVER (Highlights current section in sidebar)
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      allNavItems.forEach(n => n.classList.toggle('active', n.dataset.target === id));
+    }
+  });
+}, { rootMargin: '-35% 0px -60% 0px' });
 
-      // Scroll-triggered timeline animations
-      const items = document.querySelectorAll('.tl-item');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const delay = parseInt(entry.target.dataset.delay || 0);
-            setTimeout(() => entry.target.classList.add('visible'), delay);
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.15 });
-      items.forEach(item => observer.observe(item));
+allSections.forEach(s => observer.observe(s));
 
-    });
-  </script>
-
+// PROGRESS BAR logic
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+  progressBar.style.width = pct + '%';
+});
+</script>
 </body>
 </html>
