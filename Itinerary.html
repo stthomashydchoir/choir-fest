@@ -116,34 +116,19 @@ body {
 .song-card {
   background: var(--surface2); border: 1px solid var(--border);
   border-radius: 10px; overflow: hidden; display: flex; flex-direction: column;
-  transition: border-color .25s;
 }
-.song-card:hover { border-color: rgba(201,146,42,0.4); }
-.sc-header { padding: 1rem 1.2rem .75rem; display: flex; align-items: flex-start; justify-content: space-between; gap: .6rem; }
+.sc-header { padding: 1.2rem 1.2rem .75rem; display: flex; align-items: flex-start; justify-content: space-between; gap: .6rem; }
 .sc-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--cream); line-height: 1.3; }
 .lang-badge {
   font-size: .55rem; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); font-weight: 700;
   background: rgba(201,146,42,0.1); border: 1px solid rgba(201,146,42,0.25); border-radius: 100px;
   padding: .18rem .65rem; flex-shrink: 0; margin-top: .1rem; white-space: nowrap;
 }
-.sc-meta { padding: 0 1.2rem .75rem; font-size: .7rem; color: var(--muted); line-height: 1.5; border-bottom: 1px solid var(--border); }
+.sc-meta { padding: 0 1.2rem 1.2rem; font-size: .7rem; color: var(--muted); line-height: 1.5; border-bottom: 1px solid var(--border); }
 .sc-meta em { color: var(--gold-pale); font-style: normal; }
 
-/* LYRICS TOGGLE */
-.lyrics-toggle {
-  display: flex; align-items: center; gap: .55rem; width: 100%; padding: .7rem 1.2rem;
-  background: none; border: none; cursor: pointer; color: var(--gold);
-  font-family: 'Lato', sans-serif; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700;
-  transition: background .2s; text-align: left;
-}
-.lyrics-toggle:hover { background: rgba(201,146,42,0.07); }
-.lt-arrow { width: 14px; height: 14px; flex-shrink: 0; transition: transform .3s; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.lyrics-toggle.open .lt-arrow { transform: rotate(180deg); }
-.lt-label { pointer-events: none; }
-
-/* LYRICS PANEL */
-.lyrics-panel { display: none; padding: 1.2rem; border-top: 1px solid var(--border); background: rgba(0,0,0,0.25); flex: 1; }
-.lyrics-panel.open { display: block; }
+/* LYRICS PANEL (Always Visible) */
+.lyrics-panel { padding: 1.2rem; border-top: 1px solid var(--border); background: rgba(0,0,0,0.25); flex: 1; }
 .stanza { margin-bottom: 1.2rem; }
 .stanza:last-child { margin-bottom: 0; }
 .sl { font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: .35rem; display: block; }
@@ -167,7 +152,6 @@ body {
 .booklet-footer small { display: block; margin-top: 1.5rem; font-size: .65rem; letter-spacing: .08em; color: rgba(154,136,112,0.35); font-family: 'Lato', sans-serif; font-style: normal; }
 
 @media (max-width: 820px) {
-  /* Ensuring sidebar stays visible on mobile now that hamburger is removed */
   .layout { flex-direction: column; }
   .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid var(--border); }
   .prog-section { padding: 3rem 1.4rem; }
@@ -216,11 +200,7 @@ body {
             <span class="lang-badge">English</span>
           </div>
           <div class="sc-meta">Combined opening hymn · <em>Diadem tune</em></div>
-          <button class="lyrics-toggle open" onclick="toggleLyrics(this)">
-            <svg class="lt-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            <span class="lt-label">Hide Lyrics</span>
-          </button>
-          <div class="lyrics-panel open">
+          <div class="lyrics-panel">
             <div class="stanza"><span class="sl">Verse 1</span>
 <p class="st">All hail the power of Jesus' name!
 Let angels prostrate fall;
@@ -264,11 +244,7 @@ And crown Him Lord of all!</p></div>
         <div class="song-card">
           <div class="sc-header"><p class="sc-name">Omane Ninakkaai</p><span class="lang-badge">Malayalam</span></div>
           <div class="sc-meta">Song 1 of 2</div>
-          <button class="lyrics-toggle open" onclick="toggleLyrics(this)">
-            <svg class="lt-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            <span class="lt-label">Hide Lyrics</span>
-          </button>
-          <div class="lyrics-panel open">
+          <div class="lyrics-panel">
             <div class="stanza"><span class="sl">Chorus</span>
 <p class="st ml">ഓമനേ, നിനക്കായ്
 കാൽവറി മലയിൽ പ്രാണമനെ നൽകി
@@ -308,11 +284,7 @@ And crown Him Lord of all!</p></div>
         <div class="song-card">
           <div class="sc-header"><p class="sc-name">Ukuthula</p><span class="lang-badge">Zulu / African</span></div>
           <div class="sc-meta">Song 2 of 2 · <em>Traditional South African · Arr: Cape Town Youth Choir</em></div>
-          <button class="lyrics-toggle open" onclick="toggleLyrics(this)">
-            <svg class="lt-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            <span class="lt-label">Hide Lyrics</span>
-          </button>
-          <div class="lyrics-panel open">
+          <div class="lyrics-panel">
             <div class="stanza">
               <span class="sl">Ukuthula (Peace)</span>
               <p class="st">Kulumhlaba we zono,
@@ -383,11 +355,7 @@ Comfort.</p>
         <div class="song-card">
           <div class="sc-header"><p class="sc-name">Oh Mariyaame Njan</p><span class="lang-badge">Transliterated</span></div>
           <div class="sc-meta">Song 1 of 2</div>
-          <button class="lyrics-toggle open" onclick="toggleLyrics(this)">
-            <svg class="lt-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            <span class="lt-label">Hide Lyrics</span>
-          </button>
-          <div class="lyrics-panel open">
+          <div class="lyrics-panel">
             <div class="stanza">
 <p class="st">Oh Mariyaame Njan
 Thottakkaaran Thanne
@@ -412,11 +380,7 @@ Nee Suvisheshikka</p></div>
         <div class="song-card">
           <div class="sc-header"><p class="sc-name">Kalvari Kunnil</p><span class="lang-badge">Transliterated</span></div>
           <div class="sc-meta">Song 2 of 2</div>
-          <button class="lyrics-toggle open" onclick="toggleLyrics(this)">
-            <svg class="lt-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            <span class="lt-label">Hide Lyrics</span>
-          </button>
-          <div class="lyrics-panel open">
+          <div class="lyrics-panel">
             <div class="stanza">
 <p class="st">Kalvari kunnil naadhan yaagamay maari
 Annu kalnadayayi naadhan malamukal eri
@@ -459,11 +423,7 @@ Kaalvari kunnil…</p></div>
         <div class="song-card">
           <div class="sc-header"><p class="sc-name">Maridatha Yeshu Nadhan</p><span class="lang-badge">Malayalam</span></div>
           <div class="sc-meta">Song 1 of 2</div>
-          <button class="lyrics-toggle open" onclick="toggleLyrics(this)">
-            <svg class="lt-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            <span class="lt-label">Hide Lyrics</span>
-          </button>
-          <div class="lyrics-panel open">
+          <div class="lyrics-panel">
             <div class="stanza"><span class="sl">Chorus</span>
               <p class="st ml">മാറിടാത്ത യേശുനാഥന്‍
 മാറ്റും നിന്‍റെ വേദന
@@ -492,11 +452,7 @@ Kaalvari kunnil…</p></div>
         <div class="song-card">
           <div class="sc-header"><p class="sc-name">Risen For Me</p><span class="lang-badge">English</span></div>
           <div class="sc-meta">Song 2 of 2 · <em>By Angie Killian and Monica Scott · Arr: Adv. Noel Ninan Ninan</em></div>
-          <button class="lyrics-toggle open" onclick="toggleLyrics(this)">
-            <svg class="lt-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            <span class="lt-label">Hide Lyrics</span>
-          </button>
-          <div class="lyrics-panel open">
+          <div class="lyrics-panel">
             <div class="stanza">
               <span class="sl">Verse 1</span>
               <p class="st">In the sunrise at the waking of the day
@@ -542,11 +498,7 @@ He lives!</p>
         <div class="song-card">
           <div class="sc-header"><p class="sc-name">Fairest Lord Jesus</p><span class="lang-badge">English</span></div>
           <div class="sc-meta">Song 1 of 3</div>
-          <button class="lyrics-toggle open" onclick="toggleLyrics(this)">
-            <svg class="lt-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            <span class="lt-label">Hide Lyrics</span>
-          </button>
-          <div class="lyrics-panel open">
+          <div class="lyrics-panel">
             <div class="stanza"><span class="sl">Verse 1</span>
 <p class="st">Fairest Lord Jesus, ruler of all nature,
 O thou of God and man the Son,
@@ -562,11 +514,7 @@ who makes the woeful heart to sing.</p></div>
         <div class="song-card">
           <div class="sc-header"><p class="sc-name">Just a Closer Walk With Thee</p><span class="lang-badge">English</span></div>
           <div class="sc-meta">Song 2 of 3</div>
-          <button class="lyrics-toggle open" onclick="toggleLyrics(this)">
-            <svg class="lt-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            <span class="lt-label">Hide Lyrics</span>
-          </button>
-          <div class="lyrics-panel open">
+          <div class="lyrics-panel">
             <div class="stanza"><span class="sl">Verse 1</span>
 <p class="st">I am weak but Thou art strong;
 Jesus, keep me from all wrong;
@@ -592,11 +540,7 @@ To Thy kingdom shore, to Thy shore.</p></div>
         <div class="song-card">
           <div class="sc-header"><p class="sc-name">Because He Lives</p><span class="lang-badge">English</span></div>
           <div class="sc-meta">Song 3 of 3</div>
-          <button class="lyrics-toggle open" onclick="toggleLyrics(this)">
-            <svg class="lt-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            <span class="lt-label">Hide Lyrics</span>
-          </button>
-          <div class="lyrics-panel open">
+          <div class="lyrics-panel">
             <div class="stanza"><span class="sl">Verse 1</span>
 <p class="st">God sent His son, They called Him, Jesus;
 He came to love, Heal and forgive;
@@ -624,11 +568,7 @@ Just because He lives!</p></div>
         <div class="song-card">
           <div class="sc-header"><p class="sc-name">Kaanuka Neyi Kaarunyavaane</p><span class="lang-badge">Malayalam</span></div>
           <div class="sc-meta">Song 1 of 2 · <em>Words & Music: P.D. John</em></div>
-          <button class="lyrics-toggle open" onclick="toggleLyrics(this)">
-            <svg class="lt-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            <span class="lt-label">Hide Lyrics</span>
-          </button>
-          <div class="lyrics-panel open">
+          <div class="lyrics-panel">
             <div class="stanza">
               <span class="sl">Verse 1 — Malayalam</span>
               <p class="st ml">കാണുക നീ യി കാരുണ്യ വാനേ
@@ -648,11 +588,7 @@ Just because He lives!</p></div>
         <div class="song-card">
           <div class="sc-header"><p class="sc-name">Behold the Holy Lamb of God</p><span class="lang-badge">English</span></div>
           <div class="sc-meta">Song 2 of 2 · <em>Music: Joel Raney</em></div>
-          <button class="lyrics-toggle open" onclick="toggleLyrics(this)">
-            <svg class="lt-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            <span class="lt-label">Hide Lyrics</span>
-          </button>
-          <div class="lyrics-panel open">
+          <div class="lyrics-panel">
             <div class="stanza"><span class="sl">Verse 1</span>
 <p class="st">Behold the holy Lamb of God.
 Jesus, the one who lifts for us a heavy load.</p></div>
@@ -677,11 +613,7 @@ to bear for us the pain and loss.</p>
         <div class="song-card">
           <div class="sc-header"><p class="sc-name">Abide with Me</p><span class="lang-badge">English</span></div>
           <div class="sc-meta">Closing congregational hymn · <em>Henry Francis Lyte</em></div>
-          <button class="lyrics-toggle open" onclick="toggleLyrics(this)">
-            <svg class="lt-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            <span class="lt-label">Hide Lyrics</span>
-          </button>
-          <div class="lyrics-panel open">
+          <div class="lyrics-panel">
             <div class="stanza"><span class="sl">Verse 1</span>
 <p class="st">Abide with me; fast falls the eventide;
 The darkness deepens; Lord with me abide!
@@ -712,15 +644,7 @@ const allNavItems = document.querySelectorAll('.nav-item[data-target]');
 const allSections = document.querySelectorAll('.prog-section');
 const progressBar = document.getElementById('progress');
 
-// Toggle Lyrics logic
-function toggleLyrics(btn) {
-  const panel = btn.nextElementSibling;
-  const isOpen = panel.classList.toggle('open');
-  btn.classList.toggle('open', isOpen);
-  btn.querySelector('.lt-label').textContent = isOpen ? 'Hide Lyrics' : 'View Lyrics';
-}
-
-// NAVIGATION CLICK HANDLER (Hyperlinks function)
+// NAVIGATION CLICK HANDLER
 allNavItems.forEach(item => {
   item.addEventListener('click', () => {
     const targetId = item.getAttribute('data-target');
