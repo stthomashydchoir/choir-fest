@@ -157,19 +157,23 @@ body.dark-theme .booklet-footer cite { color: var(--gold); }
 }
 </style>
 </head>
-<body>
+<body class="dark-theme">
 
 <div class="progress-bar" id="progress"></div>
 
 
 <button class="theme-toggle" id="themeToggle">
-  <span id="toggleText">Switch to Light Mode</span>
+  <span id="toggleText">☀️</span>
 </button>
 
 
 <div class="layout">
 
   <aside class="sidebar" id="sidebar">
+    <!-- <button class="theme-toggle" id="themeToggle">
+      <span id="toggleText">Switch to Light Mode</span>
+    </button> -->
+    
     <div class="sidebar-header">
       <span class="sidebar-title">SELAH 2026</span>
       <span class="sidebar-sub">Itinerary · 18 April</span>
@@ -873,7 +877,7 @@ Change and decay in all around I see;
 O Thou who changest not, abide with me.</p></div>
 
 <div class="stanza"><span class="sl">Stanza 3</span>
-<p class="st">need thy presence every passing hour.
+<p class="st">Need thy presence every passing hour.
 What but thy grace can foil the tempter's power?
 Who like thyself my guide and strength can be?
 Through cloud and sunshine, O abide with me.</p>
@@ -916,7 +920,7 @@ const body = document.body;
 themeToggle.addEventListener('click', () => {
   body.classList.toggle('dark-theme');
   const isDark = body.classList.contains('dark-theme');
-  toggleText.innerText = isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+  themeToggle.innerText = isDark ? '☀️' : '🌙';
 });
 
 // NAVIGATION CLICK HANDLER
