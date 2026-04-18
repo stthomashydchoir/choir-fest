@@ -155,6 +155,25 @@ body.dark-theme .booklet-footer cite { color: var(--gold); }
   .prog-section { padding: 3.5rem 1.5rem; }
   .theme-toggle { bottom: 1rem; right: 1rem; padding: 0.6rem 1rem; font-size: 0.65rem; }
 }
+
+.liturgy-grid {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+.l-role {
+  font-size: 0.65rem;
+  font-weight: 900;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-top: 0.2rem;
+}
+.l-text {
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.6;
+}
 </style>
 </head>
 <body class="dark-theme">
@@ -170,9 +189,6 @@ body.dark-theme .booklet-footer cite { color: var(--gold); }
 <div class="layout">
 
   <aside class="sidebar" id="sidebar">
-    <!-- <button class="theme-toggle" id="themeToggle">
-      <span id="toggleText">Switch to Light Mode</span>
-    </button> -->
     
     <div class="sidebar-header">
       <span class="sidebar-title">SELAH 2026</span>
@@ -181,15 +197,15 @@ body.dark-theme .booklet-footer cite { color: var(--gold); }
     <p class="nav-head">Opening</p>
 
     <button class="nav-item" data-target="procession">
-      <span class="nav-num">1</span>Procession
+      <span class="nav-num">01</span>Procession
     </button>
     
     <button class="nav-item" data-target="s-open">
-      <span class="nav-num">2</span>Opening Song - All Hail the Power
+      <span class="nav-num">02</span>Opening Song - All Hail the Power
     </button>
     
     <button class="nav-item" data-target="kauma">
-      <span class="nav-num">3</span>Kauma - The Adoration
+      <span class="nav-num">03</span>Kauma - The Adoration
     </button>
     
     <button class="nav-item" data-target="opening-prayer">
@@ -290,39 +306,222 @@ body.dark-theme .booklet-footer cite { color: var(--gold); }
           </div>
           <div class="sc-meta">Combined opening hymn · <em>Diadem tune</em></div>
           <div class="lyrics-panel">
-            <div class="stanza"><span class="sl">Stanza 1</span>
-<p class="st">All hail the power of Jesus' name!
+            
+            <div class="stanza">
+              <span class="sl">Stanza 1</span>
+              <p class="st">All hail the power of Jesus' Name!
 Let angels prostrate fall;
 Bring forth the royal diadem,
-And crown Him Lord of all!
-And crown Him Lord of all!</p></div>
-            <div class="stanza"><span class="sl">Stanza 2</span>
-<p class="st">Ye chosen seed of Israel's race,
+And crown Him Lord of all,
+Bring forth the royal diadem,
+And crown Him Lord of all.</p>
+            </div>
+
+            <div class="stanza">
+              <span class="sl">Stanza 2</span>
+              <p class="st">Crown Him, ye martyrs of your God,
+Who from His altar call;
+Extol the Stem of Jesse's Rod,
+And crown Him Lord of all,
+Extol the Stem of Jesse's Rod,
+And crown Him Lord of all!</p>
+            </div>
+
+            <div class="stanza">
+              <span class="sl">Stanza 3</span>
+              <p class="st">Ye seed of Israel's chosen race,
 Ye ransomed from the fall,
-Hail Him who saves you by His grace,
-And crown Him Lord of all!
-And crown Him Lord of all!</p></div>
-            <div class="stanza"><span class="sl">Stanza 3</span>
-<p class="st">Let every kindred, every tribe
+Hail Him Who saves you by His grace,
+And crown Him Lord of all,
+Hail Him Who saves you by His grace,
+And crown Him Lord of all!</p>
+            </div>
+
+            <div class="stanza">
+              <span class="sl">Stanza 4</span>
+              <p class="st">Let ev'ry kindred, ev'ry tribe,
 On this terrestrial ball,
 To Him all majesty ascribe,
-And crown Him Lord of all!
-And crown Him Lord of all!</p></div>
-            <div class="stanza"><span class="sl">Stanza 4</span>
-<p class="st">O that with yonder sacred throng
-We at His feet may fall!
-We'll join the everlasting song,
-And crown Him Lord of all!
-And crown Him Lord of all!</p></div>
+And crown Him Lord of all,
+To Him all majesty ascribe,
+And crown Him Lord of all!</p>
+            </div>
+
           </div>
         </div>
       </div>
     </section>
-<!-- 3. KAUMA -->
-    <section class="prog-section" id="kauma">
-      <p class="event-tag">Liturgy</p>
-      <h2 class="section-title">Kauma — The Adoration</h2>
-    </section>
+
+<section class="prog-section" id="kauma">
+  <p class="event-tag">The Adoration · Combined Liturgy</p>
+  <h2 class="section-title">Kauma & Order of Worship</h2>
+  
+  <div class="song-card">
+    <div class="lyrics-panel">
+      
+      <div class="stanza">
+        <span class="sl">Call to Worship</span>
+        <div class="liturgy-grid">
+          <span class="l-role">P:</span>
+          <p class="l-text">Make a joyful noise to the Lord, all the Lands! Serve the Lord with gladness! Come into His presence with singing! Enter His gates with thanksgiving and his Courts with Praise! Give thanks to him, bless His name!</p>
+        </div>
+        <div class="liturgy-grid">
+          <span class="l-role">C:</span>
+          <p class="l-text">Amen</p>
+        </div>
+      </div>
+
+      <div class="stanza">
+        <span class="sl">The Kauma</span>
+        <div class="liturgy-grid"><span class="l-role">P:</span><p class="l-text">Glory be to the Father, the Son and the Holy Spirit.</p></div>
+        <div class="liturgy-grid"><span class="l-role">C:</span><p class="l-text">As it was in the beginning is now and ever shall be forever. Amen.</p></div>
+        <div class="liturgy-grid"><span class="l-role">P:</span><p class="l-text">Holy, Holy, Holy Lord God of Power and Might. Heaven and earth are full of Your glory. Hosanna in the Highest.</p></div>
+        <div class="liturgy-grid"><span class="l-role">C:</span><p class="l-text">Blessed is He who has come and is to come again in the name of the Lord. Hosanna in the highest.</p></div>
+      </div>
+
+      <div class="stanza">
+        <div class="liturgy-grid"><span class="l-role">P:</span><p class="l-text">Holy art Thou O God.</p></div>
+        <div class="liturgy-grid"><span class="l-role">C:</span><p class="l-text">Holy art Thou, Almighty Lord.</p></div>
+        <div class="liturgy-grid"><span class="l-role">P:</span><p class="l-text">Holy art Thou Immortal Lord.</p></div>
+        <div class="liturgy-grid"><span class="l-role">C:</span><p class="l-text">O Lord, the Messiah, who was crucified (+) for us, have mercy on us.</p></div>
+      </div>
+
+      <div class="stanza refrain-box">
+        <span class="sl">The Lord's Prayer</span>
+        <div class="liturgy-grid"><span class="l-role">P:</span><p class="l-text">Our Father in heaven...</p></div>
+        <div class="liturgy-grid"><span class="l-role">C:</span><p class="l-text">Hallowed be Your name. May Your Kingdom come. May Your will be done on earth as it is in heaven. Give us this day our daily bread. Forgive our sins as we forgive those who sin against us. Do not bring us to the time of trial, but deliver us from the evil one. For the Kingdom, the power, and the glory are Yours now and forever. Amen.</p></div>
+      </div>
+
+      <div class="stanza">
+        <span class="sl">Thanksgiving: The Magnificat (Song of Virgin Mary)</span>
+        <div class="liturgy-grid">
+          <span class="l-role">P:</span>
+          <p class="l-text">My soul magnifies the Lord and my spirit rejoices in God my Savior.</p>
+        </div>
+        <div class="liturgy-grid">
+          <span class="l-role">C:</span>
+          <p class="l-text">For He has regarded the low estate of His handmaiden; For behold, henceforth all generations will call me blessed.</p>
+        </div>
+        <div class="liturgy-grid">
+          <span class="l-role">P:</span>
+          <p class="l-text">For He who is mighty has done great things for me, and Holy is His Name.</p>
+        </div>
+        <div class="liturgy-grid">
+          <span class="l-role">C:</span>
+          <p class="l-text">And His mercy is on those who fear Him from generation to generation.</p>
+        </div>
+        <div class="liturgy-grid">
+          <span class="l-role">P:</span>
+          <p class="l-text">He has shown strength with His arm; He has scattered the proud in the imagination of their hearts.</p>
+        </div>
+        <div class="liturgy-grid">
+          <span class="l-role">C:</span>
+          <p class="l-text">He has put down the mighty from their thrones and exalted those of low degree.</p>
+        </div>
+        <div class="liturgy-grid">
+          <span class="l-role">P:</span>
+          <p class="l-text">He has filled the hungry with good things, and the rich He has sent empty away.</p>
+        </div>
+        <div class="liturgy-grid">
+          <span class="l-role">C:</span>
+          <p class="l-text">He has helped His servant Israel, in remembrance of His mercy, as He spoke to our Fathers, to Abraham, and to his posterity forever.</p>
+        </div>
+        
+        <div class="liturgy-grid" style="margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 1rem;">
+          <span class="l-role">P:</span>
+          <p class="l-text">Glory be to the Father, to the Son, and to the Holy Spirit.</p>
+        </div>
+        <div class="liturgy-grid">
+          <span class="l-role">C:</span>
+          <p class="l-text">As it was in the beginning, is now and ever shall be, world without end. Amen.</p>
+        </div>
+      </div>
+
+      <div class="stanza">
+        <span class="sl">Prayer for The Holy Spirit</span>
+        <div class="liturgy-grid">
+          <span class="l-role">P:</span>
+          <p class="l-text">O Lord Jesus Christ, grant us Your Holy Spirit... give us the spirit of wisdom and power, the spirit of sonship that has power over all things and abides with us forever. O Heavenly King, Spirit of Truth, and Comforter come to us and dwell in us. Cleanse us from all uncleanness and save us. Father, Son, and Holy Spirit, You are worthy to receive praise and glory forever.</p>
+        </div>
+        <div class="liturgy-grid"><span class="l-role">C:</span><p class="l-text">Amen</p></div>
+      </div>
+
+      <div class="stanza">
+        <span class="sl">Psalm 149</span>
+        <div class="liturgy-grid">
+          <span class="l-role">P:</span>
+          <p class="l-text">Praise the Lord. Sing to the Lord a new song, His praise in the assembly of His faithful people.</p>
+        </div>
+        <div class="liturgy-grid">
+          <span class="l-role">C:</span>
+          <p class="l-text">Let Israel rejoice in their Maker; let the people of Zion be glad in their King.</p>
+        </div>
+        <div class="liturgy-grid">
+          <span class="l-role">P:</span>
+          <p class="l-text">Let them praise His name with dancing and make music to Him with timbrel and harp.</p>
+        </div>
+        <div class="liturgy-grid">
+          <span class="l-role">C:</span>
+          <p class="l-text">For the Lord takes delight in His people; He crowns the humble with victory.</p>
+        </div>
+        <div class="liturgy-grid">
+          <span class="l-role">P:</span>
+          <p class="l-text">Let His faithful people rejoice in this honor and sing for joy on their beds.</p>
+        </div>
+        <div class="liturgy-grid">
+          <span class="l-role">C:</span>
+          <p class="l-text">May the praise of God be in their mouths and a double-edged sword in their hands,</p>
+        </div>
+        <div class="liturgy-grid">
+          <span class="l-role">P:</span>
+          <p class="l-text">To inflict vengeance on the nations and punishment on the peoples,</p>
+        </div>
+        <div class="liturgy-grid">
+          <span class="l-role">C:</span>
+          <p class="l-text">To bind their kings with fetters, their nobles with shackles of iron,</p>
+        </div>
+        <div class="liturgy-grid">
+          <span class="l-role">P:</span>
+          <p class="l-text">To carry out the sentence written against them—</p>
+        </div>
+        
+        <div class="liturgy-grid" style="margin-top: 0.5rem; border-left: 2px solid var(--gold); padding-left: 10px;">
+          <span class="l-role" style="color: var(--gold-light);">All:</span>
+          <p class="l-text" style="font-weight: 700;">This is the glory of all His faithful people. Praise the Lord!</p>
+        </div>
+      </div>
+
+      <div class="stanza">
+        <span class="sl">Prayer for The Choir Fest</span>
+        <div class="liturgy-grid">
+          <span class="l-role">P:</span>
+          <p class="l-text">
+            Almighty God, our Rock and Selah, we gather today to make a joyful noise that shakes the foundations of injustice. As we raise our voices, we ask that our worship be more than melody—may it be a mighty river of justice and an ever-flowing stream of righteousness.
+          </p>
+        </div>
+        <div class="liturgy-grid">
+          <span class="l-role"></span>
+          <p class="l-text">
+            We pray for every participating choir, their leaders, and the musicians, that they would be vessels of peace, carrying the message of love and truth beyond these walls. Bless our guests, friends, and the congregation gathered here, that the harmony we create would bring healing to broken situations.
+          </p>
+        </div>
+        <div class="liturgy-grid">
+          <span class="l-role"></span>
+          <p class="l-text">
+            Lord, make this fest turning point, where our songs inspire action, our voices unite for the vulnerable, and this event brings peace to our community and blessing to many.
+          </p>
+        </div>
+        <div class="liturgy-grid">
+          <span class="l-role">C:</span>
+          <p class="l-text" style="font-weight: 700;">Amen</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
 
     <!-- 4. OPENING PRAYER -->
 <section class="prog-section" id="opening-prayer">
@@ -443,6 +642,13 @@ Kaalvari kunnil…</p>
   </div>
 </section>  
 
+
+<!-- 7. PRESIDENTIAL -->
+<section class="prog-section" id="pres">
+  <p class="event-tag">Address</p>
+  <h2 class="section-title">Presidential Address — Rev. Abraham P Varkey (President, Hyderabad St Thomas Mar Thoma Choir)</h2>
+</section>
+
     <section class="prog-section" id="c2">
       <p class="event-tag">1st Choir</p>
       <h2 class="section-title">Secunderabad-Hyderabad MTC Choir</h2>
@@ -555,12 +761,6 @@ Comfort.</p>
     </section>
 
     
-
-<!-- 7. PRESIDENTIAL -->
-<section class="prog-section" id="pres">
-  <p class="event-tag">Address</p>
-  <h2 class="section-title">Presidential Address — Rev. Abraham P Varkey (President, Hyderabad St Thomas Mar Thoma Choir)</h2>
-</section>
 
 
 
@@ -957,28 +1157,53 @@ themeToggle.addEventListener('click', () => {
 });
 
 // NAVIGATION CLICK HANDLER
+let isManualScrolling = false; // The "Lock"
+
+// 1. Updated Click Handler
 allNavItems.forEach(item => {
   item.addEventListener('click', () => {
     const targetId = item.getAttribute('data-target');
     const targetElement = document.getElementById(targetId);
+    
     if (targetElement) {
+      // SET THE LOCK: Stop the observer from reacting
+      isManualScrolling = true;
+
+      // Manually highlight the clicked item immediately
+      allNavItems.forEach(n => n.classList.remove('active'));
+      item.classList.add('active');
+
       targetElement.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });
+
+      // RELEASE THE LOCK: Wait for the scroll to finish
+      // 800ms is usually enough for a smooth scroll to complete
+      setTimeout(() => {
+        isManualScrolling = false;
+      }, 800);
     }
   });
 });
 
-// SCROLL OBSERVER (Highlights current section in sidebar)
+// 2. Updated Observer
 const observer = new IntersectionObserver(entries => {
+  // If we are manually scrolling, IGNORE all observer detections
+  if (isManualScrolling) return; 
+
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       const id = entry.target.id;
-      allNavItems.forEach(n => n.classList.toggle('active', n.dataset.target === id));
+      allNavItems.forEach(n => n.classList.remove('active'));
+      const activeNav = document.querySelector(`.nav-item[data-target="${id}"]`);
+      if (activeNav) {
+        activeNav.classList.add('active');
+        activeNav.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
     }
   });
-}, { rootMargin: '-35% 0px -60% 0px' });
+}, { rootMargin: '-10% 0px -80% 0px' }); // Tighter top margin
 
 allSections.forEach(s => observer.observe(s));
 
