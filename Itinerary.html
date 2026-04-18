@@ -1188,18 +1188,25 @@ allNavItems.forEach(item => {
 });
 
 // 2. Updated Observer
+// 2. Updated Observer
 const observer = new IntersectionObserver(entries => {
-  // If we are manually scrolling, IGNORE all observer detections
   if (isManualScrolling) return; 
 
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       const id = entry.target.id;
+      
       allNavItems.forEach(n => n.classList.remove('active'));
       const activeNav = document.querySelector(`.nav-item[data-target="${id}"]`);
+      
       if (activeNav) {
         activeNav.classList.add('active');
-        activeNav.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+        // FIX: Only auto-scroll the sidebar if we are on Desktop
+        // We check if the window width is greater than 820px
+        if (window.innerWidth > 820) {
+          activeNav.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
       }
     }
   });
